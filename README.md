@@ -22,11 +22,11 @@ Currently, it's in development phase, it will be available soon in Chrome Web St
 
 ## Contributing
 
-We welcome contributions from the community. Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING) file for more information.
 
 ## License
 
-This project is licensed under the **Apache License 2.0** - see the [LICENSE.md](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
