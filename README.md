@@ -2,9 +2,23 @@
 
 **Social Repo** is a browser extension which simplify your process of filling out forms and applications by storing users' social media profile links.
 
+## Table of Contents
+
+1. [About](#about)
+2. [Project Details](#project-details)
+3. [Features](#features)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
+
 ## About
 
 Social Repo is a browser extension that allows users to store their social media profile links in one place. This extension is useful for users who frequently fill out forms and applications that require social media profile links. With SocialRepo, users can conveniently access by tapping the respective social media icon and it will autofill the link as well copy the link to clipboard which eliminates the need to manually search for and copy/paste each link individually.
+
+## Project Details
+
+Check the [Project Details](.github/docs/README.md) for brief overview of the project.
 
 ## Features
 
@@ -12,15 +26,17 @@ Social Repo is a browser extension that allows users to store their social media
 2. **Secure**: The extension is secure and does not store any personal data in the server. All the data is stored locally in the browser.
 3. **Autofill**: Users can autofill the link by tapping the respective social media icon.
 4. **Copy to Clipboard**: Users can copy the link to clipboard by tapping the respective social media icon.
-5. **Custom Commands**: Users can use custom commands, such as \twitter, to automatically replace them with their Twitter profile link, streamlining the process of filling out forms and applications.
+5. **Custom Commands**: Users can use custom commands, such as `\twitter`, to automatically replace them with their Twitter profile link, streamlining the process of filling out forms and applications.
 6. **Custom Website Link**: Users can add a custom website link like personal blog, portfolio, etc...
 7. **Drag and Drop**: Users can rearrange the social media icons by dragging and dropping based on their preference.
 
-## Installation
+## Usage
 
 Currently, it's in development phase, it will be available soon in Chrome Web Store.
 
 ## Contributing
+
+Each and every contribution matters, whether it's a small typo fix, adding social media URL, icon or a new feature. Your contribution will be appreciated by the community. 🤗
 
 We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING) file for more information.
 
