@@ -42,7 +42,7 @@ Logo is yet to made, currently using the default icon.
 We need all major social media handle url prefixes and their respective icons.
 
 -   All the social media handle url prefixes should be stored in [`social-links.json`](../../social-links.json) file.
--   All the icons should be stored in [`icons`](../../assets/icons/) folder.
+-   All the icons should be stored in [`icons`](../../assets/logos/) folder.
 -   Icons should be of minimum `128x128` and maximum `256x256` resolution.
 -   Icons must be in `png` format and transparent background.
 -   Icons should be named as `social-media-name.png` (e.g. `twitter.png`, `github.png`, `instagram.png`, etc...).
