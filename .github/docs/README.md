@@ -34,6 +34,7 @@ You can go through the following sections to get an idea about the project and t
 ## Logo
 
 Logo is yet to made, currently using the default icon.
+
 ![Logo](../../assets/logo.png)
 
 ## Social links data
