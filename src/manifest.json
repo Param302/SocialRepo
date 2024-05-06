@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Hello World Extension",
+    "name": "SocialRepo",
     "version": "0.1",
-    "description": "A simple Chrome extension that displays 'Hello, World!' when clicked.",
+    "description": "Your Social Handles Repository.",
     "permissions": ["activeTab"],
     "action": {
         "default_popup": "./popup/popup.html",
@@ -12,5 +12,11 @@
         "16": "./assets/logo.png",
         "48": "./assets/logo.png",
         "128": "./assets/logo.png"
-    }
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["./popup/popup.html", "./popup/popup.css", "./popup/popup.js"],
+            "matches": ["<all_urls>"]
+          }
+    ]
 }
