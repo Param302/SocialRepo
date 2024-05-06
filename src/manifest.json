@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Hello World Extension",
+    "version": "0.1",
+    "description": "A simple Chrome extension that displays 'Hello, World!' when clicked.",
+    "permissions": ["activeTab"],
+    "action": {
+        "default_popup": "./popup/popup.html",
+        "default_icon": "./assets/logo.png"
+    },
+    "icons": {
+        "16": "./assets/logo.png",
+        "48": "./assets/logo.png",
+        "128": "./assets/logo.png"
+    }
+}
