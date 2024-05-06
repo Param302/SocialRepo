@@ -33,7 +33,9 @@ You can go through the following sections to get an idea about the project and t
 
 ## Logo
 
-Logo is yet to made, currently using the default icon.
+Logo is completed!
+
+_Contributed by [Shreya Porwal](https://github.com/porwalshreyaa)_
 
 ![Logo](../../src/assets/logo.png)
 

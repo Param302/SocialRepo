@@ -40,6 +40,10 @@ Each and every contribution matters, whether it's a small typo fix, adding socia
 
 We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING) file for more information.
 
+### Thanks to Contributors!
+
+<a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" style="border-radius:50%" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" style="border-radius:50%" alt="Shreya Porwal"></a>
+
 ## License
 
 This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
