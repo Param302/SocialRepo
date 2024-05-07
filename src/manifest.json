@@ -5,7 +5,7 @@
     "description": "Your Social Handles Repository.",
     "permissions": ["activeTab"],
     "action": {
-        "default_popup": "./popup/popup.html",
+        "default_popup": "./code/index.html",
         "default_icon": "./assets/logo.png"
     },
     "icons": {
@@ -15,8 +15,12 @@
     },
     "web_accessible_resources": [
         {
-            "resources": ["./popup/popup.html", "./popup/popup.css", "./popup/popup.js"],
+            "resources": [
+                "./code/index.html",
+                "./code/style.css",
+                "./code/index.js"
+            ],
             "matches": ["<all_urls>"]
-          }
+        }
     ]
 }
