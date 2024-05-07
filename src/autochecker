@@ -1,0 +1,40 @@
+// Content script
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        //  Detect forms
+        var forms = document.getElementsByTagName('form');
+
+        // Scan form fields
+        Array.from(forms).forEach(function(form) {
+            Array.from(form.elements).forEach(function(element) {
+                // Local Storage
+                var socialMediaLinks = localStorage.getItem('socialMediaLinks');
+                if (socialMediaLinks) {
+                    socialMediaLinks = JSON.parse(socialMediaLinks);
+                    // Fill form fields
+                    if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'url')) {
+                        var fieldValue = element.getAttribute('name').toLowerCase();
+                        // error wala case: Handle variations in field naming
+                        if (fieldValue.includes('twitter')) {
+                            if (socialMediaLinks.twitter) {
+                                element.value = socialMediaLinks.twitter;
+                            } else {
+                                console.error('Twitter link not found in local storage.');
+                            }
+                        } else if (fieldValue.includes('facebook')) {
+                            if (socialMediaLinks.facebook) {
+                                element.value = socialMediaLinks.facebook;
+                            } else {
+                                console.error('Facebook link not found in local storage.');
+                            }
+                        } // you can add other social media links here as well
+                    }
+                } else {
+                    console.error('Social media links not found in local storage.'); // blank profile 
+                }
+            });
+        });
+    } catch (error) {
+        console.error('An unexpected error occurred:', error); //default scenario
+    }
+});
