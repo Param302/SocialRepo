@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* font-family: "Source Sans 3", sans-serif; */
+    font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -33,4 +37,8 @@ nav ul li {
 nav li img {
     width: 25px;
     height: 25px;
+}
+
+p {
+    font-weight: 500;
 }

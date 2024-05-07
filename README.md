@@ -28,7 +28,7 @@ Check the [Project Details](.github/docs/README.md) for brief overview of the pr
 4. **Copy to Clipboard**: Users can copy the link to clipboard by tapping the respective social media icon.
 5. **Custom Commands**: Users can use custom commands, such as `\twitter`, to automatically replace them with their Twitter profile link, streamlining the process of filling out forms and applications.
 6. **Custom Website Link**: Users can add a custom website link like personal blog, portfolio, etc...
-7. **Drag and Drop**: Users can rearrange the social media icons by dragging and dropping based on their preference.
+7. **Drag and Drop**: Users can rearrange the social media containers by dragging and dropping based on their preference.
 
 ## Usage
 

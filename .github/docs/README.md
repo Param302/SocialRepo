@@ -11,27 +11,52 @@ You can go through the following sections to get an idea about the project and t
 
 ## Table of Contents
 
-1. [Design](#design)
-    - [Front panel](#front-panel)
-    - [Full layout](#full-layout)
-2. [Logo](#logo)
-3. [Social links data](#social-links-data)
-4. [Color Theme](#color-theme)
-5. [Technical Features](#technical-features)
-    - [Tech Stack](#tech-stack)
-    - [Features](#features)
+1. [Features](#features)
+2. [UI](#ui)
+    - [Design](#design)
+    - [Logo](#logo)
+    - [Color Theme](#color-theme)
+3. [Tech Stack](#tech-stack)
+    - [Code Structure](#code-structure)
+        - [Code Guidelines](#code-guidelines)
+        - [Chrome](#chrome)
+4. [Social links data](#social-links-data)
 
-## Design
+## Features
 
-### Front panel
+<!-- As seen in [layout](#full-layout), the features are as follows: -->
+
+1. **Draggable containers**: Users can rearrange the social media containers in edit menu by dragging and dropping based on their preference.
+2. **Info button**: Info button for the _Attribution_ of Codebase and contributors.
+3. **Edit button**: Users can click on edit button, which will open a edit menu where they can update their social handles.
+    - There can be a search bar, in which users can search for the social media handle they want to update.
+4. **Save button**: Under edit menu, there will be a save button which will save the updated social media handles.
+5. **Dark mode**: Under edit menu, we can have a dark mode feature, where users can switch between light and dark mode.
+6. **Social media containers**: Containers of icons should be clickable and should copy the social handle URL link to clipboard.
+    - It should show a confirmation that the link has been copied.
+    - It should also paste the link in the **focused** input field.
+    - There can be preview button which will open the respective social media profile in a new tab.
+7. **Command Prefix**: Users can use a command which can replace the social media handle with the respective URL link.
+    - For example, if user types `\twitter`, it should replace with `https://twitter.com/username`.
+    - This feature can be enabled/disabled under edit menu.
+    - Also the prefix can be changed.
+    - It should only works for input & textarea fields.
+
+> Additional features or change in features are welcome by raising issue. 🤗
+
+## UI
+
+### Design
+
+#### Front panel
 
 ![Front panel](../../design/Front%20Panel.jpg)
 
-### Full layout
+#### Full layout
 
 ![Full layout](../../design/Social%20Repo.jpg)
 
-## Logo
+### Logo
 
 Logo is completed!
 
@@ -39,46 +64,66 @@ _Contributed by [Shreya Porwal](https://github.com/porwalshreyaa)_
 
 ![Logo](../../src/assets/logo.png)
 
-## Social links data
+### Color Theme
 
-We need all major social media handle url prefixes and their respective icons.
+[Color Palette](https://coolors.co/ffffff-9662ff-8c52ff-7029ff)
 
--   All the social media handle url prefixes should be stored in [`social-links.json`](../../src/social-links.json) file.
--   All the icons should be stored in [`icons`](../../src/assets/logos/) folder.
--   Icons should be of minimum `128x128` and maximum `256x256` resolution.
--   Icons must be in `png` format and transparent background.
--   Icons should be named as `social-media-name.png` (e.g. `twitter.png`, `github.png`, `instagram.png`, etc...).
+-   **Primary Color**: `#7029FF`
+-   **Text Color**: `#FFFFFF`
 
-## Color Theme
+_A secondary color is yet to be decided_ for light and dark mode.
 
-Color theme is yet to be decided and will be same as the logo color theme.
-
-## Technical Features
-
-### Tech Stack
+## Tech Stack
 
 -   HTML
 -   CSS
 -   JavaScript
 
-### Features
+### Code Structure
 
-As seen in [layout](#full-layout), the features are as follows:
+#### Code Guidelines
+- All the **HTML** code should be in [`index.html`](../../src/code/index.html) file only.
+- All the **CSS** code should be in [`style.css`](../../src/code/style.css) file only.
+- All the **JavaScript** code should be in [`index.js`](../../src/code/index.js) file only.
+- Make sure to follow the code structure and naming conventions.
+- Write well documented code and follow the best practices.
+- Use Semantic HTML elements and CSS classes, i.e. _avoid using divs for everything_.
 
-1. **Draggable Icons**: Users can rearrange the social media icons by dragging and dropping based on their preference.
-2. **Drag button**: Users can drag the icons by clicking on the drag button.
-3. **Settings button**: Users can click on settings button, which will open a settings panel where they can update their social handles.
-    - There can be a search bar, in which users can search for the social media handle they want to update.
-4. **Save button**: Under settings, there will be a save button which will save the updated social media handles.
-5. **Attribution**: Where should we give the attribution of our project? 🤔 Keeping in mind, that it doesn't overwhelm the UI.
-6. **Dark mode**: Under settings, we can have a dark mode feature, where users can switch between light and dark mode.
-7. **Social media containers**: Containers of icons should be clickable and should copy the social handle URL link to clipboard.
-    - It should show a confirmation that the link has been copied.
-    - It should also paste the link in the **focused** input field.
-8. **Command Prefix**: Users can use a command which can replace the social media handle with the respective URL link.
-    - For example, if user types `\twitter`, it should replace with `https://twitter.com/username`.
-    - This feature can be enabled/disabled under settings.
-    - Also the prefix can be changed.
-    - It should only works for input & textarea fields.
+#### Chrome
 
-> Additional features or change in features are welcome by raising issue. 🤗
+```
+SocialRepo/
+├── src/
+│   ├── assets/
+│   │   ├── logos/
+│   │   │   ├── <social_media_icon.png>     # Social media icons
+│   │   ├── logo.png                        # Logo of the project - 16x16
+│   │   ├── logo.png                        # Logo of the project - 32x32
+│   │   ├── logo.png                        # Logo of the project - 48x48
+│   │   ├── logo.png                        # Logo of the project - 128x128
+│   │   └── logo.png                        # Logo of the project - 500x500
+│   ├── code/
+│   │   ├── index.html
+│   │   ├── index.js
+│   │   ├── style.css
+│   ├── manifest.json                      # Manifest file for browser extension
+└───└── social-links.json                   # Social media handle url prefixes
+```
+
+## Social links data
+
+We need all major social media handle url prefixes and their respective icons.
+
+-   All the social media handle url prefixes should be stored in [`social-links.json`](../../src/social-links.json) file.
+    **Preview**:
+    ```json
+    {
+        "social_media_name": "link",
+        "linkedin": "https://www.linkedin.com/in/",
+        "github": "https://www.github.com/"
+    }
+    ```
+-   All the icons should be stored in [`logos`](../../src/assets/logos/) folder.
+-   Icons should be of minimum `128x128` and maximum `256x256` resolution.
+-   Icons must be in `png` format and transparent background.
+-   Icons should be named as `social-media-name.png` (e.g. `twitter.png`, `github.png`, `instagram.png`, etc...).

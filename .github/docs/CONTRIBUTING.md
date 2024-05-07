@@ -31,6 +31,12 @@ Kindly go through the [Project Details](README.md) to understand the project and
 
 ## Project setup
 
+> ### Important
+>
+> Before you start contributing, make sure you have read the [Project Details](README.md) and understood the project requirements.
+>
+> For coding contribution, make sure you have understood the [Code Structure](README.md#code-structure), read the [Code Guidelines](README.md#code-guidelines) used in the project.
+
 ### Fork and clone the repository
 
 ```bash
