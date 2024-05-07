@@ -15,6 +15,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 -   [Code of Conduct](#code-of-conduct)
 -   [Project Details](#project-details)
+-   [Extension setup](#extension-setup)
 -   [Project setup](#project-setup)
 -   [Getting Help](#getting-help)
 -   [Acknowledgements](#acknowledgements)
@@ -28,6 +29,31 @@ Please adhere to the basic guidelines and Code of Conduct in Open Source Project
 ## Project Details
 
 Kindly go through the [Project Details](README.md) to understand the project and what you can contribute.
+
+## Extension setup
+### Fork and clone the repository
+
+```bash
+git clone https://github.com/Param302/SocialRepo.git
+```
+
+### Create and checkout to the new branch.
+
+```bash
+git checkout -b <branch_name>
+```
+After doing the changes, setup the extension in your browser.
+
+### Chrome
+#### Open [`chrome://extensions/`](chrome://extensions/) in your browser.
+#### Enable the Developer mode on the top right corner.
+#### Click on Load unpacked and select the `src` folder.
+The extension will be added in your browser.
+#### Click on Puzzle icon in the top right corner of the browser and pin the extension.
+Now you can use the extension in your browser.
+
+If you are facing any issue, feel free to open an issue in the repository.
+
 
 ## Project setup
 
