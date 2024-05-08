@@ -13,6 +13,11 @@
   --text-color: #ffffff;
   --secondary-color: #3b3c5a;
   --border-color: #5762a4;
+  --placeholder-color: #ffffffbd;
+}
+
+::placeholder {
+  color: var(--placeholder-color);
 }
 
 body {
@@ -21,10 +26,29 @@ body {
   height: 450px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  padding: 10px 0;
 }
 
 main {
   position: relative;
+}
+
+/* Toast Message */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--border-color);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
 }
 
 header {
@@ -110,6 +134,89 @@ header .logo-wrapper .logo {
   color: var(--text-color);
 }
 
-::placeholder {
+.edit-home-section {
+  padding: 0 10px;
+}
+
+/* Social Media Container */
+.social-media-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+}
+
+.social-media-container .draggable-icon {
+  width: 25px;
+  height: 25px;
+  cursor: move;
+}
+
+.social-media-container .social-media-info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  justify-items: center;
+  margin-left: 10px;
+}
+
+.social-media-info .copy-link {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.copy-link:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.copy-icon {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* Hide initially */
+  transition: opacity 0.3s; /* Smooth transition for visibility */
+  cursor: pointer;
+}
+
+.copy-link:hover .copy-icon {
+  opacity: 1; /* Show on hover */
+}
+
+.social-media-info .copy-link .social-media-logo {
+  width: 20px;
+}
+
+.social-media-info .copy-link .copy-icon {
+  width: 15px;
+}
+
+.social-media-info .navigate-img {
+  width: 13px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.social-media-info input {
+  width: 100%;
+  background: transparent;
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  outline: none;
   color: var(--text-color);
+}
+
+.social-media-info input:focus {
+  border: 1px solid var(--placeholder-color);
 }
