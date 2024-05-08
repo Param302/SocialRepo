@@ -3,9 +3,10 @@ This file contains the list of social app/website names which has public user pr
 
 - [ ] BitBucket
 - [ ] Discord
-- [ ] Github
+- [x] Github
 - [ ] Gitlab
 - [ ] Instagram
+- [x] LinkedIn
 - [ ] Reddit
 - [ ] Spotify
 - [ ] Snapchat
@@ -24,7 +25,7 @@ This file contains the list of social app/website names which has public user pr
 - [ ] Hashnode
 - [ ] Leetcode
 - [ ] Linktree
-- [ ] Medium
+- [x] Medium
 - [ ] Peerlist
 - [ ] Qoura
 - [ ] Upwork
