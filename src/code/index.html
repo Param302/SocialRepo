@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Social Repo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
+      <section class="logo-wrapper">
+        <img src="../assets/logo.png" alt="Social Repo Logo" class="logo" />
         <h1>Social Repo</h1>
-        <nav>
-            <ul>
-                <li><img src="../assets/logo.png" alt="Info"></li>
-                <li><img src="../assets/logo.png" alt="Settings"></li>
-            </ul>
-        </nav>
+      </section>
+      <nav>
+        <ul>
+          <li><img src="../assets/logo.png" alt="Info" />Info</li>
+          <li id="edit-button">
+            <img src="../assets/edit-icon.png" alt="Edit" />Edit
+          </li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section id="front">
-            <h2>Front Panel</h2>
+      <section id="front">
+        <h2>Front Panel</h2>
+      </section>
+      <section id="info">
+        <h2>Info Panel</h2>
+        <p>
+          Repository link:
+          <a href="https://github.com/Param302/SocialRepo" target="_blank"
+            >https://github.com/Param302/SocialRepo</a
+          >
+        </p>
+      </section>
+      <section id="edit" class="hidden">
+        <!-- Drag will be in edit menu only, on left side of elements. -->
+        <h2>Edit Panel</h2>
+        <section class="edit-search-bar">
+          <input type="text" placeholder="Search Profile" />
         </section>
-        <section id="info">
-            <h2>Info Panel</h2>
-            <p>Repository link: <a href="https://github.com/Param302/SocialRepo" target="_blank">https://github.com/Param302/SocialRepo</a></p>
-        </section>
-        <section id="edit">
-            <!-- Drag will be in edit menu only, on left side of elements. -->
-            <h2>Edit Panel</h2>
-        </section>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>
