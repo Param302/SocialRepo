@@ -82,12 +82,13 @@ _A secondary color is yet to be decided_ for light and dark mode.
 ### Code Structure
 
 #### Code Guidelines
-- All the **HTML** code should be in [`index.html`](../../src/code/index.html) file only.
-- All the **CSS** code should be in [`style.css`](../../src/code/style.css) file only.
-- All the **JavaScript** code should be in [`index.js`](../../src/code/index.js) file only.
-- Make sure to follow the code structure and naming conventions.
-- Write well documented code and follow the best practices.
-- Use Semantic HTML elements and CSS classes, i.e. _avoid using divs for everything_.
+
+-   All the **HTML** code should be in [`index.html`](../../src/code/index.html) file only.
+-   All the **CSS** code should be in [`style.css`](../../src/code/style.css) file only.
+-   All the **JavaScript** code should be in [`index.js`](../../src/code/index.js) file only.
+-   Make sure to follow the code structure and naming conventions.
+-   Write well documented code and follow the best practices.
+-   Use Semantic HTML elements and CSS classes, i.e. _avoid using divs for everything_.
 
 #### Chrome
 
@@ -119,10 +120,12 @@ We need all major social media handle url prefixes and their respective icons.
     ```json
     {
         "social_media_name": "link",
-        "linkedin": "https://www.linkedin.com/in/",
-        "github": "https://www.github.com/"
+        "linkedin": "https://www.linkedin.com/in/<username>",
+        "github": "https://www.github.com/<username>",
+        "medium": "https://<username>.medium.com"
     }
     ```
+    -   The `<username>` will be replaced by the user's social media handle.
 -   All the icons should be stored in [`logos`](../../src/assets/logos/) folder.
 -   Icons should be of minimum `128x128` and maximum `256x256` resolution.
 -   Icons must be in `png` format and transparent background.

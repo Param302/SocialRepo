@@ -1,4 +1,6 @@
 {
     "social_media_name": "link",
-    "linkedin": "https://www.linkedin.com/in/"
+    "linkedin": "https://www.linkedin.com/in/<username>",
+    "github": "https://www.github.com/<username>",
+    "medium": "https://<username>.medium.com"
 }
