@@ -65,7 +65,7 @@ _Contributed by [Shreya Porwal](https://github.com/porwalshreyaa)_
 
 ### Color Theme
 
-[Color Palette](https://coolors.co/ffffff-9662ff-8c52ff-7029ff)
+[Color Palette](https://coolors.co/ffffff-b58fff-915aff-8c52ff-7029ff)
 
 -   **Primary Color**: `#7029FF`
 -   **Secondary Color**: `#B58FFF`;

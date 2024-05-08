@@ -42,7 +42,7 @@ We welcome contributions from the community. Please refer to the [CONTRIBUTING](
 
 ### Thanks to Contributors!
 
-<a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" style="border-radius:50%" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" style="border-radius:50%" alt="Shreya Porwal"></a>
+<a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" style="border-radius:50%" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" style="border-radius:50%" alt="Shreya Porwal"></a><a href="https://github.com/NormTurtle"><img src="https://avatars.githubusercontent.com/u/108952834?v=4" width="50px" height="auto" style="border-radius:50%" alt="Omi"></a>
 
 ## License
 
