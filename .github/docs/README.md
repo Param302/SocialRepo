@@ -108,14 +108,14 @@ SocialRepo/
 │   │   ├── index.js
 │   │   ├── style.css
 │   ├── manifest.json                      # Manifest file for browser extension
-└───└── social-links.json                   # Social media handle url prefixes
+└───└── social-links.json                   # Social media handle url
 ```
 
 ## Social links data
 
-We need all major social media handle url prefixes and their respective icons.
+We need all major social media profile URLs and their respective icons.
 
--   All the social media handle url prefixes should be stored in [`social-links.json`](../../src/social-links.json) file.
+-   All the social media media profile URLs should be stored in [`social-links.json`](../../src/social-links.json) file.
     **Preview**:
     ```json
     {
@@ -126,6 +126,12 @@ We need all major social media handle url prefixes and their respective icons.
     }
     ```
     -   The `<username>` will be replaced by the user's social media handle.
+-   After adding the social media profile URL, please update the [social-apps.md](./social-apps.md) file.
+    **Example**:
+    If you have added the `twitter` social media profile URL, then:
+    -   add `x` inside the brackets of `- [ ] Twitter`.
+        _If the `twitter` social media profile name is **not** present in the list, then:_
+    -   Add `- [x] Twitter` in the list.
 -   All the icons should be stored in [`logos`](../../src/assets/logos/) folder.
 -   Icons should be of minimum `128x128` and maximum `256x256` resolution.
 -   Icons must be in `png` format and transparent background.
