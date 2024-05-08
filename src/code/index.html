@@ -10,23 +10,26 @@
 
 <body>
     <header>
-        <h1>Social Repo</h1>
+        <div id="name"><a href="https://github.com/Param302/SocialRepo" target="_blank" rel="noopener noreferrer" title="SocialRepo">
+            <img src="../assets/logos/logo_invert.png" alt="logo">
+            <h1>SocialRepo</h1>
+        </a></div>
         <nav>
             <ul>
-                <li><img src="../assets/logo.png" alt="Info"></li>
-                <li><img src="../assets/logo.png" alt="Settings"></li>
+                <li><button id="info-btn"></button></li>
+                <li><button id="edit-btn"></button></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="front">
+        <section id="home">
             <h2>Front Panel</h2>
         </section>
-        <section id="info">
+        <section id="info" class="hidden">
             <h2>Info Panel</h2>
             <p>Repository link: <a href="https://github.com/Param302/SocialRepo" target="_blank">https://github.com/Param302/SocialRepo</a></p>
         </section>
-        <section id="edit">
+        <section id="edit" class="hidden">
             <!-- Drag will be in edit menu only, on left side of elements. -->
             <h2>Edit Panel</h2>
         </section>

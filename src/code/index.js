@@ -1,1 +1,35 @@
 console.log("Social Repo opened!");
+
+const infoBtn = document.getElementById("info-btn");
+const editBtn = document.getElementById("edit-btn");
+const home = document.getElementById("home");
+const info = document.getElementById("info");
+const edit = document.getElementById("edit");
+
+
+infoBtn.addEventListener("click", () => {
+    console.log("Info button clicked!");
+    if (info.classList.contains("hidden")) {
+        info.classList.remove("hidden");
+        home.classList.add("hidden");
+        edit.classList.add("hidden");
+    } else {
+        info.classList.add("hidden");
+        home.classList.remove("hidden");
+        edit.classList.add("hidden");
+    }
+});
+
+editBtn.addEventListener("click", () => {
+    console.log("Edit button clicked!");
+    if (edit.classList.contains("hidden")) {
+        edit.classList.remove("hidden");
+        home.classList.add("hidden");
+        info.classList.add("hidden");
+    } else {
+        edit.classList.add("hidden");
+        home.classList.remove("hidden");
+        info.classList.add("hidden");
+    }
+
+});

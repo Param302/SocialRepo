@@ -31,12 +31,11 @@ You can go through the following sections to get an idea about the project and t
 3. **Edit button**: Users can click on edit button, which will open a edit menu where they can update their social handles.
     - There can be a search bar, in which users can search for the social media handle they want to update.
 4. **Save button**: Under edit menu, there will be a save button which will save the updated social media handles.
-5. **Dark mode**: Under edit menu, we can have a dark mode feature, where users can switch between light and dark mode.
-6. **Social media containers**: Containers of icons should be clickable and should copy the social handle URL link to clipboard.
+5. **Social media containers**: Containers of icons should be clickable and should copy the social handle URL link to clipboard.
     - It should show a confirmation that the link has been copied.
     - It should also paste the link in the **focused** input field.
     - There can be preview button which will open the respective social media profile in a new tab.
-7. **Command Prefix**: Users can use a command which can replace the social media handle with the respective URL link.
+6. **Command Prefix**: Users can use a command which can replace the social media handle with the respective URL link.
     - For example, if user types `\twitter`, it should replace with `https://twitter.com/username`.
     - This feature can be enabled/disabled under edit menu.
     - Also the prefix can be changed.
@@ -69,9 +68,11 @@ _Contributed by [Shreya Porwal](https://github.com/porwalshreyaa)_
 [Color Palette](https://coolors.co/ffffff-9662ff-8c52ff-7029ff)
 
 -   **Primary Color**: `#7029FF`
+-   **Secondary Color**: `#B58FFF`;
 -   **Text Color**: `#FFFFFF`
+-   **Text Color 2**: `#242327`
 
-_A secondary color is yet to be decided_ for light and dark mode.
+_A secondary color is yet to be finalized_.
 
 ## Tech Stack
 

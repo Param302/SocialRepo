@@ -6,6 +6,14 @@
     box-sizing: border-box;
     /* font-family: "Source Sans 3", sans-serif; */
     font-family: "Raleway", sans-serif;
+    transition: all 300ms ease;
+}
+
+:root {
+    --primary-color: #7029FF;
+    --secondary-color: #B58FFF;
+    --text-color: #EEEEEE;
+    --text-color-2: #242327;
 }
 
 body {
@@ -15,30 +23,100 @@ body {
     text-align: center;
 }
 
+a {
+    all:unset;
+    cursor: pointer;
+}
+
+/* ============== Header ============== */
+
 header {
-    background-color: aquamarine;
-    margin: 5px;
-    padding: 5px 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.8rem 2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+}
+
+#name a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#name img {
+    width: 20px;
+    height: 20px;
+}
+
+#name h1 {
+    font-size: 1.4rem;
 }
 
 nav ul {
     display: flex;
     justify-content: space-around;
-    list-style: none;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 nav ul li {
-    margin: 0 10px;
+    list-style: none;
 }
 
-nav li img {
+nav li button {
     width: 25px;
     height: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+nav li button:active {
+    transform: scale(0.9);
+    transition-duration: 100ms;
+}
+
+#info-btn {
+    background-image: url("../assets/logos/info.png");
+    background-size: cover;
+}
+
+#info-btn:hover {
+    background-image: url("../assets/logos/info-hover.png");
+}
+
+#edit-btn {
+    background-image: url("../assets/logos/edit.png");
+    background-size: cover;
+}
+
+#edit-btn:hover {
+    background-image: url("../assets/logos/edit-hover.png");
+}
+
+/* ============== main ============== */
+main {
+    width: 100%;
+    height: 400px;
+    background-color: var(--secondary-color);
+    overflow: hidden;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 p {
     font-weight: 500;
+}
+
+.hidden {
+    display: none;
 }
