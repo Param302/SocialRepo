@@ -1,4 +1,13 @@
 {
     "social_media_name": "link",
-    "linkedin": "https://www.linkedin.com/in/"
+    "linkedin": "https://www.linkedin.com/in/",
+    "miscellaneous": {
+        "airchat": "https://air.chat/",
+        "bio.link": "https://bio.link/",
+        "fiverr": "https://fiverr.com/",
+        "hashnode": "https://hashnode.com/",
+        "leetcode": "https://leetcode.com/",
+        "medium": "https://medium.com/",
+        "upwork": "https://upwork.com/"
+    }
 }
