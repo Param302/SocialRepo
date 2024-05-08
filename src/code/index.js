@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const list = document.getElementById("social-media-list");
   const dragItems = Array.from(document.querySelectorAll(".draggable-item"));
 
+  // Front Panel
+  const socialIcons = document.querySelectorAll(".social-icon");
+
   // toast message
   const toast = document.createElement("section");
   toast.classList.add("toast");
@@ -132,5 +135,57 @@ document.addEventListener("DOMContentLoaded", function () {
     const rect = dropTarget.getBoundingClientRect();
     const middleY = rect.top + rect.height / 2;
     return event.clientY < middleY ? "top" : "bottom"; // Determine insert position
+  }
+
+  // =========== FRONT PANEL ==============
+  // Event handler for click on social icons
+  socialIcons.forEach((icon) => {
+    icon.addEventListener("mouseenter", handleMouseEnter);
+    icon.addEventListener("mouseleave", handleMouseLeave);
+  });
+
+  // Front Panel ==> social icon mouse enter
+  function handleMouseEnter(event) {
+    const icon = event.target;
+    const existingCopyIcon = icon.querySelector(".copy-icon");
+
+    if (!existingCopyIcon) {
+      const copyIcon = document.createElement("img");
+      copyIcon.src = "../assets/logos/copy-icon.png"; // Path to your copy icon
+      copyIcon.alt = "Copy Icon";
+      copyIcon.classList.add("copy-icon");
+      copyIcon.style.opacity = 1;
+
+      icon.appendChild(copyIcon); // Add the copy icon to the DOM
+      icon.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+
+      copyIcon.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevents bubbling to parent events
+        const link = icon.getAttribute("data-link");
+
+        if (link) {
+          navigator.clipboard
+            .writeText(link)
+            .then(() => {
+              console.log("Link copied to clipboard");
+              showToast("Link copied to clipboard");
+            })
+            .catch((err) => {
+              console.error("Error copying link:", err);
+            });
+        }
+      });
+    }
+  }
+
+  // Front Panel ==> social icon mouse leave
+  function handleMouseLeave(event) {
+    const icon = event.target;
+    const copyIcon = icon.querySelector(".copy-icon");
+
+    if (copyIcon) {
+      icon.style.backgroundColor = "";
+      icon.removeChild(copyIcon); // Remove the copy icon from the DOM when hovering out
+    }
   }
 });

@@ -20,6 +20,19 @@
   color: var(--placeholder-color);
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--secondary-color);
+  border-radius: 40px;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px var(--border-color);
+}
+
 body {
   background: var(--secondary-color);
   width: 500px;
@@ -136,6 +149,8 @@ header .logo-wrapper .logo {
 
 .edit-home-section {
   padding: 0 10px;
+  height: 350px;
+  overflow-y: scroll;
 }
 
 /* Social Media Container */
@@ -219,4 +234,48 @@ header .logo-wrapper .logo {
 
 .social-media-info input:focus {
   border: 1px solid var(--placeholder-color);
+}
+
+.save-btn-wrapper {
+  padding: 10px 0;
+}
+
+.save-btn-wrapper button {
+  padding: 10px 30px;
+  border-radius: 10px;
+  background: var(--border-color);
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Front Panel */
+#front {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(auto-fill, 50px);
+  margin: 20px;
+  gap: 15px;
+  min-height: 300px;
+  overflow-y: scroll;
+  justify-items: center;
+}
+
+#front .social-icon {
+  display: grid;
+  height: 50px;
+  width: 50px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  place-items: center;
+  position: relative;
+}
+
+.social-icon .social-media-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.social-icon .copy-icon {
+  width: 20px;
 }
