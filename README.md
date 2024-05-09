@@ -38,7 +38,7 @@ Currently, it's in development phase, it will be available soon in Chrome Web St
 
 Each and every contribution matters, whether it's a small typo fix, adding social media URL, icon or a new feature. Your contribution will be appreciated by the community. 🤗
 
-We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING) file for more information.
+We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING.md) file for more information.
 
 ### Thanks to Contributors!
 
