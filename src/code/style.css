@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     margin: 0;
@@ -52,7 +52,7 @@ header {
 }
 
 #name h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 nav ul {
@@ -112,6 +112,7 @@ section {
     text-align: left;
     gap: 1rem;
     padding: 1rem 2rem;
+    position: relative;
 }
 
 h2 {
@@ -129,3 +130,128 @@ p {
 
 
 /* ============== Info Panel ============== */
+
+#heading {
+    width: fit-content;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.2rem;
+    padding-bottom: 2rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 10px;
+}
+
+#heading img {
+    width: 25px;
+    height: 25px;
+}
+
+#tagline {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+    align-self: center;
+    position: absolute;
+    top: 70px;
+}
+
+h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#about p, #commands p {
+    font-size: 0.9rem;
+}
+
+#commands .cmd {
+    background-color: #c5aff3;
+    color: var(--primary-color);
+    font-family: "Fira code", monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 1px 10px;
+    border-radius: 5px;
+}
+
+#commands button {
+    margin-top: 5px;
+    background: var(--text-color);
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 800;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#commands button:active {
+    transform: scale(0.9);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+table tr {
+    border-bottom: 1px solid var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #ffffff77;
+}
+
+table th {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+
+table td {
+    color: var(--primary-color);
+    padding: 0.5rem;
+    width: 30%;
+}
+
+#credits {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    padding: 1rem 0;
+    border-top: 2px solid var(--primary-color);
+}
+
+#credits a:hover {
+    color: var(--text-color);
+}
+
+#images {
+    display: flex;
+    gap: 1.5rem;
+}
+#images img {
+    width: 35px;
+    height: 35px;
+}
+
+#images img:hover {
+    transform: scale(1.1);
+}

@@ -33,3 +33,16 @@ editBtn.addEventListener("click", () => {
     }
 
 });
+
+const showBtn = document.getElementById("table-btn");
+const table = document.getElementsByTagName("table")[0];
+
+showBtn.addEventListener("click", () => {
+    if (table.classList.contains("hidden")) {
+        showBtn.innerHTML = "Hide";
+        table.classList.remove("hidden");
+    } else {
+        showBtn.innerHTML = "Show";
+        table.classList.add("hidden");
+    }
+});
