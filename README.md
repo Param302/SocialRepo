@@ -42,32 +42,7 @@ We welcome contributions from the community. Please refer to the [CONTRIBUTING](
 
 ### Thanks to Contributors!
 
-<style>
-    ul {
-        list-style-type: none;
-        display: flex;
-        gap: 10px;
-    }
-    li {
-        display: inline;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 2px solid #7029FF;
-        padding: 1px;
-    }
-    li a, li a img {
-        border-radius: 50%;
-    }
-</style>
-
-<ul>
-<li><a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" alt="Parampreet Singh"></a></li>
-<li><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" alt="Shreya Porwal"></a></li>
-<li><a href="https://github.com/NormTurtle"><img src="https://avatars.githubusercontent.com/u/108952834?v=4" width="50px" height="auto" alt="Omi"></a></li>
-<li><a href="https://github.com/nancyvaryani"><img src="https://avatars.githubusercontent.com/u/97382450?v=4" width="50px" height="auto" alt="Nancy"></a></li>
-<li><a href="https://github.com/fabiomughilan"><img src="https://avatars.githubusercontent.com/u/64077520?v=4" width="50px" height="auto" alt="Fabio Mughilan"></a></li>
-</ul>
+<a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" alt="Shreya Porwal"></a><a href="https://github.com/NormTurtle"><img src="https://avatars.githubusercontent.com/u/108952834?v=4" width="50px" height="auto" alt="Omi"></a><a href="https://github.com/nancyvaryani"><img src="https://avatars.githubusercontent.com/u/97382450?v=4" width="50px" height="auto" alt="Nancy"></a><a href="https://github.com/fabiomughilan"><img src="https://avatars.githubusercontent.com/u/64077520?v=4" width="50px" height="auto" alt="Fabio Mughilan"></a>
 
 
 ## License
