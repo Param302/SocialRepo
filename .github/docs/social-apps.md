@@ -9,25 +9,25 @@ This file contains the list of social app/website names which has public user pr
 - [x] LinkedIn
 - [ ] Reddit
 - [ ] Spotify
-- [ ] Snapchat
-- [ ] Telegram
-- [ ] Twitter/x
+- [x] Snapchat
+- [x] Telegram
+- [x] Twitter/x
 - [ ] WhatsApp
 
 ### Miscellaneous
 - [ ] Airchat
 - [ ] Bio.link
 - [ ] Codechef
-- [ ] Codeforces
+- [x] Codeforces
 - [ ] Dev.to
 - [ ] Fiver
 - [ ] Hackerrank
 - [ ] Hashnode
 - [ ] Leetcode
-- [ ] Linktree
+- [x] Linktree
 - [x] Medium
-- [ ] Peerlist
-- [ ] Qoura
+- [x] Peerlist
+- [x] Qoura
 - [ ] Upwork
 
 
