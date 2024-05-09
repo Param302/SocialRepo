@@ -1,35 +1,11 @@
-[
-  {
-    "social_media_name": "link",
-    "linkedin": "https://www.linkedin.com/in/"
-  },
-  {
-    "social_media_name": "snapchat",
-    "snapchat": "https://www.snapchat.com/"
-  },
-  {
-    "social_media_name": "discord",
-    "discord": "https://www.discord.com/"
-  },
-  {
-    "social_media_name": "twitter",
-    "twitter": "https://www.twitter.com/"
-  },
-  {
-    "social_media_name": "reddit",
-    "reddit": "https://www.reddit.com/"
-  },
-   { 
-    "social_media_name": "spotify",
-    "spotify": "https://wwww.spotify.com/"
-  },
-  {
-    "social_media_name": "github",
-    "github": "https://www.github.com/"
-  },
-  {
-    "social_media_name":"gitlab",
-    "gitlab": "https://www.gitlab.com/"
-  }
-]
-
+{
+  "social_media_name": "link",
+  "discord": "https://www.discord.com/",
+  "github": "https://www.github.com/",
+  "gitlab": "https://www.gitlab.com/",
+  "linkedin": "https://www.linkedin.com/in/",
+  "reddit": "https://www.reddit.com/",
+  "snapchat": "https://www.snapchat.com/",
+  "spotify": "https://wwww.spotify.com/",
+  "twitter": "https://www.twitter.com/"
+}
