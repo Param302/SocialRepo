@@ -27,7 +27,7 @@ This file contains the list of social app/website names which has public user pr
 - [x] Linktree
 - [x] Medium
 - [x] Peerlist
-- [x] Qoura
+- [x] Quora
 - [ ] Upwork
 
 
