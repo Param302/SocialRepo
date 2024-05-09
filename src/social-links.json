@@ -9,5 +9,9 @@
     "quora": "https://www.quora.com/profile/<username>",
     "snapchat": "https://www.snapchat.com/add/<username>",
     "telegram": "https://t.me/<username>",
+    "tinder": "https://tinder.com/@<username> ",
+    "facebook":"https://www.facebook.com/<username>",
+    "tiktok": "https://www.tiktok.com/@<username>",
+    "youtube": "https://www.youtube.com/@<username>",
     "twitter" : "https://twitter.com/<username>"
 }

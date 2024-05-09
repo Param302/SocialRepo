@@ -2,6 +2,10 @@
 This file contains the list of social app/website names which has public user profile feature.
 
 - [ ] BitBucket
+- [x] facebook
+- [x] tinder
+- [x] youtube
+- [x] tiktok
 - [ ] Discord
 - [x] Github
 - [ ] Gitlab
