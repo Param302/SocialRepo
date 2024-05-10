@@ -1,7 +1,13 @@
 {
     "social_media_name": "link",
+    "airchat": "https://www.air.chat/user/<username>",
+    "bio.link": "https://bio.link/<username>",
     "codeforces": "https://codeforces.com/profile/<username>",
+    "dev.to": "https://dev.to/<username>",
+    "fiverr": "https://www.fiverr.com/<username>",
     "github": "https://www.github.com/<username>",
+    "hashnode": "https://hashnode.com/@<username>",
+    "leetcode": "https://leetcode.com/<username>",
     "linkedin": "https://www.linkedin.com/in/<username>",
     "linktree": "https://linktr.ee/<username>",
     "medium": "https://<username>.medium.com",
@@ -12,6 +18,9 @@
     "tinder": "https://tinder.com/@<username> ",
     "facebook":"https://www.facebook.com/<username>",
     "tiktok": "https://www.tiktok.com/@<username>",
+    "upwork": "https://www.upwork.com/o/profiles/users/~<username>"
     "youtube": "https://www.youtube.com/@<username>",
     "twitter" : "https://twitter.com/<username>"
+    }
+}
 }
