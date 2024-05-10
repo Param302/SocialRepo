@@ -28,7 +28,7 @@ Check the [Project Details](.github/docs/README.md) for brief overview of the pr
 4. **Copy to Clipboard**: Users can copy the link to clipboard by tapping the respective social media icon.
 5. **Custom Commands**: Users can use custom commands, such as `\twitter`, to automatically replace them with their Twitter profile link, streamlining the process of filling out forms and applications.
 6. **Custom Website Link**: Users can add a custom website link like personal blog, portfolio, etc...
-7. **Drag and Drop**: Users can rearrange the social media icons by dragging and dropping based on their preference.
+7. **Drag and Drop**: Users can rearrange the social media containers by dragging and dropping based on their preference.
 
 ## Usage
 
@@ -38,11 +38,12 @@ Currently, it's in development phase, it will be available soon in Chrome Web St
 
 Each and every contribution matters, whether it's a small typo fix, adding social media URL, icon or a new feature. Your contribution will be appreciated by the community. 🤗
 
-We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING) file for more information.
+We welcome contributions from the community. Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING.md) file for more information.
 
 ### Thanks to Contributors!
 
-<a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" style="border-radius:50%" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" style="border-radius:50%" alt="Shreya Porwal"></a>
+<a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" alt="Shreya Porwal"></a><a href="https://github.com/NormTurtle"><img src="https://avatars.githubusercontent.com/u/108952834?v=4" width="50px" height="auto" alt="Omi"></a><a href="https://github.com/nancyvaryani"><img src="https://avatars.githubusercontent.com/u/97382450?v=4" width="50px" height="auto" alt="Nancy"></a><a href="https://github.com/fabiomughilan"><img src="https://avatars.githubusercontent.com/u/64077520?v=4" width="50px" height="auto" alt="Fabio Mughilan"></a>
+
 
 ## License
 

@@ -5,18 +5,22 @@
     "description": "Your Social Handles Repository.",
     "permissions": ["activeTab"],
     "action": {
-        "default_popup": "./popup/popup.html",
-        "default_icon": "./assets/logo.png"
+        "default_popup": "./code/index.html",
+        "default_icon": "./assets/logos/logo.png"
     },
     "icons": {
-        "16": "./assets/logo.png",
-        "48": "./assets/logo.png",
-        "128": "./assets/logo.png"
+        "16": "./assets/logos/logo.png",
+        "48": "./assets/logos/logo.png",
+        "128": "./assets/logos/logo.png"
     },
     "web_accessible_resources": [
         {
-            "resources": ["./popup/popup.html", "./popup/popup.css", "./popup/popup.js"],
+            "resources": [
+                "./code/index.html",
+                "./code/style.css",
+                "./code/index.js"
+            ],
             "matches": ["<all_urls>"]
-          }
+        }
     ]
 }
