@@ -19,20 +19,20 @@ This file contains the list of social app/website names which has public user pr
 - [ ] WhatsApp
 
 ### Miscellaneous
-- [ ] Airchat
-- [ ] Bio.link
+- [x] Airchat
+- [x] Bio.link
 - [ ] Codechef
-- [x] Codeforces
-- [ ] Dev.to
-- [ ] Fiver
+- [ ] Codeforces
+- [x] Dev.to
+- [x] Fiverr
 - [ ] Hackerrank
-- [ ] Hashnode
-- [ ] Leetcode
+- [x] Hashnode
+- [x] Leetcode
 - [x] Linktree
 - [x] Medium
 - [x] Peerlist
 - [x] Quora
-- [ ] Upwork
+- [x] Upwork
 
 
 > **Note**: This list is not exhaustive. You can add more social media apps/websites to the list.
