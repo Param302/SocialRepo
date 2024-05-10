@@ -4,14 +4,13 @@
     "bio.link": "https://bio.link/<username>",
     "codeforces": "https://codeforces.com/profile/<username>",
     "dev.to": "https://dev.to/<username>",
-    "fiverr": "https://www.fiverr.com/<username>",
-    "github": "https://www.github.com/<username>",
-    "hashnode": "https://hashnode.com/@<username>",
-    "leetcode": "https://leetcode.com/<username>",
     "discord": "https://discord.com/users/<username>",
     "facebook": "https://www.facebook.com/<username>",
+    "fiverr": "https://www.fiverr.com/<username>",
     "github": "https://www.github.com/<username>",
     "gitlab": "https://www.gitlab.com/<username>",
+    "hashnode": "https://hashnode.com/@<username>",
+    "leetcode": "https://leetcode.com/<username>",
     "linkedin": "https://www.linkedin.com/in/<username>",
     "linktree": "https://linktr.ee/<username>",
     "medium": "https://<username>.medium.com",
@@ -23,7 +22,7 @@
     "telegram": "https://t.me/<username>",
     "tinder": "https://tinder.com/@<username> ",
     "tiktok": "https://www.tiktok.com/@<username>",
-    "upwork": "https://www.upwork.com/o/profiles/users/~<username>"
-    "youtube": "https://www.youtube.com/@<username>",
-    "twitter" : "https://twitter.com/<username>"
+    "twitter": "https://twitter.com/<username>",
+    "upwork": "https://www.upwork.com/o/profiles/users/~<username>",
+    "youtube": "https://www.youtube.com/@<username>"
 }
