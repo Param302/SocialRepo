@@ -1,4 +1,13 @@
 {
+  "social_media_name": "link",
+  "discord": "https://www.discord.com/",
+  "github": "https://www.github.com/",
+  "gitlab": "https://www.gitlab.com/",
+  "linkedin": "https://www.linkedin.com/in/",
+  "reddit": "https://www.reddit.com/",
+  "snapchat": "https://www.snapchat.com/",
+  "spotify": "https://wwww.spotify.com/",
+  "twitter": "https://www.twitter.com/"
     "social_media_name": "link",
     "codeforces": "https://codeforces.com/profile/<username>",
     "github": "https://www.github.com/<username>",
