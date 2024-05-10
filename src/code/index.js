@@ -6,7 +6,6 @@ const home = document.getElementById("home");
 const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
-
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -31,7 +30,6 @@ editBtn.addEventListener("click", () => {
         home.classList.remove("hidden");
         info.classList.add("hidden");
     }
-
 });
 
 const showBtn = document.getElementById("table-btn");
