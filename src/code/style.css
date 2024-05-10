@@ -10,9 +10,10 @@
 
 :root {
   --primary-color: #7029ff;
+  --secondary-color: #b58fff;
   --text-color: #ffffff;
-  --secondary-color: #3b3c5a;
-  --border-color: #5762a4;
+  --bg-color: #3b3c5a;
+  --border-color: #b48fff54;
   --placeholder-color: #ffffffbd;
 }
 
@@ -22,19 +23,27 @@
 
 ::-webkit-scrollbar {
   width: 5px;
+  padding: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--secondary-color);
+  background-color: var(--bg-color);
   border-radius: 40px;
 }
 
 ::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 15px;
   box-shadow: inset 0 0 6px var(--border-color);
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--border-color);
+}
+
 body {
-  background: var(--secondary-color);
+  background: var(--bg-color);
   width: 500px;
   height: 450px;
   font-family: Arial, Helvetica, sans-serif;
@@ -116,7 +125,7 @@ header .logo-wrapper .logo {
 }
 
 #edit-button.active {
-  background-color: var(--border-color);
+  background-color: var(--primary-color);
 }
 
 /* Edit Panel CSS */
@@ -130,7 +139,7 @@ header .logo-wrapper .logo {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--secondary-color);
+  background: var(--bg-color);
 }
 
 #edit .edit-search-bar {
@@ -149,8 +158,8 @@ header .logo-wrapper .logo {
 
 .edit-home-section {
   padding: 0 10px;
-  height: 350px;
   overflow-y: scroll;
+  height: 300px;
 }
 
 /* Social Media Container */
@@ -256,7 +265,7 @@ header .logo-wrapper .logo {
   grid-template-rows: repeat(auto-fill, 50px);
   margin: 20px;
   gap: 15px;
-  min-height: 300px;
+  height: 300px;
   overflow-y: scroll;
   justify-items: center;
 }
