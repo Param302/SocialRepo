@@ -3,7 +3,7 @@
     "name": "SocialRepo",
     "version": "0.1",
     "description": "Your Social Handles Repository.",
-    "permissions": ["activeTab"],
+    "permissions": ["tabs", "activeTab", "scripting"],
     "action": {
         "default_popup": "./code/index.html",
         "default_icon": "./assets/logos/logo.png"
@@ -22,5 +22,17 @@
             ],
             "matches": ["<all_urls>"]
         }
-    ]
+    ],
+    "background": {
+        "service_worker": "./code/background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["./code/content.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "host_permissions": ["https://*/*", "http://*/*"]
 }
