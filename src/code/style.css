@@ -125,6 +125,8 @@ p {
 
 .hidden {
     display: none;
+    padding: 0px;
+    margin: 0px;
 }
 
 
@@ -255,3 +257,105 @@ table td {
 #images img:hover {
     transform: scale(1.1);
 }
+.search {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none; /* Remove default outline */
+    width: calc(100% - 100px);
+    margin-right: 10px;
+}
+
+/* Add focus styles */
+#edit {
+    width: 98%; /* Set width to 100% */
+    padding: 2px; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+.search:focus {
+    border-color: #B58FFF; /* Adjust border color on focus */
+    box-shadow: 0 0 5px rgba(113, 41, 255, 0.5); /* Add box shadow on focus */
+}
+
+
+.links-container {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Remove margin */
+    max-height: 400px;
+    overflow-y: auto;
+}
+    
+.link-box {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5; /* Light purple color */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.arrow-icon {
+    margin-left: 10px;
+}
+
+.arrow-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Focus and Hover Effects */
+.link-box:focus-within,
+.link-box:hover {
+    background-color: #e0e0e0; /* Lighter shade on focus/hover */
+}
+
+.drag-handle {
+    cursor: move;
+    font-size: 24px;
+    margin-right: 10px;
+    color: var(--primary-color);
+    opacity: 0.5;
+}
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.saving {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.save {
+    padding: 10px 20px;
+    background-color: #7029FF; /* Adjust color as needed */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save:hover {
+    background-color: #9a7ed2; /* Adjust hover color as needed */
+}
+
