@@ -1,4 +1,6 @@
-# ![Social Repo Logo](https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png)
+<p align="center">
+  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png" alt="Social Repo Logo" width="200px">
+</p>
 
 🚀 **Social Repo** is a browser extension simplifying form filling with stored social media profiles.
 
