@@ -44,3 +44,27 @@ showBtn.addEventListener("click", () => {
         table.classList.add("hidden");
     }
 });
+
+function readSocialLinks() {
+    const socialLinks = {};
+
+    fetch("../social-links.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch social links");
+            }
+            return response.json();
+        })
+        .then(jsonData => {
+            Object.keys(jsonData).slice(1).forEach(key => {
+                socialLinks[key] = jsonData[key];
+            });
+
+            console.log(socialLinks);
+            return socialLinks;
+        })
+        .catch(error => {
+            console.error("Error reading social links file:", error);
+            return {};
+        });
+}
