@@ -81,6 +81,7 @@ nav li button:active {
 #info-btn {
     background-image: url("../assets/logos/info.png");
     background-size: cover;
+    cursor: pointer;
 }
 
 #info-btn:hover {
@@ -90,6 +91,7 @@ nav li button:active {
 #edit-btn {
     background-image: url("../assets/logos/edit.png");
     background-size: cover;
+    cursor: pointer;
 }
 
 #edit-btn:hover {
@@ -113,7 +115,20 @@ section {
     gap: 1rem;
     padding: 1rem 2rem;
     position: relative;
+    overflow-y: auto;
 }
+
+section::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    height: 30px;
+}
+
 
 h2 {
     font-size: 1.5rem;
@@ -260,7 +275,7 @@ table td {
 .search {
     flex: 1;
     padding: 10px;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--primary-color) !important;
     border-radius: 5px;
     font-size: 16px;
     outline: none; /* Remove default outline */
@@ -270,8 +285,8 @@ table td {
 
 /* Add focus styles */
 #edit {
-    width: 98%; /* Set width to 100% */
-    padding: 2px; /* Remove padding */
+    width: 100%; /* Set width to 100% */
+    padding: 1rem 1rem;
     margin: 0; /* Remove margin */
 }
 .search:focus {
@@ -287,6 +302,17 @@ table td {
     margin: 0; /* Remove margin */
     max-height: 400px;
     overflow-y: auto;
+}
+
+.links-container::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: transparent;
+}
+
+.links-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    height: 30px;
 }
     
 .link-box {
