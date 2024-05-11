@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png" alt="Social Repo Logo" width="150px">
+  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/SocialRepo_logo.png" alt="Social Repo Logo" width="500px">
 </p>
 
 <h1 align="center">Social Repo</h1>
