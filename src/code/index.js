@@ -48,7 +48,7 @@ showBtn.addEventListener("click", () => {
 function readSocialLinks() {
     const socialLinks = {};
 
-    fetch("../social-links.json")
+    return fetch("../social-links.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch social links");
