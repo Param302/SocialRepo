@@ -11,11 +11,14 @@ This file contains the list of social app/website names which has public user pr
 -   [x] LinkedIn
 -   [ ] Reddit
 -   [ ] Spotify
+-   [x] Steam
 -   [x] Snapchat
 -   [x] Telegram
 -   [x] Tiktok
 -   [x] Tinder
+-   [x] Tumblr
 -   [x] Twitter
+-   [x] Pinterest
 -   [ ] WhatsApp
 -   [ ] X (twitter, but new logo & url)
 -   [x] YouTube
@@ -23,10 +26,12 @@ This file contains the list of social app/website names which has public user pr
 ### Miscellaneous
 
 -   [x] Airchat
+-   [x] Ancestry
 -   [x] Bio.link
 -   [ ] Codechef
 -   [x] Codeforces
 -   [x] Dev.to
+-   [x] Exercism
 -   [x] Fiverr
 -   [ ] Hackerrank
 -   [x] Hashnode
