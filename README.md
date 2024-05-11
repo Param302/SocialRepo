@@ -1,9 +1,10 @@
+<a href="https://github.com/Param302/SocialRepo" title="SocialRepo">
 <p align="center">
-  <img src="./src/assets/logos/SocialRepo_logo.png" alt="Social Repo Logo" width="500px" style="border-radius:20px">
+  <img src="./src/assets/logos/SocialRepo_Header_logo.png" alt="Social Repo Logo" width="500px" style="border-radius:20px">
 </p>
 
-<h1 align="center">Social Repo</h1>
-
+<h1 align="center">SocialRepo</h1>
+</a>
 <p align="center">
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
