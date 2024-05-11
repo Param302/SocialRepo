@@ -21,6 +21,7 @@ body {
     height: 450px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -125,7 +126,6 @@ section::-webkit-scrollbar {
 
 section::-webkit-scrollbar-thumb {
     background: var(--primary-color);
-    border-radius: 10px;
     height: 30px;
 }
 
@@ -311,7 +311,6 @@ table td {
 
 .links-container::-webkit-scrollbar-thumb {
     background: var(--primary-color);
-    border-radius: 10px;
     height: 30px;
 }
     
