@@ -1,53 +1,84 @@
 <p align="center">
-  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png" alt="Social Repo Logo" width="100px">
+  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png" alt="Social Repo Logo" width="150px">
 </p>
 
-🚀 **Social Repo** is a browser extension simplifying form filling with stored social media profiles.
+<h1 align="center">Social Repo</h1>
 
-## 📋 Table of Contents
+<p align="center">
+  <a href="https://github.com/shubhusion/SocialRepo/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
+  </a>
+  <a href="https://github.com/shubhusion/SocialRepo/blob/main/src/index.html">
+    <img src="https://img.shields.io/badge/HTML-5-orange" alt="HTML">
+  </a>
+  <a href="https://github.com/shubhusion/SocialRepo/blob/main/src/styles/main.css">
+    <img src="https://img.shields.io/badge/CSS-3-blue" alt="CSS">
+  </a>
+  <a href="https://github.com/shubhusion/SocialRepo/blob/main/src/scripts/main.js">
+    <img src="https://img.shields.io/badge/JavaScript-ES6-yellow" alt="JavaScript">
+  </a>
+</p>
 
-1. [About](#about)
-2. [Project Details](#project-details)
-3. [Features](#features)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
-7. [Contact](#contact)
+Social Repo is a browser extension that simplifies form filling by leveraging stored social media profiles. It provides a centralized hub for managing and accessing user's social media links, enabling quick autofill functionality. 🔥
 
-## 🌟 About
+## Table of Contents
 
-**Social Repo** is a browser extension that centralizes users' social media profile links, aiding in form and application completion. It stores links securely locally, enabling quick access and autofill functionality.
+- [Overview](#overview) 🚀
+- [Features](#features) ✨
+- [Installation](#installation) 🚧
+- [Usage](#usage) 📖
+- [Contributing](#contributing) 🤝
+- [License](#license) 📄
+- [Contact](#contact) 📧
+- [Acknowledgments](#acknowledgments) 🙏
 
-## 📌 Project Details
+## Overview 🚀
 
-Check the [Project Details](.github/docs/README.md) for a brief overview.
+In today's digital age, users often need to provide their social media profile links when filling out various forms or applications. Social Repo streamlines this process by allowing users to securely store their links locally and access them with ease. 💻
 
-## ✨ Features
+## Features ✨
 
-1. **Profile Link Storage**: Easily store social media profile links.
-2. **Secure**: Local storage ensures data security.
-3. **Autofill**: Conveniently autofill links by tapping icons.
-4. **Copy to Clipboard**: Copy links with ease.
-5. **Custom Commands**: Utilize custom commands like `\twitter`.
-6. **Custom Website Link**: Add personal blog or portfolio links.
-7. **Drag and Drop**: Rearrange social media containers effortlessly.
+- **Profile Link Management**: Store and manage social media profile links in a centralized location. 📁
+- **Secure Storage**: User data is stored securely in the browser's local storage, ensuring privacy. 🔒
+- **Autofill Functionality**: Quickly autofill forms with stored links by tapping on icons or using custom commands. ⚡
+- **Copy to Clipboard**: Easily copy links to the clipboard for manual input. 📋
+- **Custom Commands**: Utilize custom commands (e.g., `\twitter`) for efficient link retrieval. 💬
+- **Custom Website Link**: Add and manage a personal website or portfolio link. 🌐
+- **Drag and Drop Interface**: Rearrange social media containers using an intuitive drag-and-drop interface. 🖱️
 
-## 🚀 Usage
+## Installation 🚧
 
-Currently in development, soon available in Chrome Web Store.
+Social Repo is currently under development and will be available soon on the Chrome Web Store. Installation instructions will be provided upon release. 🔜
 
-## 🤝 Contributing
+## Usage 📖
 
-We welcome all contributions! Whether it's a typo fix or a new feature, your help is appreciated. Refer to [CONTRIBUTING](.github/docs/CONTRIBUTING.md) for more.
+Detailed usage instructions and documentation will be made available after the extension's release. 📚
 
-### 🙏 Thanks to Contributors!
+## Contributing 🤝
+
+We welcome contributions from the community to enhance Social Repo.
+
+Please refer to the [CONTRIBUTING](.github/docs/CONTRIBUTING.md) guidelines for more details. 📋
+
+## License 📄
+
+This project is licensed under the [Apache 2.0 License](https://github.com/shubhusion/SocialRepo/blob/main/LICENSE). 🔐
+
+## Contact 📧
+
+If you have any questions, suggestions, or feedback, feel free to reach out:
+
+- [![Email](https://img.shields.io/badge/Email-connectwithparam.30@gmail.com-red?logo=gmail&logoColor=white)](mailto:connectwithparam.30@gmail.com) 📩
+- [![Twitter](https://img.shields.io/badge/Twitter-@Param3021-blue?logo=twitter&logoColor=white)](https://twitter.com/Param3021) 🐦
+
+## Acknowledgments 🙏
+
+We would like to express our gratitude to the following contributors for their valuable contributions to Social Repo:
 
 <a href="https://github.com/Param302"><img src="https://avatars.githubusercontent.com/u/76559816?v=4" width="50px" height="auto" alt="Parampreet Singh"></a><a href="https://github.com/porwalshreyaa"><img src="https://avatars.githubusercontent.com/u/111834212?v=4" width="50px" height="auto" alt="Shreya Porwal"></a><a href="https://github.com/nancyvaryani"><img src="https://avatars.githubusercontent.com/u/97382450?v=4" width="50px" height="auto" alt="Nancy"></a><a href="https://github.com/evnxprk"><img src="https://avatars.githubusercontent.com/u/107530902?v=4" width="50px" height="auto" alt="Eunice Park"></a><a href="https://github.com/SamFusedBits"><img src="https://avatars.githubusercontent.com/u/129924814?v=4" width="50px" height="auto" alt="Sahil Memon"></a><a href="https://github.com/Suvam3456"><img src="https://avatars.githubusercontent.com/u/99579881?v=4" width="50px" height="auto" alt="Suvam Agrawal"></a><a href="https://github.com/NormTurtle"><img src="https://avatars.githubusercontent.com/u/108952834?v=4" width="50px" height="auto" alt="Omi"></a><a href="https://github.com/fabiomughilan"><img src="https://avatars.githubusercontent.com/u/64077520?v=4" width="50px" height="auto" alt="Fabio Mughilan"></a><a href="https://github.com/aayushwrld"><img src="https://avatars.githubusercontent.com/u/142794224?v=4" width="50px" height="auto" alt="Aayush"></a><a href="https://github.com/Abhinavpatra"><img src="https://avatars.githubusercontent.com/u/149466436?v=4" width="50px" height="auto" alt="Abhinavpatra"></a>
 
-## 📄 License
+---
 
-This project is licensed under the **Apache License 2.0** - see [LICENSE](LICENSE) for details.
-
-## 📧 Contact
-
-For queries, reach out via [mail](mailto:connectwithparam.30@gmail.com) or Twitter - [@Param3021](https://twitter.com/Param3021).
+<p align="center">
+  Developed with ❤️ by the Social Repo Team
+</p>
