@@ -54,6 +54,8 @@ Social Repo is currently under development and will be available soon on the Chr
 
 Detailed usage instructions and documentation will be made available after the extension's release. 📚
 
+Check the [Project Details](.github/docs/README.md) for brief overview of the project.
+
 ## Contributing 🤝
 
 We welcome contributions from the community to enhance Social Repo.
