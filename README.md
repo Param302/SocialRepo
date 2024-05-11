@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png" alt="Social Repo Logo" width="200px">
+  <img src="https://github.com/shubhusion/SocialRepo/blob/main/src/assets/logos/logo.png" alt="Social Repo Logo" width="100px">
 </p>
 
 🚀 **Social Repo** is a browser extension simplifying form filling with stored social media profiles.
