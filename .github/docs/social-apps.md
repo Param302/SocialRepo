@@ -5,6 +5,7 @@ This file contains the list of social app/website names which has public user pr
 -   [ ] BitBucket
 -   [ ] Discord
 -   [x] Facebook
+-   [ ] FreeCodeCamp
 -   [x] Github
 -   [ ] Gitlab
 -   [ ] Instagram
