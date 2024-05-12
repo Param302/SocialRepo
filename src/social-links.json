@@ -24,5 +24,11 @@
     "tiktok": "https://www.tiktok.com/@<username>",
     "twitter": "https://twitter.com/<username>",
     "upwork": "https://www.upwork.com/o/profiles/users/~<username>",
-    "youtube": "https://www.youtube.com/@<username>"
+    "youtube": "https://www.youtube.com/@<username>",
+    "Douyin": "https://www.douyin.com/<username>",
+    "Kuaishou":"https://www.kuaishou.com/<username>",
+    "Sina Weibo":"https://weibo.com/<username>",
+    "Qzone":"https://qzone.qq.com/<username>",
+    "Baidu Tieba":"https://tieba.baidu.com/home/main?un=<username>"
+
 }
