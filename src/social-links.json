@@ -29,6 +29,10 @@
     "Kuaishou":"https://www.kuaishou.com/<username>",
     "Sina Weibo":"https://weibo.com/<username>",
     "Qzone":"https://qzone.qq.com/<username>",
-    "Baidu Tieba":"https://tieba.baidu.com/home/main?un=<username>"
-
+    "Baidu Tieba":"https://tieba.baidu.com/home/main?un=<username>",
+    "Mixi":"https://mixi.jp/show_profile.pl?id=<username>",
+    "Naver Band":"https://band.us/band/<username>",
+    "Kakao Story":"https://story.kakao.com/<username>",
+    "VK":"https://vk.com/<username>",
+    "Odnoklassniki":"https://ok.ru/<username>"
 }
