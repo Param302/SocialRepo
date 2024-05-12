@@ -42,5 +42,20 @@ This file contains the list of social app/website names which has public user pr
 -   [x] Peerlist
 -   [x] Quora
 -   [x] Upwork
+-   [x] douyin
+-   [x] kuaishou
+-   [x] sina Weibo
+-   [x] qzone 
+-   [x] baidu Tieba
+-   [x] mixi
+-   [x] naver Band
+-   [x] kakao story
+-   [x] vk
+-   [x] odnoklassniki
+-   [x] hornet
+-   [x] scruff
+-   [x] grindr
+-   [x] meetme
+-   [x] skout
 
 > **Note**: This list is not exhaustive. You can add more social media apps/websites to the list.
