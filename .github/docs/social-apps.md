@@ -9,16 +9,17 @@ This file contains the list of social app/website names which has public user pr
 -   [ ] Gitlab
 -   [ ] Instagram
 -   [x] LinkedIn
+-   [ ] Mastodon
 -   [ ] Reddit
 -   [ ] Spotify
--   [x] Steam
+-   [ ] Steam
 -   [x] Snapchat
 -   [x] Telegram
 -   [x] Tiktok
 -   [x] Tinder
--   [x] Tumblr
+-   [ ] Tumblr
 -   [x] Twitter
--   [x] Pinterest
+-   [ ] Pinterest
 -   [ ] WhatsApp
 -   [ ] X (twitter, but new logo & url)
 -   [x] YouTube
@@ -26,12 +27,11 @@ This file contains the list of social app/website names which has public user pr
 ### Miscellaneous
 
 -   [x] Airchat
--   [x] Ancestry
 -   [x] Bio.link
 -   [ ] Codechef
 -   [x] Codeforces
 -   [x] Dev.to
--   [x] Exercism
+-   [ ] Exercism
 -   [x] Fiverr
 -   [ ] Hackerrank
 -   [x] Hashnode
