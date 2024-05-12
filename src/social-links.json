@@ -25,4 +25,13 @@
     "twitter": "https://twitter.com/<username>",
     "upwork": "https://www.upwork.com/o/profiles/users/~<username>",
     "youtube": "https://www.youtube.com/@<username>"
+    "mastodon":"https://mastodon.social/@<username>",
+    "codeberg":"https://codeberg.org/<username>",
+    "odysee":"https://odysee.com/@<username>",
+    "commudle":"https://www.commudle.com/users/<username>",
+    "devfolio":"https://devfolio.co/@<username>",
+    "kaggle":"https://www.kaggle.com/<username>",
+    "devpost":"https://devpost.com/<username>",
+    "codewars":"https://www.codewars.com/users/<username>",
+    "threads":"https://www.threads.net/@<username>"
 }
