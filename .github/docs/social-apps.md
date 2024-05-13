@@ -25,17 +25,26 @@ This file contains the list of social app/website names which has public user pr
 
 -   [x] Airchat
 -   [x] Bio.link
+-   [ ] Codeberg
 -   [ ] Codechef
 -   [x] Codeforces
+-   [ ] Commudle
+-   [ ] Codewars
 -   [x] Dev.to
+-   [ ] Devfolio
+-   [ ] Devpost
 -   [x] Fiverr
 -   [ ] Hackerrank
 -   [x] Hashnode
+-   [ ] Kaggle
 -   [x] Leetcode
 -   [x] Linktree
+-   [ ] Mastodon
 -   [x] Medium
+-   [ ] Odysee
 -   [x] Peerlist
 -   [x] Quora
+-   [ ] Threads
 -   [x] Upwork
 
 > **Note**: This list is not exhaustive. You can add more social media apps/websites to the list.
