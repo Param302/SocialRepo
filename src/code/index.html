@@ -103,68 +103,82 @@
         </section>
         <section id="edit" class="hidden">
             <!-- Drag will be in edit menu only, on left side of elements. -->
-            <h2>Edit Panel</h2>
-            <input type="text" class="search" placeholder="Search bar">
-            <div class="links-container">
-                <div>    
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/facebook.png" alt=""> </div>
+            <!-- <input type="text" class="search" placeholder="Search bar"> -->
+            <ul id="links-container">
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/discord.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)">
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                
-                <div>
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/codeforces.png" alt=""> </div>
+                </li>
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/x.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)" disabled>
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/linkedin.png" alt=""> </div>
+                </li>
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/facebook.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)" disabled>
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/medium.png" alt=""> </div>
+                </li>
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/github.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)" disabled>
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/tiktok.png" alt=""> </div>
+                </li>
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/gitlab.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)" disabled>
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/tinder.png" alt=""> </div>
+                </li>
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/linkedin.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)" disabled>
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <div class="link-box">
-                        <div class="drag-handle">&#x2630;</div>
-                        <div class="social-icon"> <img height="35px" src="../assets/logos/youtube.png" alt=""> </div>
+                </li>
+                <li class="link-box">
+                    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+                    <div class="link">
+                        <img src="../assets/logos/spotify.png" alt="discord icon" class="icon">
                         <input type="text" placeholder="Paste Social Handle here" />
-                        <div class="arrow-icon"><img height="15px" src="../assets/logos/edit.png" alt="arrow" /></div>
+                        <button onclick="previewLink(this)" disabled>
+                            <img src="../assets/logos/share.png" alt="preview link">
+                        </button>
                     </div>
-                </div>
-            <div class="saving">
-            <button class="save">Save</button>
-        </div>
+                </li>
+            </ul>
+            <div id="save-btn-area">
+                <button id="save-btn">Save</button>
+            </div>
         </section>
     </main>
 </body>

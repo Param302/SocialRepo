@@ -11,7 +11,9 @@
 
 :root {
     --primary-color: #7029FF;
+    --background-color: #F5F5F5;
     --secondary-color: #B58FFF;
+    --accent-color: #eae4f7;
     --text-color: #EEEEEE;
     --text-color-2: #242327;
 }
@@ -114,7 +116,6 @@ section {
     flex-direction: column;
     text-align: left;
     gap: 1rem;
-    padding: 1rem 2rem;
     position: relative;
     overflow-y: auto;
 }
@@ -147,6 +148,10 @@ p {
 
 
 /* ============== Info Panel ============== */
+
+#info {
+    padding: 1rem 2rem;
+}
 
 #heading {
     width: fit-content;
@@ -187,6 +192,11 @@ h3 {
 
 #about p, #commands p {
     font-size: 0.9rem;
+}
+
+#about p strong {
+    color: var(--primary-color);
+    font-weight: 800;
 }
 
 #commands .cmd {
@@ -272,6 +282,13 @@ table td {
 #images img:hover {
     transform: scale(1.1);
 }
+
+
+/* ============== Edut Panel ============== */
+#edit {
+    gap: 0;
+}
+
 .search {
     flex: 1;
     padding: 10px;
@@ -283,57 +300,127 @@ table td {
     margin-right: 10px;
 }
 
-/* Add focus styles */
-#edit {
-    width: 100%; /* Set width to 100% */
-    padding: 1rem 1rem;
-    margin: 0; /* Remove margin */
-}
 .search:focus {
     border-color: #B58FFF; /* Adjust border color on focus */
     box-shadow: 0 0 5px rgba(113, 41, 255, 0.5); /* Add box shadow on focus */
 }
 
 
-.links-container {
-    width: 100%;
+#links-container {
+    min-height: 250px;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     list-style-type: none;
-    padding: 0;
-    margin: 0; /* Remove margin */
-    max-height: 400px;
     overflow-y: auto;
+    background-color: var(--secondary-color);
 }
 
-.links-container::-webkit-scrollbar {
+#links-container::-webkit-scrollbar {
     width: 0.6rem;
     background-color: transparent;
 }
 
-.links-container::-webkit-scrollbar-thumb {
+#links-container::-webkit-scrollbar-thumb {
     background: var(--primary-color);
     height: 30px;
 }
-    
+
 .link-box {
     display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    padding-right: 1.8rem;
+    justify-content: center;
     align-items: center;
-    background-color: #f5f5f5; /* Light purple color */
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    gap: 0.5rem;
 }
+
+.dragger {
+    width: auto;
+    height: 25px;
+    visibility: hidden;
+}
+
+.link-box:hover .dragger {
+    visibility: visible;
+}
+
+.link {
+    width: 420px;
+    padding: 10px;
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.link-box:focus-within .link,
+.link-box:hover .link {
+    box-shadow: 0 0 50px 1px var(--secondary-color) inset;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.link button {
+    width: 40px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.link button:disabled {
+    cursor: not-allowed;
+    opacity: 0.1;
+}
+
+
+.link button img {
+    width: 20px;
+    height: 20px;
+
+}
+
 
 .social-icon {
     font-size: 24px;
     margin-right: 10px;
 }
 
-input[type="text"] {
+.link input[type="text"] {
     flex: 1;
-    padding: 5px;
-    border: none;
+    margin-top: 5px;
+    padding-bottom: 2px;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 0.9rem;
+    border: none;
+    outline: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    caret-color: var(--primary-color);
+    caret: pointer;
+}
+
+.link input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.link input[type="text"]::placeholder {
+    color: var(--primary-color);
+    font-style: italic;
 }
 
 .arrow-icon {
@@ -345,12 +432,6 @@ input[type="text"] {
     height: 20px;
 }
 
-/* Focus and Hover Effects */
-.link-box:focus-within,
-.link-box:hover {
-    background-color: #e0e0e0; /* Lighter shade on focus/hover */
-}
-
 .drag-handle {
     cursor: move;
     font-size: 24px;
@@ -358,24 +439,22 @@ input[type="text"] {
     color: var(--primary-color);
     opacity: 0.5;
 }
-.container {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-.saving {
+
+
+#save-btn-area {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Adjust margin as needed */
+    background-color: red;
+    padding: 1rem;
 }
 
-.save {
-    padding: 10px 20px;
+#save-btn {
+    padding: 0.5rem 2rem;
     background-color: #7029FF; /* Adjust color as needed */
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 0.8rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

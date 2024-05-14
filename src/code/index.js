@@ -6,6 +6,10 @@ const home = document.getElementById("home");
 const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
+
+// ============== Header ==============
+
+
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -45,6 +49,9 @@ showBtn.addEventListener("click", () => {
     }
 });
 
+// ============== Utility Functions ==============
+
+
 function getSocialLinks() {
     const socialLinks = {};
 
@@ -71,3 +78,13 @@ function getSocialLinks() {
 }
 
 // getSocialLinks()
+
+// ============== Edit ==============
+function previewLink(button) {
+    const parentElement = button.parentNode;
+    const inputElement = parentElement.querySelector("input");
+    const inputValue = inputElement.value;
+    console.log("Placeholder value:", inputElement.placeholder);
+    console.log("Input value:", inputValue);
+    // Rest of the code...
+}
