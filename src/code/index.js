@@ -6,6 +6,10 @@ const home = document.getElementById("home");
 const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
+
+// ============== Header ==============
+
+
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -45,10 +49,13 @@ showBtn.addEventListener("click", () => {
     }
 });
 
-function readSocialLinks() {
+// ============== Utility Functions ==============
+
+
+function getSocialLinks() {
     const socialLinks = {};
 
-    return fetch("../social-links.json")
+    fetch("../social-links.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch social links");
@@ -60,11 +67,24 @@ function readSocialLinks() {
                 socialLinks[key] = jsonData[key];
             });
 
-            console.log(socialLinks);
             return socialLinks;
         })
         .catch(error => {
             console.error("Error reading social links file:", error);
             return {};
         });
+
+    return socialLinks;
+}
+
+// getSocialLinks()
+
+// ============== Edit ==============
+function previewLink(button) {
+    const parentElement = button.parentNode;
+    const inputElement = parentElement.querySelector("input");
+    const inputValue = inputElement.value;
+    console.log("Placeholder value:", inputElement.placeholder);
+    console.log("Input value:", inputValue);
+    // Rest of the code...
 }

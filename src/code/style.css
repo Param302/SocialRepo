@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
     margin: 0;
@@ -10,9 +10,11 @@
 }
 
 :root {
-    --primary-color: #7029FF;
-    --secondary-color: #B58FFF;
-    --text-color: #EEEEEE;
+    --primary-color: #7029ff;
+    --background-color: #f5f5f5;
+    --secondary-color: #b58fff;
+    --accent-color: #eae4f7;
+    --text-color: #eeeeee;
     --text-color-2: #242327;
 }
 
@@ -25,7 +27,7 @@ body {
 }
 
 a {
-    all:unset;
+    all: unset;
     cursor: pointer;
 }
 
@@ -114,7 +116,6 @@ section {
     flex-direction: column;
     text-align: left;
     gap: 1rem;
-    padding: 1rem 2rem;
     position: relative;
     overflow-y: auto;
 }
@@ -128,7 +129,6 @@ section::-webkit-scrollbar-thumb {
     background: var(--primary-color);
     height: 30px;
 }
-
 
 h2 {
     font-size: 1.5rem;
@@ -144,9 +144,11 @@ p {
     margin: 0px;
 }
 
-
-
 /* ============== Info Panel ============== */
+
+#info {
+    padding: 1rem 2rem;
+}
 
 #heading {
     width: fit-content;
@@ -185,8 +187,14 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
-#about p, #commands p {
+#about p,
+#commands p {
     font-size: 0.9rem;
+}
+
+#about p strong {
+    color: var(--primary-color);
+    font-weight: 800;
 }
 
 #commands .cmd {
@@ -272,6 +280,12 @@ table td {
 #images img:hover {
     transform: scale(1.1);
 }
+
+/* ============== Edut Panel ============== */
+#edit {
+    gap: 0;
+}
+
 .search {
     flex: 1;
     padding: 10px;
@@ -283,99 +297,145 @@ table td {
     margin-right: 10px;
 }
 
-/* Add focus styles */
-#edit {
-    width: 100%; /* Set width to 100% */
-    padding: 1rem 1rem;
-    margin: 0; /* Remove margin */
-}
 .search:focus {
-    border-color: #B58FFF; /* Adjust border color on focus */
+    border-color: #b58fff; /* Adjust border color on focus */
     box-shadow: 0 0 5px rgba(113, 41, 255, 0.5); /* Add box shadow on focus */
 }
 
-
-.links-container {
-    width: 100%;
+#links-container {
+    min-height: 250px;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     list-style-type: none;
-    padding: 0;
-    margin: 0; /* Remove margin */
-    max-height: 400px;
     overflow-y: auto;
+    background-color: var(--secondary-color);
 }
 
-.links-container::-webkit-scrollbar {
+#links-container::-webkit-scrollbar {
     width: 0.6rem;
     background-color: transparent;
 }
 
-.links-container::-webkit-scrollbar-thumb {
+#links-container::-webkit-scrollbar-thumb {
     background: var(--primary-color);
     height: 30px;
 }
-    
+
 .link-box {
     display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    padding-right: 1.8rem;
+    justify-content: center;
     align-items: center;
-    background-color: #f5f5f5; /* Light purple color */
+    gap: 0.5rem;
+}
+
+.dragger {
+    width: auto;
+    height: 25px;
+    visibility: hidden;
+    cursor: ns-resize;
+}
+
+.link-box:focus-within .dragger,
+.link-box:hover .dragger {
+    visibility: visible;
+}
+
+.link {
+    width: 420px;
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid transparent;
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
 }
 
-.social-icon {
-    font-size: 24px;
-    margin-right: 10px;
+.link-box:focus-within .link,
+.link-box:hover .link {
+    border-color: var(--primary-color);
+    background-color: var(--text-color);
 }
 
-input[type="text"] {
-    flex: 1;
-    padding: 5px;
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.link button {
+    width: 40px;
+    height: 30px;
     border: none;
     background-color: transparent;
-    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.arrow-icon {
-    margin-left: 10px;
+.link button:active {
+    transform: scale(0.8);
+    transition-duration: 100ms;
 }
 
-.arrow-icon img {
+.link button:disabled {
+    cursor: not-allowed;
+    opacity: 0.1;
+}
+
+.link button img {
     width: 20px;
     height: 20px;
 }
 
-/* Focus and Hover Effects */
-.link-box:focus-within,
-.link-box:hover {
-    background-color: #e0e0e0; /* Lighter shade on focus/hover */
+.link input[type="text"] {
+    flex: 1;
+    margin-top: 5px;
+    padding-bottom: 2px;
+    background-color: transparent;
+    font-size: 0.9rem;
+    border: none;
+    outline: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    caret-color: var(--primary-color);
+    caret: pointer;
 }
 
-.drag-handle {
-    cursor: move;
-    font-size: 24px;
-    margin-right: 10px;
+.link input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.link input[type="text"]::placeholder {
     color: var(--primary-color);
-    opacity: 0.5;
+    font-weight: 500;
+    font-style: italic;
 }
-.container {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-.saving {
+
+
+#save-btn-area {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Adjust margin as needed */
+    background-color: var(--secondary-color);
+    padding: 1rem;
 }
 
-.save {
-    padding: 10px 20px;
-    background-color: #7029FF; /* Adjust color as needed */
-    color: #fff;
+#save-btn {
+    padding: 0.5rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 600;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -383,4 +443,3 @@ input[type="text"] {
 .save:hover {
     background-color: #9a7ed2; /* Adjust hover color as needed */
 }
-
