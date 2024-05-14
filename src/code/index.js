@@ -45,10 +45,10 @@ showBtn.addEventListener("click", () => {
     }
 });
 
-function readSocialLinks() {
+function getSocialLinks() {
     const socialLinks = {};
 
-    return fetch("../social-links.json")
+    fetch("../social-links.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch social links");
@@ -60,11 +60,14 @@ function readSocialLinks() {
                 socialLinks[key] = jsonData[key];
             });
 
-            console.log(socialLinks);
             return socialLinks;
         })
         .catch(error => {
             console.error("Error reading social links file:", error);
             return {};
         });
+
+    return socialLinks;
 }
+
+// getSocialLinks()
