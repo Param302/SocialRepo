@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
     margin: 0;
@@ -10,11 +10,11 @@
 }
 
 :root {
-    --primary-color: #7029FF;
-    --background-color: #F5F5F5;
-    --secondary-color: #B58FFF;
+    --primary-color: #7029ff;
+    --background-color: #f5f5f5;
+    --secondary-color: #b58fff;
     --accent-color: #eae4f7;
-    --text-color: #EEEEEE;
+    --text-color: #eeeeee;
     --text-color-2: #242327;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 a {
-    all:unset;
+    all: unset;
     cursor: pointer;
 }
 
@@ -130,7 +130,6 @@ section::-webkit-scrollbar-thumb {
     height: 30px;
 }
 
-
 h2 {
     font-size: 1.5rem;
 }
@@ -144,8 +143,6 @@ p {
     padding: 0px;
     margin: 0px;
 }
-
-
 
 /* ============== Info Panel ============== */
 
@@ -190,7 +187,8 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
-#about p, #commands p {
+#about p,
+#commands p {
     font-size: 0.9rem;
 }
 
@@ -283,7 +281,6 @@ table td {
     transform: scale(1.1);
 }
 
-
 /* ============== Edut Panel ============== */
 #edit {
     gap: 0;
@@ -301,10 +298,9 @@ table td {
 }
 
 .search:focus {
-    border-color: #B58FFF; /* Adjust border color on focus */
+    border-color: #b58fff; /* Adjust border color on focus */
     box-shadow: 0 0 5px rgba(113, 41, 255, 0.5); /* Add box shadow on focus */
 }
-
 
 #links-container {
     min-height: 250px;
@@ -341,8 +337,10 @@ table td {
     width: auto;
     height: 25px;
     visibility: hidden;
+    cursor: ns-resize;
 }
 
+.link-box:focus-within .dragger,
 .link-box:hover .dragger {
     visibility: visible;
 }
@@ -356,13 +354,14 @@ table td {
     align-items: center;
     gap: 1rem;
     border: 2px solid transparent;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--secondary-color);
     border-radius: 10px;
 }
 
 .link-box:focus-within .link,
 .link-box:hover .link {
-    box-shadow: 0 0 50px 1px var(--secondary-color) inset;
+    border-color: var(--primary-color);
+    background-color: var(--text-color);
 }
 
 .icon {
@@ -381,22 +380,19 @@ table td {
     cursor: pointer;
 }
 
+.link button:active {
+    transform: scale(0.8);
+    transition-duration: 100ms;
+}
+
 .link button:disabled {
     cursor: not-allowed;
     opacity: 0.1;
 }
 
-
 .link button img {
     width: 20px;
     height: 20px;
-
-}
-
-
-.social-icon {
-    font-size: 24px;
-    margin-right: 10px;
 }
 
 .link input[type="text"] {
@@ -420,41 +416,26 @@ table td {
 
 .link input[type="text"]::placeholder {
     color: var(--primary-color);
+    font-weight: 500;
     font-style: italic;
-}
-
-.arrow-icon {
-    margin-left: 10px;
-}
-
-.arrow-icon img {
-    width: 20px;
-    height: 20px;
-}
-
-.drag-handle {
-    cursor: move;
-    font-size: 24px;
-    margin-right: 10px;
-    color: var(--primary-color);
-    opacity: 0.5;
 }
 
 
 #save-btn-area {
     display: flex;
     justify-content: center;
-    background-color: red;
+    background-color: var(--secondary-color);
     padding: 1rem;
 }
 
 #save-btn {
     padding: 0.5rem 2rem;
-    background-color: #7029FF; /* Adjust color as needed */
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 600;
     border: none;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -462,4 +443,3 @@ table td {
 .save:hover {
     background-color: #9a7ed2; /* Adjust hover color as needed */
 }
-
