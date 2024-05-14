@@ -77,7 +77,8 @@ function getSocialLinks() {
     return socialLinks;
 }
 
-// getSocialLinks()
+const socialLinks = getSocialLinks();
+
 
 // ============== Edit ==============
 function previewLink(button) {

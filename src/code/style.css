@@ -429,17 +429,17 @@ table td {
 }
 
 #save-btn {
-    padding: 0.5rem 2rem;
+    padding: 0.7rem 2.3rem;
     background-color: var(--primary-color);
     color: var(--text-color);
     font-weight: 600;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 5px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.save:hover {
-    background-color: #9a7ed2; /* Adjust hover color as needed */
+#save-btn:active {
+    transform: scale(0.9);
+    transition-duration: 100ms;
 }
