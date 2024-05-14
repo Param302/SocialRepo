@@ -33,5 +33,20 @@
     "tiktok": "https://www.tiktok.com/@<username>",
     "twitter": "https://twitter.com/<username>",
     "upwork": "https://www.upwork.com/o/profiles/users/~<username>",
-    "youtube": "https://www.youtube.com/@<username>"
+    "youtube": "https://www.youtube.com/@<username>",
+    "douyin": "https://www.douyin.com/<username>",
+    "kuaishou":"https://www.kuaishou.com/<username>",
+    "sina Weibo":"https://weibo.com/<username>",
+    "qzone":"https://qzone.qq.com/<username>",
+    "baidu Tieba":"https://tieba.baidu.com/home/main?un=<username>",
+    "mixi":"https://mixi.jp/show_profile.pl?id=<username>",
+    "naver Band":"https://band.us/band/<username>",
+    "kakao story":"https://story.kakao.com/<username>",
+    "vk":"https://vk.com/<username>",
+    "odnoklassniki":"https://ok.ru/<username>",
+    "hornet": "https://hornet.com/profile/<username>",
+    "scruff": "https://www.scruffapp.com/profile/<username>",
+    "grindr": "https://grindr.com/profile/<username>",
+    "meetme": "https://www.meetme.com/profile/<username>",
+    "skout": "https://www.skout.com/profile/<username>"
 }
