@@ -112,7 +112,7 @@ const placeholderTexts = [
     "Add your social media link",
     "Enter your social profile",
     "Paste your profile URL here",
-    "Share your username or handle",
+    "Share your handle",
     "Input your social media URL",
     "Type in your profile link",
     "Provide your social profile address",
@@ -120,9 +120,8 @@ const placeholderTexts = [
     "Enter the URL to your profile",
     "Drop your profile address",
     "Share your social handle link",
-    "Input your username or handle",
+    "Input your handle",
     "Add your social URL",
-    "Paste your username here"
 ];
 
 // Function to generate a random placeholder text
