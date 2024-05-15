@@ -89,3 +89,37 @@ function previewLink(button) {
     console.log("Input value:", inputValue);
     // Rest of the code...
 }
+
+//Function to check if a string is a valid URL
+function isValidURL(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+//Function to handle input change event
+function handleInputChange() {
+    const linkInput = document.getElementById('linkInput');
+    const errorText = document.getElementById('errorText');
+    const previewButton = document.getElementById('previewButton');
+
+    if (isValidURL(linkInput.value)) {
+        //Valid URL
+        linkInput.style.borderBottomColor = 'green';
+        errorText.style.display = 'none';
+        previewButton.classList.add('enabled');
+        previewButton.disabled = false;
+    } else {
+        //Invalid URL
+        linkInput.style.borderBottomColor = 'red';
+        errorText.style.display = 'block';
+        previewButton.classList.remove('enabled');
+        previewButton.disabled = true;
+    }
+}
+
+//Add event listener to the input element
+document.getElementById('linkInput').addEventListener('input', handleInputChange);
