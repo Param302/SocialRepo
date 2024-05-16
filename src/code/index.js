@@ -154,47 +154,37 @@ function randomTextGenerator(placeholderTexts) {
     return placeholderTexts[randomIndex];
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM content loaded');
+const searchInput = document.querySelector('.search-input');
+const linksContainer = document.getElementById('links-container');
+const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
 
-    const searchInput = document.querySelector('.search-input');
-    const linksContainer = document.getElementById('links-container');
-    const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
+function searchLinks() {
+    const searchText = searchInput.value.toLowerCase();
+    
+    console.log('searchLinks function called');
+    console.log('Search text:', searchText);
 
-    console.log('Search input element:', searchInput);
+    // Clear the links container
+    linksContainer.innerHTML = '';
 
-    function searchLinks() {
-        const searchText = searchInput.value.toLowerCase();
-        
-        console.log('searchLinks function called');
-        console.log('Search text:', searchText);
+    // Filter and append the appropriate link boxes
+    originalLinkBoxes.forEach(linkBox => {
+        const linkText = linkBox.querySelector('input').value.toLowerCase();
+        const iconAlt = linkBox.querySelector('.icon').alt.toLowerCase();
 
-        // Clear the links container
-        linksContainer.innerHTML = '';
+        console.log('Link text:', linkText);
+        console.log('Icon alt:', iconAlt);
 
-        // Filter and append the appropriate link boxes
-        originalLinkBoxes.forEach(linkBox => {
-            const linkText = linkBox.querySelector('input').value.toLowerCase();
-            const iconAlt = linkBox.querySelector('.icon').alt.toLowerCase();
+        if (searchText === '' || linkText.includes(searchText) || iconAlt.includes(searchText)) {
+            console.log('Appending link box to container');
+            // Append a cloned link box to avoid removing it from the original array
+            linksContainer.appendChild(linkBox.cloneNode(true));
+        } else {
+            console.log('No match found, skipping link box');
+        }
+    });
+}
 
-            console.log('Link text:', linkText);
-            console.log('Icon alt:', iconAlt);
-
-            if (searchText === '' || linkText.includes(searchText) || iconAlt.includes(searchText)) {
-                console.log('Appending link box to container');
-                // Append a cloned link box to avoid removing it from the original array
-                linksContainer.appendChild(linkBox.cloneNode(true));
-            } else {
-                console.log('No match found, skipping link box');
-            }
-        });
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('input', searchLinks);
-        console.log('Event listener attached to search input');
-    } else {
-        console.log('Search input element not found');
-    }
-});
+searchInput.addEventListener('input', searchLinks);
+console.log('Event listener attached to search input');
 
