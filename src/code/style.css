@@ -489,3 +489,66 @@ table td {
     transform: scale(0.9);
     transition-duration: 100ms;
 }
+
+.search-container {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 1px;  /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
+    margin-bottom: 1rem; /* Space below the search container */
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: all 300ms ease;  /* Smooth transitions for focus and hover states */
+}
+
+/* Focus, hover, and active effects for search bar */
+.search-input:focus {
+    outline: 2px solid var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+    background-color: var(--accent-color); /* Slight background color change on focus */
+}
+
+.search-input:hover {
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.add-link-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color-2);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 300ms ease; /* Smooth transitions for hover and active states */
+}
+
+.add-link-btn img {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Hover and Active Effects for Add Link Button */
+.add-link-btn:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--secondary-color);
+}
+
+.add-link-btn:active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+    transform: scale(0.95); /* Slightly reduce size on active state for visual feedback */
+}
