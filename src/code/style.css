@@ -147,8 +147,6 @@ p {
 
 /* ============== Home Panel ============== */
 
-#home {
-}
 
 #socialLinks {
     width: 100%;
@@ -470,7 +468,7 @@ table td {
 #save-btn-area {
     display: flex;
     justify-content: center;
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
     padding: 1rem;
 }
 
