@@ -8,8 +8,6 @@ const edit = document.getElementById("edit");
 
 
 // ============== Header ==============
-
-
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -49,12 +47,35 @@ showBtn.addEventListener("click", () => {
     }
 });
 
+function createImage(key) {
+    const img = document.createElement("img");
+    img.classList.add("social-logo");
+    img.alt = key;
+    img.src = `../assets/logos/${key}.png`;
+    return img;
+}
+
+const socialLinksContainer = document.getElementById("socialLinks");
+function createSocialLinks(key, value) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = value;
+    const img= createImage(key);    
+    img.onload = () => {
+        li.appendChild(a);
+        a.appendChild(img);
+        socialLinksContainer.appendChild(li);
+    };
+    img.onerror = () => {
+        console.log(`Image not found for ${key}`);
+        li.remove();
+    };
+    socialLinksContainer.appendChild(li);
+}
+
 // ============== Utility Functions ==============
-
-
 function getSocialLinks() {
     const socialLinks = {};
-
     fetch("../social-links.json")
         .then(response => {
             if (!response.ok) {
@@ -65,20 +86,18 @@ function getSocialLinks() {
         .then(jsonData => {
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
+                createSocialLinks(key, jsonData[key]);
             });
-
             return socialLinks;
         })
         .catch(error => {
             console.error("Error reading social links file:", error);
             return {};
         });
-
     return socialLinks;
 }
 
-const socialLinks = getSocialLinks();
-
+getSocialLinks();
 
 // ============== Edit ==============
 function previewLink(button) {

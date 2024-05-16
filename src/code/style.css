@@ -7,6 +7,7 @@
     /* font-family: "Source Sans 3", sans-serif; */
     font-family: "Raleway", sans-serif;
     transition: all 300ms ease;
+    list-style-type: none;
 }
 
 :root {
@@ -272,6 +273,7 @@ table td {
     display: flex;
     gap: 1.5rem;
 }
+
 #images img {
     width: 35px;
     height: 35px;
@@ -292,14 +294,17 @@ table td {
     border: 2px solid var(--primary-color) !important;
     border-radius: 5px;
     font-size: 16px;
-    outline: none; /* Remove default outline */
+    outline: none;
+    /* Remove default outline */
     width: calc(100% - 100px);
     margin-right: 10px;
 }
 
 .search:focus {
-    border-color: #b58fff; /* Adjust border color on focus */
-    box-shadow: 0 0 5px rgba(113, 41, 255, 0.5); /* Add box shadow on focus */
+    border-color: #b58fff;
+    /* Adjust border color on focus */
+    box-shadow: 0 0 5px rgba(113, 41, 255, 0.5);
+    /* Add box shadow on focus */
 }
 
 #links-container {
@@ -442,4 +447,37 @@ table td {
 #save-btn:active {
     transform: scale(0.9);
     transition-duration: 100ms;
+}
+
+#home ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#socialLinks {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    border-top: 2px solid var(--primary-color);
+}
+
+#socialLinks li {
+    height: 6rem;
+    height: 6em;
+}
+
+#socialLinks li a {
+    height: inherit;
+    width: inherit;
+}
+
+#socialLinks li img {
+    border: 1.5px solid var(--primary-color);
+    padding: .5rem;
+    border-radius: 1rem;
+    display: flex;
+    height: inherit;
+    width: inherit;
 }
