@@ -108,3 +108,43 @@ function previewLink(button) {
     console.log("Input value:", inputValue);
     // Rest of the code...
 }
+
+
+// ============== Random Placeholder Generation ==============
+const placeholderTexts = [
+    "Paste your Social Handle here",
+    "https://social.media/your_username",
+    "Ctrl + V your social media profile",
+    "Enter your profile link here",
+    "Share your social media URL",
+    "Drop your handle here",
+    "Provide your social media profile",
+    "Link to your social media",
+    "Type your username",
+    "Insert your social link",
+    "Enter your profile address",
+    "Submit your social profile URL",
+    "Add your social media handle",
+    "Copy and paste your profile URL",
+    "Insert your social media handle",
+    "Link your profile here",
+    "Add your social media link",
+    "Enter your social profile",
+    "Paste your profile URL here",
+    "Share your handle",
+    "Input your social media URL",
+    "Type in your profile link",
+    "Provide your social profile address",
+    "Paste your link here",
+    "Enter the URL to your profile",
+    "Drop your profile address",
+    "Share your social handle link",
+    "Input your handle",
+    "Add your social URL",
+];
+
+// Function to generate a random placeholder text
+function randomTextGenerator(placeholderTexts) {
+    const randomIndex = Math.floor(Math.random() * placeholderTexts.length);
+    return placeholderTexts[randomIndex];
+}
