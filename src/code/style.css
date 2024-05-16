@@ -443,3 +443,60 @@ table td {
     transform: scale(0.9);
     transition-duration: 100ms;
 }
+
+.search-container {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.search-input {
+    flex: 0 1 400px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Focus, hover, and active effects for search bar */
+.search-input:focus {
+    outline: 2px solid var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.search-input:hover {
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+/* Hover and active effects for add link button */
+.add-link-btn:hover {
+    background-color: var(--secondary-color); /* Assuming var(--secondary-color-hover) is defined */
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.add-link-btn:active {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+    transform: scale(0.98);
+}
+
+.add-link-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color-2);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 8px;
+    margin-left: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.add-link-btn img {
+    margin-right: 3px;
+    width: 24px;
+    height: 24px;
+}
