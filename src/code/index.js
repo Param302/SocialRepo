@@ -47,32 +47,6 @@ showBtn.addEventListener("click", () => {
     }
 });
 
-function createImage(key) {
-    const img = document.createElement("img");
-    img.classList.add("social-logo");
-    img.alt = key;
-    img.src = `../assets/logos/${key}.png`;
-    return img;
-}
-
-const socialLinksContainer = document.getElementById("socialLinks");
-function createSocialLinks(key, value) {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.href = value;
-    const img= createImage(key);    
-    img.onload = () => {
-        li.appendChild(a);
-        a.appendChild(img);
-        socialLinksContainer.appendChild(li);
-    };
-    img.onerror = () => {
-        console.log(`Image not found for ${key}`);
-        li.remove();
-    };
-    socialLinksContainer.appendChild(li);
-}
-
 // ============== Utility Functions ==============
 function getSocialLinks() {
     const socialLinks = {};
@@ -97,7 +71,38 @@ function getSocialLinks() {
     return socialLinks;
 }
 
-getSocialLinks();
+const socialLinks = getSocialLinks();
+
+// ============== Home ==============
+function showCopyMessage(key) {
+    console.log(`Copied ${key} to clipboard!`);
+};
+
+function createImage(key) {
+    const img = document.createElement("img");
+    img.classList.add("social-logo");
+    img.alt = key;
+    img.src = `../assets/logos/${key}.png`;
+    return img;
+}
+
+const socialLinksContainer = document.getElementById("socialLinks");
+function createSocialLinks(key, value) {
+    const li = document.createElement("li");
+    const img= createImage(key);    
+    img.onload = () => {
+        li.appendChild(img);
+        li.addEventListener("click", () => {
+            navigator.clipboard.writeText(value); // Copy the value to clipboard
+            showCopyMessage(key);
+        });
+        socialLinksContainer.appendChild(li);
+    };
+    img.onerror = () => {
+        li.remove();
+    };
+    socialLinksContainer.appendChild(li);
+}
 
 // ============== Edit ==============
 function previewLink(button) {

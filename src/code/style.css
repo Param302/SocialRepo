@@ -12,9 +12,8 @@
 
 :root {
     --primary-color: #7029ff;
-    --background-color: #f5f5f5;
     --secondary-color: #b58fff;
-    --accent-color: #eae4f7;
+    --accent-color: #d0beff;
     --text-color: #eeeeee;
     --text-color-2: #242327;
 }
@@ -106,7 +105,7 @@ nav li button:active {
 main {
     width: 100%;
     height: 400px;
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
     overflow-x: hidden;
 }
 
@@ -145,10 +144,55 @@ p {
     margin: 0px;
 }
 
+
+/* ============== Home Panel ============== */
+
+#home {
+}
+
+#socialLinks {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    padding-bottom: 0;
+    background-color: var(--accent-color);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 1rem;
+}
+
+#socialLinks li {
+    width: 65px;
+    height: 65px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 7px;
+}
+
+#socialLinks li:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+#socialLinks li:active, #socialLinks li:focus {
+    transform: scale(0.9);
+    transition-duration: 100ms;
+}
+
+#socialLinks li img {
+    padding: .7rem;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+
 /* ============== Info Panel ============== */
 
 #info {
     padding: 1rem 2rem;
+    padding-bottom: 0;
 }
 
 #heading {
@@ -210,10 +254,10 @@ h3 {
 
 #commands button {
     margin-top: 5px;
-    background: var(--text-color);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--text-color);
     font-size: 0.9rem;
-    font-weight: 800;
+    font-weight: 600;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -233,7 +277,7 @@ table {
 table tr {
     border-bottom: 1px solid var(--primary-color);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 table tr:hover {
@@ -283,7 +327,7 @@ table td {
     transform: scale(1.1);
 }
 
-/* ============== Edut Panel ============== */
+/* ============== Edit Panel ============== */
 #edit {
     gap: 0;
 }
@@ -302,9 +346,7 @@ table td {
 
 .search:focus {
     border-color: #b58fff;
-    /* Adjust border color on focus */
     box-shadow: 0 0 5px rgba(113, 41, 255, 0.5);
-    /* Add box shadow on focus */
 }
 
 #links-container {
@@ -315,7 +357,6 @@ table td {
     gap: 1rem;
     list-style-type: none;
     overflow-y: auto;
-    background-color: var(--secondary-color);
 }
 
 #links-container::-webkit-scrollbar {
@@ -353,13 +394,13 @@ table td {
 .link {
     width: 420px;
     padding: 10px;
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 1rem;
     border: 2px solid transparent;
-    border: 2px solid var(--secondary-color);
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
 }
 
@@ -405,11 +446,11 @@ table td {
     margin-top: 5px;
     padding-bottom: 2px;
     background-color: transparent;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border: none;
     outline: none;
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700;
     border-bottom: 2px solid transparent;
     caret-color: var(--primary-color);
     caret: pointer;
@@ -420,7 +461,7 @@ table td {
 }
 
 .link input[type="text"]::placeholder {
-    color: var(--primary-color);
+    color: var(--text-color-2);
     font-weight: 500;
     font-style: italic;
 }
@@ -447,37 +488,4 @@ table td {
 #save-btn:active {
     transform: scale(0.9);
     transition-duration: 100ms;
-}
-
-#home ul {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#socialLinks {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: var(--secondary-color);
-    border-top: 2px solid var(--primary-color);
-}
-
-#socialLinks li {
-    height: 6rem;
-    height: 6em;
-}
-
-#socialLinks li a {
-    height: inherit;
-    width: inherit;
-}
-
-#socialLinks li img {
-    border: 1.5px solid var(--primary-color);
-    padding: .5rem;
-    border-radius: 1rem;
-    display: flex;
-    height: inherit;
-    width: inherit;
 }
