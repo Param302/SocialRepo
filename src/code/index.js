@@ -6,9 +6,7 @@ const home = document.getElementById("home");
 const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
-
 // ============== Header ==============
-
 
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
@@ -51,7 +49,6 @@ showBtn.addEventListener("click", () => {
 
 // ============== Utility Functions ==============
 
-
 function getSocialLinks() {
     const socialLinks = {};
 
@@ -79,7 +76,6 @@ function getSocialLinks() {
 
 const socialLinks = getSocialLinks();
 
-
 // ============== Edit ==============
 function previewLink(button) {
     const parentElement = button.parentNode;
@@ -89,7 +85,6 @@ function previewLink(button) {
     console.log("Input value:", inputValue);
     // Rest of the code...
 }
-
 
 // ============== Random Placeholder Generation ==============
 const placeholderTexts = [
@@ -129,3 +124,34 @@ function randomTextGenerator(placeholderTexts) {
     const randomIndex = Math.floor(Math.random() * placeholderTexts.length);
     return placeholderTexts[randomIndex];
 }
+
+// ============== Link Validation ==============
+
+function validateLink(input) {
+    const linkPattern = /^(http:\/\/|https:\/\/|mailto:)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
+    const isValid = linkPattern.test(input.value);
+    const messageElement = input.nextElementSibling || document.createElement("span");
+    const previewButton = input.parentNode.querySelector(".preview");
+
+    if (isValid) {
+        input.style.borderBottomColor = "green";
+        previewButton.disabled = false;
+        if (messageElement.tagName === "SPAN") {
+            messageElement.remove();
+        }
+    } else {
+        input.style.borderBottomColor = "red";
+        previewButton.disabled = true;
+        if (messageElement.tagName !== "SPAN") {
+            messageElement.textContent = "Entered link is not valid";
+            messageElement.style.color = "red";
+            messageElement.style.position = "absolute";
+            messageElement.style.bottom = "-20px";
+            input.parentNode.appendChild(messageElement);
+        }
+    }
+}
+
+document.querySelectorAll("#edit .link input[type='text']").forEach(input => {
+    input.addEventListener("input", () => validateLink(input));
+});
