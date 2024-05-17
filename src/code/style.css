@@ -7,13 +7,13 @@
     /* font-family: "Source Sans 3", sans-serif; */
     font-family: "Raleway", sans-serif;
     transition: all 300ms ease;
+    list-style-type: none;
 }
 
 :root {
     --primary-color: #7029ff;
-    --background-color: #f5f5f5;
     --secondary-color: #b58fff;
-    --accent-color: #eae4f7;
+    --accent-color: #d0beff;
     --text-color: #eeeeee;
     --text-color-2: #242327;
     --valid-input-color: green;
@@ -107,7 +107,7 @@ nav li button:active {
 main {
     width: 100%;
     height: 400px;
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
     overflow-x: hidden;
 }
 
@@ -146,10 +146,53 @@ p {
     margin: 0px;
 }
 
+
+/* ============== Home Panel ============== */
+
+
+#socialLinks {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    padding-bottom: 0;
+    background-color: var(--accent-color);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 1rem;
+}
+
+#socialLinks li {
+    width: 65px;
+    height: 65px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 7px;
+}
+
+#socialLinks li:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+#socialLinks li:active, #socialLinks li:focus {
+    transform: scale(0.9);
+    transition-duration: 100ms;
+}
+
+#socialLinks li img {
+    padding: .7rem;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+
 /* ============== Info Panel ============== */
 
 #info {
     padding: 1rem 2rem;
+    padding-bottom: 0;
 }
 
 #heading {
@@ -211,10 +254,10 @@ h3 {
 
 #commands button {
     margin-top: 5px;
-    background: var(--text-color);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--text-color);
     font-size: 0.9rem;
-    font-weight: 800;
+    font-weight: 600;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -234,7 +277,7 @@ table {
 table tr {
     border-bottom: 1px solid var(--primary-color);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 table tr:hover {
@@ -274,6 +317,7 @@ table td {
     display: flex;
     gap: 1.5rem;
 }
+
 #images img {
     width: 35px;
     height: 35px;
@@ -288,31 +332,79 @@ table td {
     gap: 0;
 }
 
-.search {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid var(--primary-color) !important;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none; /* Remove default outline */
-    width: calc(100% - 100px);
-    margin-right: 10px;
+.search-container {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    padding: 10px 2rem;
+    gap: 0.5rem;
+    /* border-radius: 1px; */
 }
 
-.search:focus {
-    border-color: #b58fff; /* Adjust border color on focus */
-    box-shadow: 0 0 5px rgba(113, 41, 255, 0.5); /* Add box shadow on focus */
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
 }
+
+/* Focus, hover, and active effects for search bar */
+.search-input:focus {
+    outline: 2px solid var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+    background-color: var(--accent-color); /* Slight background color change on focus */
+}
+
+.search-input:hover {
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.add-link-btn {
+    width: 35px;
+    height: 35px;
+    background-color: var(--secondary-color);
+    color: var(--text-color-2);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 300ms ease; /* Smooth transitions for hover and active states */
+}
+
+.add-link-btn img {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Hover and Active Effects for Add Link Button */
+.add-link-btn:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--secondary-color);
+}
+
+.add-link-btn:active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+    transform: scale(0.95); /* Slightly reduce size on active state for visual feedback */
+}
+
 
 #links-container {
-    min-height: 250px;
+    min-height: 270px;
+    max-height: 270px;
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     list-style-type: none;
     overflow-y: auto;
-    background-color: var(--secondary-color);
 }
 
 #links-container::-webkit-scrollbar {
@@ -350,13 +442,13 @@ table td {
 .link {
     width: 420px;
     padding: 10px;
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 1rem;
     border: 2px solid transparent;
-    border: 2px solid var(--secondary-color);
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
 }
 
@@ -402,11 +494,11 @@ table td {
     margin-top: 5px;
     padding-bottom: 2px;
     background-color: transparent;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border: none;
     outline: none;
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700;
     border-bottom: 2px solid transparent;
     caret-color: var(--primary-color);
     caret: pointer;
@@ -417,7 +509,7 @@ table td {
 }
 
 .link input[type="text"]::placeholder {
-    color: var(--primary-color);
+    color: var(--text-color-2);
     font-weight: 500;
     font-style: italic;
 }
@@ -438,9 +530,12 @@ table td {
 }
 
 #save-btn-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
     padding: 1rem;
 }
 

@@ -51,7 +51,6 @@ showBtn.addEventListener("click", () => {
 
 function getSocialLinks() {
     const socialLinks = {};
-
     fetch("../social-links.json")
         .then(response => {
             if (!response.ok) {
@@ -62,19 +61,51 @@ function getSocialLinks() {
         .then(jsonData => {
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
+                createSocialLinks(key, jsonData[key]);
             });
-
             return socialLinks;
         })
         .catch(error => {
             console.error("Error reading social links file:", error);
             return {};
         });
-
     return socialLinks;
 }
 
 const socialLinks = getSocialLinks();
+
+
+// ============== Home ==============
+function showCopyMessage(key) {
+    console.log(`Copied ${key} to clipboard!`);
+};
+
+function createImage(key) {
+    const img = document.createElement("img");
+    img.classList.add("social-logo");
+    img.alt = key;
+    img.src = `../assets/logos/${key}.png`;
+    return img;
+}
+
+const socialLinksContainer = document.getElementById("socialLinks");
+function createSocialLinks(key, value) {
+    const li = document.createElement("li");
+    const img= createImage(key);    
+    img.onload = () => {
+        li.appendChild(img);
+        li.addEventListener("click", () => {
+            navigator.clipboard.writeText(value); // Copy the value to clipboard
+            showCopyMessage(key);
+        });
+        socialLinksContainer.appendChild(li);
+    };
+    img.onerror = () => {
+        li.remove();
+    };
+    socialLinksContainer.appendChild(li);
+}
+
 
 // ============== Edit ==============
 function previewLink(button) {
@@ -125,6 +156,7 @@ function randomTextGenerator(placeholderTexts) {
     return placeholderTexts[randomIndex];
 }
 
+
 // ============== Link Validation ==============
 
 function validateLink(input) {
@@ -155,3 +187,39 @@ function validateLink(input) {
 document.querySelectorAll("#edit .link input[type='text']").forEach(input => {
     input.addEventListener("input", () => validateLink(input));
 });
+
+const searchInput = document.querySelector('.search-input');
+const linksContainer = document.getElementById('links-container');
+const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
+
+function searchLinks() {
+    const searchText = searchInput.value.toLowerCase();
+    
+    console.log('searchLinks function called');
+    console.log('Search text:', searchText);
+
+    // Clear the links container
+    linksContainer.innerHTML = '';
+
+    // Filter and append the appropriate link boxes
+    originalLinkBoxes.forEach(linkBox => {
+        const linkText = linkBox.querySelector('input').value.toLowerCase();
+        const iconAlt = linkBox.querySelector('.icon').alt.toLowerCase();
+
+        console.log('Link text:', linkText);
+        console.log('Icon alt:', iconAlt);
+
+        if (searchText === '' || linkText.includes(searchText) || iconAlt.includes(searchText)) {
+            console.log('Appending link box to container');
+            // Append a cloned link box to avoid removing it from the original array
+            linksContainer.appendChild(linkBox.cloneNode(true));
+        } else {
+            console.log('No match found, skipping link box');
+        }
+    });
+}
+
+searchInput.addEventListener('input', searchLinks);
+console.log('Event listener attached to search input');
+
+
