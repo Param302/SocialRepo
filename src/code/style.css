@@ -334,9 +334,8 @@ table td {
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
-    padding: 10px 2rem;
-    gap: 0.5rem;
-    /* border-radius: 1px; */
+    padding: 10px 2.5rem 10px 2rem;
+    gap: 1rem;
 }
 
 .search-input {
@@ -347,50 +346,35 @@ table td {
     font-size: 0.9rem;
     outline: none;
     border: none;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+
 }
 
 /* Focus, hover, and active effects for search bar */
-.search-input:focus {
-    outline: 2px solid var(--secondary-color);
-    box-shadow: 0 0 5px var(--secondary-color);
-    background-color: var(--accent-color); /* Slight background color change on focus */
-}
-
-.search-input:hover {
-    box-shadow: 0 0 5px var(--secondary-color);
+.search-input:hover, .search-input:focus {
+    background-color: var(--text-color);
 }
 
 .add-link-btn {
-    width: 35px;
-    height: 35px;
-    background-color: var(--secondary-color);
-    color: var(--text-color-2);
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    background-image: url("../assets/logos/plus.png");
+    background-size: cover;
     border: none;
     border-radius: 5px;
-    padding: 8px 12px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: all 300ms ease; /* Smooth transitions for hover and active states */
 }
 
-.add-link-btn img {
-    margin-right: 8px;
-    width: 20px;
-    height: 20px;
-}
-
-/* Hover and Active Effects for Add Link Button */
 .add-link-btn:hover {
-    background-color: var(--accent-color);
-    box-shadow: 0 0 8px var(--secondary-color);
+    background-image: url("../assets/logos/plus-hover.png");
 }
 
 .add-link-btn:active {
-    background-color: var(--accent-color);
-    box-shadow: 0 0 5px var(--secondary-color);
-    transform: scale(0.95); /* Slightly reduce size on active state for visual feedback */
+    background-image: url("../assets/logos/plus-hover.png");
+    transform: scale(0.7);
 }
 
 #links-container {
@@ -495,7 +479,8 @@ table td {
     border: none;
     outline: none;
     color: var(--primary-color);
-    font-weight: 700;
+    font-family: "Fira Code", monospace;
+    font-weight: 500;
     border-bottom: 2px solid transparent;
     caret-color: var(--primary-color);
     caret: pointer;
@@ -506,9 +491,10 @@ table td {
 }
 
 .link input[type="text"]::placeholder {
-    color: var(--text-color-2);
+    font-family: "Raleway", sans-serif;
     font-weight: 500;
     font-style: italic;
+    color: var(--text-color-2);
 }
 
 #save-btn-area {
