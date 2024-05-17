@@ -229,7 +229,7 @@ function validateInput(input) {
     
     const isUrl = urlPattern.test(input.value);
     const isMailto = mailtoPattern.test(input.value);
-        
+    const previewButton = input.parentNode.querySelector("button");
     if (isUrl || isMailto) {
         input.style.borderBottomColor = "green";
         updateLinkPreview(input);
