@@ -16,8 +16,6 @@
     --accent-color: #d0beff;
     --text-color: #eeeeee;
     --text-color-2: #242327;
-    --valid-input-color: green;
-    --invalid-input-color: red;
 }
 
 body {
@@ -511,21 +509,6 @@ table td {
     color: var(--text-color-2);
     font-weight: 500;
     font-style: italic;
-}
-
-.link input[type="text"].valid {
-    border-bottom-color: var(--valid-input-color);
-}
-
-.link input[type="text"].invalid {
-    border-bottom-color: var(--invalid-input-color);
-}
-
-.invalid-message {
-    color: var(--invalid-input-color);
-    font-size: 0.8rem;
-    position: absolute;
-    bottom: -20px;
 }
 
 #save-btn-area {
