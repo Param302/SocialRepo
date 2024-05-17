@@ -156,7 +156,7 @@ const placeholderTexts = [
 ];
 
 // Function to generate a random placeholder text
-function randomTextGenerator(placeholderTexts) {
+function getRandomPlaceholderText(placeholderTexts) {
     const randomIndex = Math.floor(Math.random() * placeholderTexts.length);
     return placeholderTexts[randomIndex];
 }
@@ -222,7 +222,7 @@ function validateInput(input) {
     if (input.value !== "") {
         input.parentNode.style.backgroundColor = "#eeeeee";
     } else {
-        input.parentNode.style.backgroundColor = "#b58fff";
+        input.parentNode.style.backgroundColor = "#d0beff";
     }
     const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
     const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
