@@ -6,8 +6,8 @@ const home = document.getElementById("home");
 const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
-
 // ============== Header ==============
+
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -48,6 +48,7 @@ showBtn.addEventListener("click", () => {
 });
 
 // ============== Utility Functions ==============
+
 function getSocialLinks() {
     const socialLinks = {};
     fetch("../social-links.json")
@@ -72,6 +73,7 @@ function getSocialLinks() {
 }
 
 const socialLinks = getSocialLinks();
+
 
 // ============== Home ==============
 function showCopyMessage(key) {
@@ -104,6 +106,7 @@ function createSocialLinks(key, value) {
     socialLinksContainer.appendChild(li);
 }
 
+
 // ============== Edit ==============
 function previewLink(button) {
     const parentElement = button.parentNode;
@@ -113,7 +116,6 @@ function previewLink(button) {
     console.log("Input value:", inputValue);
     // Rest of the code...
 }
-
 
 // ============== Random Placeholder Generation ==============
 const placeholderTexts = [
@@ -154,6 +156,34 @@ function randomTextGenerator(placeholderTexts) {
     return placeholderTexts[randomIndex];
 }
 
+
+// ============== Link Validation ==============
+
+function validateInput(input) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
+    const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    const isEmail = emailPattern.test(input.value);
+    const isUrl = urlPattern.test(input.value);
+    const isMailto = mailtoPattern.test(input.value);
+    
+    const previewButton = input.parentNode.querySelector(".preview");
+    
+    if (isEmail || isUrl || isMailto) {
+        input.style.borderBottomColor = "green";
+        previewButton.disabled = false;
+    } else {
+        input.style.borderBottomColor = "red";
+        previewButton.disabled = true;
+    }
+}
+
+document.querySelectorAll("#edit input[type='text']").forEach(input => {
+    input.addEventListener("input", () => validateInput(input));
+});
+
+
 const searchInput = document.querySelector('.search-input');
 const linksContainer = document.getElementById('links-container');
 const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
@@ -187,4 +217,5 @@ function searchLinks() {
 
 searchInput.addEventListener('input', searchLinks);
 console.log('Event listener attached to search input');
+
 
