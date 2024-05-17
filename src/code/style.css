@@ -395,7 +395,6 @@ table td {
     transform: scale(0.95); /* Slightly reduce size on active state for visual feedback */
 }
 
-
 #links-container {
     min-height: 270px;
     max-height: 270px;

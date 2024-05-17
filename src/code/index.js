@@ -108,12 +108,17 @@ function createSocialLinks(key, value) {
 
 
 // ============== Edit ==============
-function previewLink(button) {
+function previewLink(button, value) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
     const inputValue = inputElement.value;
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
+
+    button.addEventListener("click", () => {
+        window.open(inputValue, "_blank");
+    });
+
     // Rest of the code...
 }
 
@@ -157,33 +162,7 @@ function randomTextGenerator(placeholderTexts) {
 }
 
 
-// ============== Link Validation ==============
-
-function validateInput(input) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
-    const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    const isEmail = emailPattern.test(input.value);
-    const isUrl = urlPattern.test(input.value);
-    const isMailto = mailtoPattern.test(input.value);
-    
-    const previewButton = input.parentNode.querySelector(".preview");
-    
-    if (isEmail || isUrl || isMailto) {
-        input.style.borderBottomColor = "green";
-        previewButton.disabled = false;
-    } else {
-        input.style.borderBottomColor = "red";
-        previewButton.disabled = true;
-    }
-}
-
-document.querySelectorAll("#edit input[type='text']").forEach(input => {
-    input.addEventListener("input", () => validateInput(input));
-});
-
-
+// ============== Search ==============
 const searchInput = document.querySelector('.search-input');
 const linksContainer = document.getElementById('links-container');
 const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
@@ -219,3 +198,47 @@ searchInput.addEventListener('input', searchLinks);
 console.log('Event listener attached to search input');
 
 
+// ============== Link Validation ==============
+function updateLinkPreview(input) {
+    const button = input.parentNode.querySelector("button");
+    const value = input.value;
+    button.disabled = false;
+    button.dataset.inputValue = value;
+
+    // Add the event listener only once
+    if (!button.dataset.listenerAdded) {
+        button.addEventListener("click", openLink);
+        button.dataset.listenerAdded = true;  // Mark the listener as added
+    }
+
+    function openLink() {
+        // Use the latest input value stored in the data attribute
+        const value = button.dataset.inputValue;
+        window.open(value, "_blank");
+    }
+};
+
+function validateInput(input) {
+    if (input.value !== "") {
+        input.parentNode.style.backgroundColor = "#eeeeee";
+    } else {
+        input.parentNode.style.backgroundColor = "#b58fff";
+    }
+    const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
+    const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    const isUrl = urlPattern.test(input.value);
+    const isMailto = mailtoPattern.test(input.value);
+        
+    if (isUrl || isMailto) {
+        input.style.borderBottomColor = "green";
+        updateLinkPreview(input);
+    } else {
+        input.style.borderBottomColor = "red";
+        previewButton.disabled = true;
+    }
+}
+
+document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
+    input.addEventListener("input", () => validateInput(input));
+});
