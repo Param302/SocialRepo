@@ -128,9 +128,9 @@ function previewLink(button) {
         button.disabled = false;
         
         const matchingKey = Object.keys(socialLinks).find(key => {
-            const linkNoUsername = socialLinks[key].replace('<username>', '');
-            return inputValue.startsWith(linkNoUsername) && inputValue.length > linkNoUsername.length;
-            // ^ This ensures the link has text in the <username> placeholder before returning True
+            const inputValueNoUsername = socialLinks[key].replace('<username>', '');
+            return inputValue.startsWith(inputValueNoUsername) && inputValue.length > inputValueNoUsername.length;
+            // ^ This ensures the link has text in the <username> placeholder before returning
         });
         if(matchingKey) {
             console.log("Key found!:", matchingKey);
@@ -154,7 +154,7 @@ function isValidURL(url) {
 function setIcon(key, parentElement) {
     const iconElement = parentElement.querySelector('.icon');
     const logoPath = `../assets/logos/${key}.png`;
-    const defaultIconPath = '../assets/logos/default.png';
+    const defaultLogoPath = '../assets/logos/default.png';
 
     fetch(logoPath)
         .then(response => {
@@ -164,7 +164,7 @@ function setIcon(key, parentElement) {
             iconElement.src = logoPath;
         })
         .catch(() => {
-            iconElement.src = defaultIconPath;
+            iconElement.src = defaultLogoPath;
         });
 }
 
