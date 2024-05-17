@@ -47,6 +47,17 @@ showBtn.addEventListener("click", () => {
     }
 });
 
+const previewBtns = document.querySelectorAll(".preview")
+
+previewBtns.forEach((button) => {
+    const inputElement = button.parentNode.querySelector("input");
+    inputElement.addEventListener("input", function() {
+        console.log("Input changed!");
+        previewLink(button);
+    });
+});
+
+
 // ============== Utility Functions ==============
 function getSocialLinks() {
     const socialLinks = {};
@@ -112,6 +123,49 @@ function previewLink(button) {
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
     // Rest of the code...
+    if (isValidURL(inputValue)) {
+        console.log("Valid URL!")
+        button.disabled = false;
+        
+        const matchingKey = Object.keys(socialLinks).find(key => {
+            const linkNoUsername = socialLinks[key].replace('<username>', '');
+            return inputValue.startsWith(linkNoUsername) && inputValue.length > linkNoUsername.length;
+            // ^ This ensures the link has text in the <username> placeholder before returning True
+        });
+        if(matchingKey) {
+            console.log("Key found!:", matchingKey);
+        } else {
+            console.log("No key found!");
+        }
+        setIcon(matchingKey, parentElement);
+    
+    } else {
+        console.log("Invalid URL!")
+        button.disabled = true;
+    }
+}
+
+function isValidURL(url) {
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/; // regular expression that checks if a string starts with
+    // ftp, http or https followed by characters that isn't a double quote or empty space.
+    return urlRegex.test(url);
+}
+
+function setIcon(key, parentElement) {
+    const iconElement = parentElement.querySelector('.icon');
+    const logoPath = `../assets/logos/${key}.png`;
+    const defaultIconPath = '../assets/logos/default.png';
+
+    fetch(logoPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Logo not found:`);
+            }
+            iconElement.src = logoPath;
+        })
+        .catch(() => {
+            iconElement.src = defaultIconPath;
+        });
 }
 
 
