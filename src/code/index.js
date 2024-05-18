@@ -119,49 +119,39 @@ function createSocialLinks(key, value) {
 
 
 // ============== Edit ==============
-function previewLink(button, value) {
+function previewLink(button) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
     const inputValue = inputElement.value;
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
-
-    button.addEventListener("click", () => {
-        window.open(inputValue, "_blank");
-    });
-
     // Rest of the code...
-    if (isValidURL(inputValue)) {
-        console.log("Valid URL!")
-        button.disabled = false;
-        
-        const matchingKey = Object.keys(socialLinks).find(key => {
-            const inputValueNoUsername = socialLinks[key].replace('<username>', '');
-            return inputValue.startsWith(inputValueNoUsername) && inputValue.length > inputValueNoUsername.length;
-            // ^ This ensures the link has text in the <username> placeholder before returning
-        });
-        if(matchingKey) {
-            console.log("Key found!:", matchingKey);
-        } else {
-            console.log("No key found!");
+    let matchingKey;
+    const matchingLink = Object.entries(socialLinks).find(([key, value]) => {
+        const url = new URL(value.replace("<username>", ""));
+        const domainKeyWords = url.hostname.replace("www.", "").replace(".com", "");
+        const isMatch = inputValue.includes(domainKeyWords);
+        if (isMatch) {
+            matchingKey = key;
         }
+        return isMatch;
+    });
+        
+    if(matchingLink) {
+        console.log("Key found!:", matchingKey);
         setIcon(matchingKey, parentElement);
-    
+        button.disabled = false;
     } else {
-        console.log("Invalid URL!")
+        console.log("No key found!");
+        setIcon(matchingKey, parentElement);
         button.disabled = true;
     }
-}
-
-function isValidURL(url) {
-    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/; // regular expression that checks if a string starts with
-    // ftp, http or https followed by characters that isn't a double quote or empty space.
-    return urlRegex.test(url);
 }
 
 function setIcon(key, parentElement) {
     const iconElement = parentElement.querySelector('.icon');
     const logoPath = `../assets/logos/${key}.png`;
+    // png file must have the same name as the key.
     const defaultLogoPath = '../assets/logos/default.png';
 
     fetch(logoPath)
@@ -175,6 +165,7 @@ function setIcon(key, parentElement) {
             iconElement.src = defaultLogoPath;
         });
 }
+
 
 // ============== Random Placeholder Generation ==============
 const placeholderTexts = [
