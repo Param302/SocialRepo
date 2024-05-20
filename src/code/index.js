@@ -119,12 +119,17 @@ function createSocialLinks(key, value) {
 
 
 // ============== Edit ==============
-function previewLink(button) {
+function previewLink(button, value) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
     const inputValue = inputElement.value;
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
+
+    button.addEventListener("click", () => {
+        window.open(inputValue, "_blank");
+    });
+    
     // Rest of the code...
     let matchingKey;
     const matchingLink = Object.entries(socialLinks).find(([key, value]) => {
