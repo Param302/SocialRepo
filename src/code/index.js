@@ -91,7 +91,7 @@ function createImage(key) {
 const socialLinksContainer = document.getElementById("socialLinks");
 function createSocialLinks(key, value) {
     const li = document.createElement("li");
-    const img= createImage(key);    
+    const img = createImage(key);
     img.onload = () => {
         li.appendChild(img);
         li.addEventListener("click", () => {
@@ -169,7 +169,7 @@ const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
 
 function searchLinks() {
     const searchText = searchInput.value.toLowerCase();
-    
+
     console.log('searchLinks function called');
     console.log('Search text:', searchText);
 
@@ -226,7 +226,7 @@ function validateInput(input) {
     }
     const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
     const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
+
     const isUrl = urlPattern.test(input.value);
     const isMailto = mailtoPattern.test(input.value);
     const previewButton = input.parentNode.querySelector("button");
@@ -238,7 +238,31 @@ function validateInput(input) {
         previewButton.disabled = true;
     }
 }
-
 document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
     input.addEventListener("input", () => validateInput(input));
+});
+
+// ============== Add Link Box  ==============
+const addLinkBtn = document.querySelector(".add-link-btn");
+const parentLinkBox = document.getElementById("links-container");
+
+addLinkBtn.addEventListener('click', () => {
+    let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
+    const childBoxFormate = `
+        <li class="link-box"  >
+        <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+        <div class="link">
+            <img src="../assets/logos/default.png" alt="linkedin" class="icon">
+            <input type="text" placeholder="${randomPlaceholder}" />
+            <button class="preview" disabled>
+                <img src="../assets/logos/share.png" alt="preview link">
+            </button>
+        </div>
+        </li>`;
+    // console.log('add link.!');
+    parentLinkBox.innerHTML = childBoxFormate + parentLinkBox.innerHTML;
+    const childFocus = parentLinkBox.firstElementChild;
+    const inputField = childFocus.querySelector('input')
+    inputField.focus();
+    // console.log(childFocus);
 });
