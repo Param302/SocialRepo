@@ -259,10 +259,14 @@ addLinkBtn.addEventListener('click', () => {
             </button>
         </div>
         </li>`;
-    // console.log('add link.!');
+    console.log('add link.!');
     parentLinkBox.innerHTML = childBoxFormate + parentLinkBox.innerHTML;
     const childFocus = parentLinkBox.firstElementChild;
     const inputField = childFocus.querySelector('input')
+    inputField.addEventListener("input", () => {
+        validateInput(inputField);
+        previewLink(childFocus.querySelector('button'));
+    });
     inputField.focus();
     // console.log(childFocus);
 });
