@@ -73,6 +73,9 @@ If you have any questions, suggestions, or feedback, feel free to reach out:
 
 -   [![Email](https://img.shields.io/badge/Email-connectwithparam.30@gmail.com-red?logo=gmail&logoColor=white)](mailto:connectwithparam.30@gmail.com)
 -   [![Twitter](https://img.shields.io/badge/Twitter-@Param3021-blue?logo=twitter&logoColor=white)](https://twitter.com/Param3021)
+-   [![LinkedIn](https://img.shields.io/badge/LinkedIn-@param302-blue?logo=linkedin&logoColor=white)](https://linkedin.com/in/param302)
+
+
 
 ## Acknowledgments 🙏
 
