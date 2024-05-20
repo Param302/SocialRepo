@@ -244,23 +244,24 @@ document.querySelectorAll("#edit #links-container input[type='text']").forEach(i
 
 // ============== Add Link Box  ==============
 const addLinkBtn = document.querySelector(".add-link-btn");
-const parentLinkBox = document.getElementById("links-container");
 
-addLinkBtn.addEventListener('click', () => {
+function addLinkBox() {
+    const parentLinkBox = document.getElementById("links-container");
     let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
-    const childBoxFormate = `
-        <li class="link-box"  >
-        <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
-        <div class="link">
-            <img src="../assets/logos/default.png" alt="linkedin" class="icon">
-            <input type="text" placeholder="${randomPlaceholder}" />
-            <button class="preview" disabled>
-                <img src="../assets/logos/share.png" alt="preview link">
-            </button>
-        </div>
-        </li>`;
+    const childBoxFormat = `
+    <li class="link-box">
+    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
+    <div class="link">
+        <img src="../assets/logos/default.png" alt="linkedin" class="icon">
+        <input type="text" placeholder="${randomPlaceholder}" />
+        <button class="preview" disabled>
+            <img src="../assets/logos/share.png" alt="preview link">
+        </button>
+    </div>
+    </li>`;
     console.log('add link.!');
-    parentLinkBox.innerHTML = childBoxFormate + parentLinkBox.innerHTML;
+    
+    parentLinkBox.innerHTML = childBoxFormat + parentLinkBox.innerHTML;
     const childFocus = parentLinkBox.firstElementChild;
     const inputField = childFocus.querySelector('input')
     inputField.addEventListener("input", () => {
@@ -269,4 +270,9 @@ addLinkBtn.addEventListener('click', () => {
     });
     inputField.focus();
     // console.log(childFocus);
+};
+
+
+addLinkBtn.addEventListener('click', () => {
+    addLinkBox();
 });
