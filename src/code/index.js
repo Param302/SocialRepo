@@ -134,12 +134,32 @@ function previewLink(button, value) {
     let matchingKey;
     const matchingLink = Object.entries(socialLinks).find(([key, value]) => {
         const url = new URL(value.replace("<username>", ""));
-        const domainKeyWords = url.hostname.replace("www.", "").replace(".com", "");
-        const isMatch = inputValue.includes(domainKeyWords);
-        if (isMatch) {
-            matchingKey = key;
-        }
-        return isMatch;
+        const domain = url.hostname;
+        const domainKeyWords = domain.substring(0, domain.lastIndexOf(".")); 
+        // ^ Get domain key words by removing the domain extension
+       
+            // filter the socialLinks values whose domains have the same keywords:
+            const filterDuplicateLinks = Object.entries(socialLinks).filter(([k, v]) => {
+                const filterUrl = new URL(v.replace("<username>", ""));
+                const filterDomain = filterUrl.hostname;
+                const duplicateKeyWords = filterDomain.substring(0, filterDomain.lastIndexOf("."));
+                return duplicateKeyWords.startsWith(domainKeyWords);
+            });
+            let isMatch;
+            
+            // filterDuplicateLinks must match the full domain name before retreiving key
+            // Key is retrieved once full domain name is entered to avoid conflicts with
+            // "https://dev.to" and "https://devpost.com", "https://devfolio.co" for example
+            if (filterDuplicateLinks.length > 1) { 
+            isMatch = inputValue === (url.protocol + "//" + domain);
+            } else {
+                // Other links only must start with the domain keywords before retreiving key
+                isMatch = inputValue.startsWith(url.protocol + "//" + domainKeyWords);
+            }
+            if (isMatch) { 
+                matchingKey = key;
+            }
+            return isMatch;
     });
         
     if(matchingLink) {
