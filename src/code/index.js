@@ -244,67 +244,80 @@ function validateAllInputs() {
     document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
         input.addEventListener("input", () => {
             validateInput(input);
-            // removeIfEmpty(input);
+            removeIfEmpty(input);
             console.log("Changed", input.placeholder);
         });
     });
 }
 
+// ============== Check Focus  ==============
+function checkFocusOut(event, linkBox) {
+    let otherLinkBox = event.relatedTarget;
+    switch (otherLinkBox) {
+        case null:
+            otherLinkBox = "";
+            break;
+        case otherLinkBox.classList.contains("link-box"):
+            break;
+        case otherLinkBox.classList.contains("dragger"):
+            otherLinkBox = otherLinkBox.parentNode;
+            break;
+        case otherLinkBox.classList.contains("link"):
+            otherLinkBox = otherLinkBox.parentNode;
+            break;
+        case otherLinkBox.classList.contains("icon"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode;
+            break;
+        case otherLinkBox.classList.contains("input"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode;
+            break;
+        case otherLinkBox.classList.contains("preview"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode;
+            break;
+        case otherLinkBox.classList.contains("share"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode.parentNode;
+            break;
+        default:
+            otherLinkBox = "";
+            break;
+    };
+    return otherLinkBox.id !== linkBox.id;
+};
 
 // ============== Add Link Box  ==============
 const addLinkBtn = document.querySelector(".add-link-btn");
-
+let idx = 0;
 function addLinkBox() {
     const parentLinkBox = document.getElementById("links-container");
     let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
     const childBoxFormat = `
-    <li class="link-box">
+    <li class="link-box" id=${idx}>
     <img src="../assets/logos/drag.png" alt="dragger" class="dragger" tabindex="1">
     <div class="link" tabindex="2">
         <img src="../assets/logos/default.png" alt="linkedin" class="icon" tabindex="3">
-        <input type="text" placeholder="${randomPlaceholder}" tabindex="4"/>
+        <input type="text" placeholder="${randomPlaceholder}" class="input" tabindex="4"/>
         <button class="preview" disabled tabindex="5">
-            <img src="../assets/logos/share.png" alt="preview link" tabindex="6">
+            <img src="../assets/logos/share.png" alt="preview link" class="share" tabindex="6">
         </button>
     </div>
     </li>`;
     console.log('add link.!');
+    idx++;
     
-    parentLinkBox.innerHTML = childBoxFormat + parentLinkBox.innerHTML;
+    // parentLinkBox.innerHTML = childBoxFormat + parentLinkBox.innerHTML;
     const childFocus = parentLinkBox.firstElementChild;
     const inputField = childFocus.querySelector('input')
     inputField.focus(); //! All other input fields should be focused out
-    // console.log(childFocus);
 
-    inputField.addEventListener('input',()=>{
-        validateInput(inputField);
-        removeIfEmpty(inputField);
-        console.log("Changed new ONE", inputField.placeholder);
-    });
-
-    // inputField.parentNode.parentNode.addEventListener('focusout',(e)=> {
-    //     console.log("FOCUS OUT?");
-    //     if (!relatedTarget || !inputField.parentNode.parentNode.contains(relatedTarget)) {
-    //         removeIfEmpty(inputField);
-    //         console.log("FOCUSING IS OUTTTT");
-    //     }
-    // });
     const linkBox = inputField.parentNode.parentNode;
     inputField.addEventListener('focusout', (event) => {
-        console.log("FOCUS OUT?", inputField.placeholder);
-        // Check if the focus is leaving the link-box
-        // setTimeout(() => {
-            console.log("Related target", event.relatedTarget);
-            if (event.relatedTarget === null) {
-                removeIfEmpty(inputField);
-                console.log("FOCUSING IS OUTTTT");
-
-            }
-        // }, 0);
+        if (checkFocusOut(event, linkBox)) {
+            console.log("Focus Out");
+            removeIfEmpty(inputField);
+        }
     });
 
-    // validateAllInputs();
-    //! Validation for all input fields should be done together, not just the new one
+    validateAllInputs();
 };
 
 addLinkBtn.addEventListener('click', () => {
@@ -312,16 +325,14 @@ addLinkBtn.addEventListener('click', () => {
 });
 
 // ============== Link Box Validation ==============
-// if the input field is empty, remove the child box
-
 function removeIfEmpty(input) {
     const linkBox = input.parentNode.parentNode;
     const linkContainer = document.getElementById("links-container");
-    console.log("focus out", input.value);
-    console.log("COntains", linkContainer.contains(linkBox));
-    if (input.value === "" && linkContainer.contains(linkBox)) {
-        linkBox.remove();
+    if (input.value === "" && linkContainer.contains(linkBox) && document.getElementById(linkBox.id) !== null) {
+        try {
+            linkBox.remove();
+        } catch (error) {
+        }
     }
-    // console.log('focus out');
 }
 
