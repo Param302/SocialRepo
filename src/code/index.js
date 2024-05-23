@@ -220,11 +220,6 @@ function updateLinkPreview(input) {
 };
 
 function validateInput(input) {
-    if (input.value !== "") {
-        input.parentNode.style.backgroundColor = "#eeeeee";
-    } else {
-        input.parentNode.style.backgroundColor = "#d0beff";
-    }
     const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
     const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -243,6 +238,7 @@ function validateInput(input) {
 function validateAllInputs() {
     document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
         input.addEventListener("input", () => {
+            input.focus(); // Set focus on the input field
             validateInput(input);
             removeIfEmpty(input);
             console.log("Changed", input.placeholder);
@@ -250,7 +246,7 @@ function validateAllInputs() {
     });
 }
 
-// ============== Check Focus  ==============
+// ============== Focus Handlers  ==============
 function checkFocusOut(event, linkBox) {
     let otherLinkBox = event.relatedTarget;
     switch (otherLinkBox) {
@@ -337,9 +333,16 @@ function addLinkBox() {
     parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);  
     idx += 1;
 
-    inputField.focus(); //! All other input fields should be focused out
-
     const linkBox = inputField.parentNode.parentNode;
+
+    linkBox.addEventListener('focusin', () => {
+        linkDiv.style.backgroundColor = "#eeeeee";
+    });
+    linkBox.addEventListener('focusout', () => {
+        linkDiv.style.backgroundColor = "#d0beff";
+    })
+
+    inputField.focus();
     inputField.addEventListener('focusout', (event) => {
         if (checkFocusOut(event, linkBox)) {
             console.log("Focus Out");
