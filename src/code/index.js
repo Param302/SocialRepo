@@ -240,6 +240,7 @@ function validateInput(input) {
 }
 document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
     input.addEventListener("input", () => validateInput(input));
+    input.addEventListener("change",()=> removeIfEmpty(input));
 });
 
 // ============== Add Link Box  ==============
@@ -270,9 +271,23 @@ function addLinkBox() {
     });
     inputField.focus();
     // console.log(childFocus);
-};
 
+    inputField.addEventListener('focusout',()=>{
+        removeIfEmpty(inputField);
+    });
+};
 
 addLinkBtn.addEventListener('click', () => {
     addLinkBox();
 });
+
+// ============== Link Box Validation ==============
+// if the input field is empty, remove the child box
+
+function removeIfEmpty(input) {
+    if (input.value === "") {
+        input.parentNode.parentNode.remove();
+    }
+    console.log('focus out');
+}
+
