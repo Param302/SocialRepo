@@ -281,7 +281,7 @@ function addLinkBox() {
         removeIfEmpty(inputField);
         console.log("Changed new ONE", inputField.placeholder);
     });
-
+    //! Focusout should be work for parent element of input field.
     inputField.addEventListener('focusout',()=>{
         removeIfEmpty(inputField);
     });
