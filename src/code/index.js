@@ -108,6 +108,7 @@ function createSocialLinks(key, value) {
 
 
 // ============== Edit ==============
+//! Refactor the code
 function previewLink(button, value) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
@@ -115,9 +116,9 @@ function previewLink(button, value) {
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
 
-    button.addEventListener("click", () => {
-        window.open(inputValue, "_blank");
-    });
+    // button.addEventListener("click", () => {
+    //     window.open(inputValue, "_blank");
+    // });
 
     // Rest of the code...
 }
@@ -238,10 +239,17 @@ function validateInput(input) {
         previewButton.disabled = true;
     }
 }
-document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
-    input.addEventListener("input", () => validateInput(input));
-    input.addEventListener("change",()=> removeIfEmpty(input));
-});
+
+function validateAllInputs() {
+    document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
+        input.addEventListener("input", () => {
+            validateInput(input);
+            removeIfEmpty(input);
+            console.log("Changed", input.placeholder);
+        });
+    });
+}
+
 
 // ============== Add Link Box  ==============
 const addLinkBtn = document.querySelector(".add-link-btn");
@@ -265,16 +273,20 @@ function addLinkBox() {
     parentLinkBox.innerHTML = childBoxFormat + parentLinkBox.innerHTML;
     const childFocus = parentLinkBox.firstElementChild;
     const inputField = childFocus.querySelector('input')
-    inputField.addEventListener("input", () => {
-        validateInput(inputField);
-        previewLink(childFocus.querySelector('button'));
-    });
-    inputField.focus();
+    inputField.focus(); //! All other input fields should be focused out
     // console.log(childFocus);
+
+    inputField.addEventListener('input',()=>{
+        validateInput(inputField);
+        removeIfEmpty(inputField);
+        console.log("Changed new ONE", inputField.placeholder);
+    });
 
     inputField.addEventListener('focusout',()=>{
         removeIfEmpty(inputField);
     });
+    validateAllInputs();
+    //! Validation for all input fields should be done together, not just the new one
 };
 
 addLinkBtn.addEventListener('click', () => {
