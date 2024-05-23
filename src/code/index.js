@@ -290,23 +290,53 @@ let idx = 0;
 function addLinkBox() {
     const parentLinkBox = document.getElementById("links-container");
     let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
-    const childBoxFormat = `
-    <li class="link-box" id=${idx}>
-    <img src="../assets/logos/drag.png" alt="dragger" class="dragger" tabindex="1">
-    <div class="link" tabindex="2">
-        <img src="../assets/logos/default.png" alt="linkedin" class="icon" tabindex="3">
-        <input type="text" placeholder="${randomPlaceholder}" class="input" tabindex="4"/>
-        <button class="preview" disabled tabindex="5">
-            <img src="../assets/logos/share.png" alt="preview link" class="share" tabindex="6">
-        </button>
-    </div>
-    </li>`;
-    console.log('add link.!');
-    idx++;
+
+    const childBoxFormat = document.createElement('li');
+    childBoxFormat.classList.add('link-box');
+    childBoxFormat.id = `link-box-${idx}`;
+
+    const draggerImg = document.createElement('img');
+    draggerImg.src = '../assets/logos/drag.png';
+    draggerImg.alt = 'dragger';
+    draggerImg.classList.add('dragger');
+    draggerImg.tabIndex = 1;
+    childBoxFormat.appendChild(draggerImg);
+
+    const linkDiv = document.createElement('div');
+    linkDiv.classList.add('link');
+    linkDiv.tabIndex = 2;
     
-    // parentLinkBox.innerHTML = childBoxFormat + parentLinkBox.innerHTML;
-    const childFocus = parentLinkBox.firstElementChild;
-    const inputField = childFocus.querySelector('input')
+    const iconImg = document.createElement('img');
+    iconImg.src = '../assets/logos/default.png';
+    iconImg.alt = 'linkedin';
+    iconImg.classList.add('icon');
+    iconImg.tabIndex = 3;
+    linkDiv.appendChild(iconImg);
+    
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.placeholder = randomPlaceholder;
+    inputField.classList.add('input');
+    inputField.tabIndex = 4;
+    linkDiv.appendChild(inputField);
+    
+    const previewBtn = document.createElement('button');
+    previewBtn.classList.add('preview');
+    previewBtn.disabled = true;
+    previewBtn.tabIndex = 5;
+    linkDiv.appendChild(previewBtn);
+    
+    const shareImg = document.createElement('img');
+    shareImg.src = '../assets/logos/share.png';
+    shareImg.alt = 'preview link';
+    shareImg.classList.add('share');
+    shareImg.tabIndex = 6;
+
+    previewBtn.appendChild(shareImg);
+    childBoxFormat.appendChild(linkDiv);
+    parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);  
+    idx += 1;
+
     inputField.focus(); //! All other input fields should be focused out
 
     const linkBox = inputField.parentNode.parentNode;
