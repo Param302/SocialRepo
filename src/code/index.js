@@ -119,6 +119,7 @@ function createSocialLinks(key, value) {
 
 
 // ============== Edit ==============
+//! Refactor the code
 function previewLink(button, value) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
@@ -126,10 +127,10 @@ function previewLink(button, value) {
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
 
-    button.addEventListener("click", () => {
-        window.open(inputValue, "_blank");
-    });
-    
+    // button.addEventListener("click", () => {
+    //     window.open(inputValue, "_blank");
+    // });
+
     // Rest of the code...
     let matchingKey;
     const matchingLink = Object.entries(socialLinks).find(([key, value]) => {
@@ -308,41 +309,130 @@ function validateInput(input) {
         previewButton.disabled = true;
     }
 }
-document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
-    input.addEventListener("input", () => validateInput(input));
-});
+
+function validateAllInputs() {
+    document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
+        input.addEventListener("input", () => {
+            validateInput(input);
+            removeIfEmpty(input);
+            console.log("Changed", input.placeholder);
+        });
+    });
+}
+
+// ============== Check Focus  ==============
+function checkFocusOut(event, linkBox) {
+    let otherLinkBox = event.relatedTarget;
+    switch (otherLinkBox) {
+        case null:
+            otherLinkBox = "";
+            break;
+        case otherLinkBox.classList.contains("link-box"):
+            break;
+        case otherLinkBox.classList.contains("dragger"):
+            otherLinkBox = otherLinkBox.parentNode;
+            break;
+        case otherLinkBox.classList.contains("link"):
+            otherLinkBox = otherLinkBox.parentNode;
+            break;
+        case otherLinkBox.classList.contains("icon"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode;
+            break;
+        case otherLinkBox.classList.contains("input"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode;
+            break;
+        case otherLinkBox.classList.contains("preview"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode;
+            break;
+        case otherLinkBox.classList.contains("share"):
+            otherLinkBox = otherLinkBox.parentNode.parentNode.parentNode;
+            break;
+        default:
+            otherLinkBox = "";
+            break;
+    };
+    return otherLinkBox.id !== linkBox.id;
+};
 
 // ============== Add Link Box  ==============
 const addLinkBtn = document.querySelector(".add-link-btn");
-
+let idx = 0;
 function addLinkBox() {
     const parentLinkBox = document.getElementById("links-container");
     let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
-    const childBoxFormat = `
-    <li class="link-box">
-    <img src="../assets/logos/drag.png" alt="dragger" class="dragger">
-    <div class="link">
-        <img src="../assets/logos/default.png" alt="linkedin" class="icon">
-        <input type="text" placeholder="${randomPlaceholder}" />
-        <button class="preview" disabled>
-            <img src="../assets/logos/share.png" alt="preview link">
-        </button>
-    </div>
-    </li>`;
-    console.log('add link.!');
-    
-    parentLinkBox.innerHTML = childBoxFormat + parentLinkBox.innerHTML;
-    const childFocus = parentLinkBox.firstElementChild;
-    const inputField = childFocus.querySelector('input')
-    inputField.addEventListener("input", () => {
-        validateInput(inputField);
-        previewLink(childFocus.querySelector('button'));
-    });
-    inputField.focus();
-    // console.log(childFocus);
-};
 
+    const childBoxFormat = document.createElement('li');
+    childBoxFormat.classList.add('link-box');
+    childBoxFormat.id = `link-box-${idx}`;
+
+    const draggerImg = document.createElement('img');
+    draggerImg.src = '../assets/logos/drag.png';
+    draggerImg.alt = 'dragger';
+    draggerImg.classList.add('dragger');
+    draggerImg.tabIndex = 1;
+    childBoxFormat.appendChild(draggerImg);
+
+    const linkDiv = document.createElement('div');
+    linkDiv.classList.add('link');
+    linkDiv.tabIndex = 2;
+    
+    const iconImg = document.createElement('img');
+    iconImg.src = '../assets/logos/default.png';
+    iconImg.alt = 'linkedin';
+    iconImg.classList.add('icon');
+    iconImg.tabIndex = 3;
+    linkDiv.appendChild(iconImg);
+    
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.placeholder = randomPlaceholder;
+    inputField.classList.add('input');
+    inputField.tabIndex = 4;
+    linkDiv.appendChild(inputField);
+    
+    const previewBtn = document.createElement('button');
+    previewBtn.classList.add('preview');
+    previewBtn.disabled = true;
+    previewBtn.tabIndex = 5;
+    linkDiv.appendChild(previewBtn);
+    
+    const shareImg = document.createElement('img');
+    shareImg.src = '../assets/logos/share.png';
+    shareImg.alt = 'preview link';
+    shareImg.classList.add('share');
+    shareImg.tabIndex = 6;
+
+    previewBtn.appendChild(shareImg);
+    childBoxFormat.appendChild(linkDiv);
+    parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);  
+    idx += 1;
+
+    inputField.focus(); //! All other input fields should be focused out
+
+    const linkBox = inputField.parentNode.parentNode;
+    inputField.addEventListener('focusout', (event) => {
+        if (checkFocusOut(event, linkBox)) {
+            console.log("Focus Out");
+            removeIfEmpty(inputField);
+        }
+    });
+
+    validateAllInputs();
+};
 
 addLinkBtn.addEventListener('click', () => {
     addLinkBox();
 });
+
+// ============== Link Box Validation ==============
+function removeIfEmpty(input) {
+    const linkBox = input.parentNode.parentNode;
+    const linkContainer = document.getElementById("links-container");
+    if (input.value === "" && linkContainer.contains(linkBox) && document.getElementById(linkBox.id) !== null) {
+        try {
+            linkBox.remove();
+        } catch (error) {
+        }
+    }
+}
+
