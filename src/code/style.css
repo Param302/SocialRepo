@@ -150,14 +150,13 @@ p {
 
 #socialLinks {
     width: 100%;
-    height: 100%;
+    height: fit-content;
     padding: 2rem;
-    padding-bottom: 0;
     background-color: var(--secondary-color);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    gap: 1rem;
+    gap: 2rem 1rem;
 }
 
 #socialLinks li {
