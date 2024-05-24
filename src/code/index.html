@@ -24,8 +24,8 @@
     </header>
     <main>
         <section id="home">
-            <h2>Front Panel</h2>
-            <ul id="inputList"></ul>
+            <ul id="socialLinks">
+            </ul>
         </section>
         <section id="info" class="hidden">
             <div id="heading">
@@ -103,8 +103,15 @@
             </div>
         </section>
         <section id="edit" class="hidden">
-            <!-- Drag will be in edit menu only, on left side of elements. -->
-            <h2>Edit Panel</h2>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search Your Socials">
+                <button class="add-link-btn"></button>
+            </div>
+            <ul id="links-container">
+            </ul>
+            <div id="save-btn-area">
+                <button id="save-btn">Save</button>
+            </div>
         </section>
     </main>
 </body>

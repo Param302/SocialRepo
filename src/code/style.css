@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
     margin: 0;
@@ -7,12 +7,14 @@
     /* font-family: "Source Sans 3", sans-serif; */
     font-family: "Raleway", sans-serif;
     transition: all 300ms ease;
+    list-style-type: none;
 }
 
 :root {
-    --primary-color: #7029FF;
-    --secondary-color: #B58FFF;
-    --text-color: #EEEEEE;
+    --primary-color: #7029ff;
+    --secondary-color: #b58fff;
+    --accent-color: #d0beff;
+    --text-color: #eeeeee;
     --text-color-2: #242327;
 }
 
@@ -21,10 +23,11 @@ body {
     height: 450px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    scroll-behavior: smooth;
 }
 
 a {
-    all:unset;
+    all: unset;
     cursor: pointer;
 }
 
@@ -81,6 +84,7 @@ nav li button:active {
 #info-btn {
     background-image: url("../assets/logos/info.png");
     background-size: cover;
+    cursor: pointer;
 }
 
 #info-btn:hover {
@@ -90,6 +94,7 @@ nav li button:active {
 #edit-btn {
     background-image: url("../assets/logos/edit.png");
     background-size: cover;
+    cursor: pointer;
 }
 
 #edit-btn:hover {
@@ -111,8 +116,18 @@ section {
     flex-direction: column;
     text-align: left;
     gap: 1rem;
-    padding: 1rem 2rem;
     position: relative;
+    overflow-y: auto;
+}
+
+section::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    height: 30px;
 }
 
 h2 {
@@ -125,11 +140,57 @@ p {
 
 .hidden {
     display: none;
+    padding: 0px;
+    margin: 0px;
 }
 
 
+/* ============== Home Panel ============== */
+
+
+#socialLinks {
+    width: 100%;
+    height: fit-content;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 2rem 1rem;
+}
+
+#socialLinks li {
+    width: 65px;
+    height: 65px;
+    background-color: var(--accent-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 7px;
+}
+
+#socialLinks li:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+#socialLinks li:active, #socialLinks li:focus {
+    transform: scale(0.9);
+    transition-duration: 100ms;
+}
+
+#socialLinks li img {
+    padding: .7rem;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+}
+
 
 /* ============== Info Panel ============== */
+
+#info {
+    padding: 1rem 2rem;
+    padding-bottom: 0;
+}
 
 #heading {
     width: fit-content;
@@ -168,8 +229,14 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
-#about p, #commands p {
+#about p,
+#commands p {
     font-size: 0.9rem;
+}
+
+#about p strong {
+    color: var(--primary-color);
+    font-weight: 800;
 }
 
 #commands .cmd {
@@ -184,10 +251,10 @@ h3 {
 
 #commands button {
     margin-top: 5px;
-    background: var(--text-color);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--text-color);
     font-size: 0.9rem;
-    font-weight: 800;
+    font-weight: 600;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -207,7 +274,7 @@ table {
 table tr {
     border-bottom: 1px solid var(--primary-color);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 table tr:hover {
@@ -247,6 +314,7 @@ table td {
     display: flex;
     gap: 1.5rem;
 }
+
 #images img {
     width: 35px;
     height: 35px;
@@ -254,4 +322,202 @@ table td {
 
 #images img:hover {
     transform: scale(1.1);
+}
+
+/* ============== Edit Panel ============== */
+#edit {
+    gap: 0;
+}
+
+.search-container {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    padding: 10px 2.5rem 10px 2rem;
+    gap: 1rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+
+}
+
+/* Focus, hover, and active effects for search bar */
+.search-input:hover, .search-input:focus {
+    background-color: var(--text-color);
+}
+
+.add-link-btn {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    background-image: url("../assets/logos/plus.png");
+    background-size: cover;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-link-btn:hover {
+    background-image: url("../assets/logos/plus-hover.png");
+}
+
+.add-link-btn:active {
+    background-image: url("../assets/logos/plus-hover.png");
+    transform: scale(0.7);
+}
+
+#links-container {
+    min-height: 270px;
+    max-height: 270px;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style-type: none;
+    overflow-y: auto;
+}
+
+#links-container::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: transparent;
+}
+
+#links-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    height: 30px;
+}
+
+.link-box {
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    padding-right: 1.8rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dragger {
+    width: auto;
+    height: 25px;
+    visibility: hidden;
+    cursor: ns-resize;
+}
+
+.link-box:focus-within .dragger,
+.link-box:hover .dragger {
+    visibility: visible;
+}
+
+.link {
+    width: 420px;
+    padding: 10px;
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.link-box:focus-within .link,
+.link-box:hover .link {
+    border-color: var(--primary-color);
+    background-color: var(--text-color);
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.link button {
+    width: 40px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.link button:active {
+    transform: scale(0.8);
+    transition-duration: 100ms;
+}
+
+.link button:disabled {
+    cursor: not-allowed;
+    opacity: 0.1;
+}
+
+.link button img {
+    width: 20px;
+    height: 20px;
+}
+
+.link input[type="text"] {
+    flex: 1;
+    margin-top: 5px;
+    padding-bottom: 2px;
+    background-color: transparent;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    color: var(--primary-color);
+    font-family: "Fira Code", monospace;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    caret-color: var(--primary-color);
+    caret: pointer;
+}
+
+.link input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.link input[type="text"]::placeholder {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text-color-2);
+}
+
+#save-btn-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+}
+
+#save-btn {
+    padding: 0.7rem 2.3rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#save-btn:active {
+    transform: scale(0.9);
+    transition-duration: 100ms;
 }

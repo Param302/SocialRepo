@@ -61,7 +61,7 @@ Logo is completed!
 
 _Contributed by [Shreya Porwal](https://github.com/porwalshreyaa)_
 
-![Logo](../../src/assets/logo.png)
+![Logo](../../src/assets/logos/logo.png)
 
 ### Color Theme
 
