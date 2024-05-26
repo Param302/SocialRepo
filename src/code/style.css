@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=M+PLUS+1+Code:wght@100..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     margin: 0;
@@ -241,7 +241,8 @@ h3 {
 #commands .cmd {
     background-color: #c5aff3;
     color: var(--primary-color);
-    font-family: "Fira code", monospace;
+    font-family: "Fira Code", monospace;
+    letter-spacing: 1px;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 1px 10px;
@@ -477,7 +478,7 @@ table td {
     border: none;
     outline: none;
     color: var(--primary-color);
-    font-family: "Fira Code", monospace;
+    font-family: "M PLUS 1 Code", monospace;
     font-weight: 500;
     border-bottom: 2px solid transparent;
     caret-color: var(--primary-color);

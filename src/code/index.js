@@ -287,12 +287,12 @@ function UpdateLinkBox(button) {
             button.disabled = true;
             setIcon(null, parentElement);
             return;
-
         }
         const { key, value } = socialName;
         console.log("Key found!:", key);
         setIcon(key, parentElement);
         button.disabled = false;
+        inputElement.style.borderBottomColor = "transparent";
 
     } else {
         console.log("No key found!");
