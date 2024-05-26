@@ -1,3 +1,4 @@
+'use strict';
 console.log("Social Repo opened!");
 
 const infoBtn = document.getElementById("info-btn");
@@ -70,8 +71,7 @@ function getSocialLinks() {
             return {};
         });
     return socialLinks;
-}
-
+};
 const socialLinks = getSocialLinks();
 
 
@@ -204,20 +204,12 @@ function updateLinkPreview(input) {
 
 function isValidURL(url) {
     const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
-    const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const mailtoPattern = /^(mailto:)?[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const isUrl = urlPattern.test(url);
     const isMailto = mailtoPattern.test(url);
 
-    if (isUrl || isMailto) {
-        try {
-            const urlObj = new URL(url);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-    return false;
+    return isUrl || isMailto;
 }
 
 function validateInput(input) {
@@ -230,15 +222,13 @@ function validateInput(input) {
         previewButton.disabled = true;
     }
 }
-
-function validateAllInputs() {
+function updateAllLinkBox() {
     document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
         input.addEventListener("input", () => {
-            input.focus(); // Set focus on the input field
             validateInput(input);
             const button = input.parentNode.querySelector("button");
             console.log("Input changed!");
-            updateLinkContainer(button);
+            UpdateLinkBox(button);
             removeIfEmpty(input);
             console.log("Changed", input.placeholder);
         });
@@ -257,7 +247,7 @@ function getSocialName(url) {
     return null;
 }
 
-function updateLinkContainer(button) {
+function UpdateLinkBox(button) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
     const inputValue = inputElement.value;
@@ -419,7 +409,7 @@ function addLinkBox() {
     });
 
     addDnDHandlers(linkBox);
-    validateAllInputs();
+    updateAllLinkBox();
 };
 
 addLinkBtn.addEventListener('click', () => {
