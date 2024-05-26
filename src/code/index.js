@@ -292,6 +292,7 @@ function UpdateLinkBox(button) {
         console.log("Key found!:", key);
         setIcon(key, parentElement);
         button.disabled = false;
+        //! It should done when the link is completed
         inputElement.style.borderBottomColor = "transparent";
 
     } else {
@@ -497,3 +498,10 @@ function addDnDHandlers(elem) {
     elem.addEventListener('drop', handleDrop, false);
     elem.addEventListener('dragend', handleDragEnd, false);
 }
+
+
+// ============== Saving Links  ==============
+const saveBtn = document.getElementById("save-btn");
+saveBtn.addEventListener("click", () => {
+    const links = Array.from(document.querySelectorAll(".link-box input"));
+});
