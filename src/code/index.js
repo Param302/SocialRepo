@@ -106,82 +106,6 @@ function createSocialLinks(key, value) {
     socialLinksContainer.appendChild(li);
 }
 
-
-// ============== Edit ==============
-//! Refactor the code
-function previewLink(button, value) {
-    const parentElement = button.parentNode;
-    const inputElement = parentElement.querySelector("input");
-    const inputValue = inputElement.value;
-    console.log("Placeholder value:", inputElement.placeholder);
-    console.log("Input value:", inputValue);
-
-    // button.addEventListener("click", () => {
-    //     window.open(inputValue, "_blank");
-    // });
-
-    // Rest of the code...
-    let matchingKey;
-    const matchingLink = Object.entries(socialLinks).find(([key, value]) => {
-        const url = new URL(value.replace("<username>", ""));
-        const domain = url.hostname;
-        const domainKeyWords = domain.substring(0, domain.lastIndexOf(".")); 
-        // ^ Get domain key words by removing the domain extension
-       
-            // filter the socialLinks values whose domains have the same keywords:
-            const filterDuplicateLinks = Object.entries(socialLinks).filter(([k, v]) => {
-                const filterUrl = new URL(v.replace("<username>", ""));
-                const filterDomain = filterUrl.hostname;
-                const duplicateKeyWords = filterDomain.substring(0, filterDomain.lastIndexOf("."));
-                return duplicateKeyWords.startsWith(domainKeyWords);
-            });
-            let isMatch;
-            
-            // filterDuplicateLinks must match the full domain name before retreiving key
-            // Key is retrieved once full domain name is entered to avoid conflicts with
-            // "https://dev.to" and "https://devpost.com", "https://devfolio.co" for example
-            if (filterDuplicateLinks.length > 1) { 
-            isMatch = inputValue === (url.protocol + "//" + domain);
-            } else {
-                // Other links only must start with the domain keywords before retreiving key
-                isMatch = inputValue.startsWith(url.protocol + "//" + domainKeyWords);
-            }
-            if (isMatch) { 
-                matchingKey = key;
-            }
-            return isMatch;
-    });
-        
-    if(matchingLink) {
-        console.log("Key found!:", matchingKey);
-        setIcon(matchingKey, parentElement);
-        button.disabled = false;
-    } else {
-        console.log("No key found!");
-        setIcon(matchingKey, parentElement);
-        button.disabled = true;
-    }
-}
-
-function setIcon(key, parentElement) {
-    const iconElement = parentElement.querySelector('.icon');
-    const logoPath = `../assets/logos/${key}.png`;
-    // png file must have the same name as the key.
-    const defaultLogoPath = '../assets/logos/default.png';
-
-    fetch(logoPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Logo not found:`);
-            }
-            iconElement.src = logoPath;
-        })
-        .catch(() => {
-            iconElement.src = defaultLogoPath;
-        });
-}
-
-
 // ============== Random Placeholder Generation ==============
 const placeholderTexts = [
     "Paste your Social Handle here",
@@ -278,14 +202,27 @@ function updateLinkPreview(input) {
     }
 };
 
-function validateInput(input) {
+function isValidURL(url) {
     const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
     const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const isUrl = urlPattern.test(input.value);
-    const isMailto = mailtoPattern.test(input.value);
-    const previewButton = input.parentNode.querySelector("button");
+    const isUrl = urlPattern.test(url);
+    const isMailto = mailtoPattern.test(url);
+
     if (isUrl || isMailto) {
+        try {
+            const urlObj = new URL(url);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+    return false;
+}
+
+function validateInput(input) {
+    const previewButton = input.parentNode.querySelector("button");
+    if (isValidURL(input.value)) {
         input.style.borderBottomColor = "green";
         updateLinkPreview(input);
     } else {
@@ -301,12 +238,80 @@ function validateAllInputs() {
             validateInput(input);
             const button = input.parentNode.querySelector("button");
             console.log("Input changed!");
-            previewLink(button);
+            updateLinkContainer(button);
             removeIfEmpty(input);
             console.log("Changed", input.placeholder);
         });
     });
 }
+
+function getSocialName(url) {
+    for (const key in socialLinks) {
+        const value = socialLinks[key].replace("<username>", "");
+        const valueUrl = new URL(value)
+        const host = valueUrl.hostname.replace("www.", "");
+        if (url.includes(host)) {
+            return { key, value };
+        }
+    }
+    return null;
+}
+
+function updateLinkContainer(button) {
+    const parentElement = button.parentNode;
+    const inputElement = parentElement.querySelector("input");
+    const inputValue = inputElement.value;
+    console.log("Placeholder value:", inputElement.placeholder);
+    console.log("Input value:", inputValue);
+
+    /*
+    Fixes:
+    - check if the input value is MAIL
+    - If not MAIL
+    - remove username from the input value
+    - validate complete profile URL using value of destructured object
+    */
+
+    console.log(getSocialName(inputValue));
+    if (isValidURL(inputValue)) {
+        console.log("Valid URL!");
+        const socialName = getSocialName(inputValue);
+        if (!socialName) {
+            button.disabled = true;
+            setIcon(null, parentElement);
+            return;
+
+        }
+        const { key, value } = socialName;
+        console.log("Key found!:", key);
+        setIcon(key, parentElement);
+        button.disabled = false;
+
+    } else {
+        console.log("No key found!");
+        setIcon(null, parentElement);
+        button.disabled = true;
+    };
+}
+
+function setIcon(key, parentElement) {
+    const iconElement = parentElement.querySelector('.icon');
+    const logoPath = `../assets/logos/${key}.png`;
+    // png file must have the same name as the key.
+    const defaultLogoPath = '../assets/logos/default.png';
+
+    fetch(logoPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Logo not found:`);
+            }
+            iconElement.src = logoPath;
+        })
+        .catch(() => {
+            iconElement.src = defaultLogoPath;
+        });
+}
+
 
 // ============== Focus Handlers  ==============
 function checkFocusOut(event, linkBox) {
