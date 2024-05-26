@@ -53,5 +53,6 @@
     "scruff": "https://www.scruffapp.com/profile/<username>",
     "grindr": "https://grindr.com/profile/<username>",
     "meetme": "https://www.meetme.com/profile/<username>",
-    "skout": "https://www.skout.com/profile/<username>"
+    "skout": "https://www.skout.com/profile/<username>",
+    "x": "https://x.com/<username>"
 }

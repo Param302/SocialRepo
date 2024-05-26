@@ -495,6 +495,27 @@ table td {
     color: var(--text-color-2);
 }
 
+/* ====== Drag & Drop ====== */
+
+.column.dragElem {
+    opacity: 0.1;
+}
+.column.over {
+    border-top: 2px solid orange;
+}
+
+.column.over-before {
+    padding-top: 50px;
+}
+.column.over-after {
+    padding-bottom: 50px;
+}
+
+.column.drag-enter {
+    border: 2px dashed #000;
+}
+
+/* ====== Save Button ====== */
 #save-btn-area {
     position: absolute;
     bottom: 0;
@@ -519,23 +540,4 @@ table td {
 #save-btn:active {
     transform: scale(0.9);
     transition-duration: 100ms;
-}
-
-
-.column.dragElem {
-    opacity: 0.4;
-}
-.column.over {
-    border-top: 2px solid blue;
-}
-
-.column.over-before {
-    border-top: 2px solid red;
-}
-.column.over-after {
-    border-bottom: 2px solid green;
-}
-
-.column.drag-enter {
-    border: 2px dashed #000;
 }

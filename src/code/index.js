@@ -222,17 +222,16 @@ function validateInput(input) {
         previewButton.disabled = true;
     }
 }
-function updateAllLinkBox() {
-    document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
-        input.addEventListener("input", () => {
-            validateInput(input);
-            const button = input.parentNode.querySelector("button");
-            console.log("Input changed!");
-            UpdateLinkBox(button);
-            removeIfEmpty(input);
-            console.log("Changed", input.placeholder);
-        });
-    });
+
+function removeIfEmpty(input) {
+    const linkBox = input.parentNode.parentNode;
+    const linkContainer = document.getElementById("links-container");
+    if (input.value === "" && linkContainer.contains(linkBox) && document.getElementById(linkBox.id) !== null) {
+        try {
+            linkBox.remove();
+        } catch (error) {
+        }
+    }
 }
 
 function getSocialName(url) {
@@ -245,6 +244,24 @@ function getSocialName(url) {
         }
     }
     return null;
+}
+
+function setIcon(key, parentElement) {
+    const iconElement = parentElement.querySelector('.icon');
+    const logoPath = `../assets/logos/${key}.png`;
+    // png file must have the same name as the key.
+    const defaultLogoPath = '../assets/logos/default.png';
+
+    fetch(logoPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Logo not found:`);
+            }
+            iconElement.src = logoPath;
+        })
+        .catch(() => {
+            iconElement.src = defaultLogoPath;
+        });
 }
 
 function UpdateLinkBox(button) {
@@ -284,24 +301,18 @@ function UpdateLinkBox(button) {
     };
 }
 
-function setIcon(key, parentElement) {
-    const iconElement = parentElement.querySelector('.icon');
-    const logoPath = `../assets/logos/${key}.png`;
-    // png file must have the same name as the key.
-    const defaultLogoPath = '../assets/logos/default.png';
-
-    fetch(logoPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Logo not found:`);
-            }
-            iconElement.src = logoPath;
-        })
-        .catch(() => {
-            iconElement.src = defaultLogoPath;
+function updateAllLinkBox() {
+    document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
+        input.addEventListener("input", () => {
+            validateInput(input);
+            const button = input.parentNode.querySelector("button");
+            console.log("Input changed!");
+            UpdateLinkBox(button);
+            removeIfEmpty(input);
+            console.log("Changed", input.placeholder);
         });
+    });
 }
-
 
 // ============== Focus Handlers  ==============
 function checkFocusOut(event, linkBox) {
@@ -416,21 +427,7 @@ addLinkBtn.addEventListener('click', () => {
     addLinkBox();
 });
 
-// ============== Link Box Validation ==============
-function removeIfEmpty(input) {
-    const linkBox = input.parentNode.parentNode;
-    const linkContainer = document.getElementById("links-container");
-    if (input.value === "" && linkContainer.contains(linkBox) && document.getElementById(linkBox.id) !== null) {
-        try {
-            linkBox.remove();
-        } catch (error) {
-        }
-    }
-}
-
-
 // ============== Drag & Drop ==============
-var cols = document.querySelectorAll('#links-container .column');
 var dragSrcEl = null;
 
 function handleDragStart(e) {
@@ -500,6 +497,3 @@ function addDnDHandlers(elem) {
     elem.addEventListener('drop', handleDrop, false);
     elem.addEventListener('dragend', handleDragEnd, false);
 }
-
-cols.forEach(col => { addDnDHandlers(col); });
-
