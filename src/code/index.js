@@ -350,7 +350,8 @@ function addLinkBox() {
     let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
 
     const childBoxFormat = document.createElement('li');
-    childBoxFormat.classList.add('link-box');
+    childBoxFormat.classList.add('link-box', 'column');
+    childBoxFormat.setAttribute("draggable", true);
     childBoxFormat.id = `link-box-${idx}`;
 
     const draggerImg = document.createElement('img');
@@ -430,4 +431,80 @@ function removeIfEmpty(input) {
         }
     }
 }
+
+
+// ============== Drag & Drop ==============
+// ! Not working on new elements
+var cols = document.querySelectorAll('#links-container .column');
+var dragSrcEl = null;
+
+function handleDragStart(e) {
+    dragSrcEl = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.outerHTML);
+    this.classList.add('dragElem');
+}
+function handleDragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    var top = this.getBoundingClientRect().top;
+    var bottom = this.getBoundingClientRect().bottom;
+    if (e.clientY < (top + bottom) / 2) {
+        this.classList.add('over-before');
+        this.classList.remove('over-after');
+    }
+    else {
+        this.classList.add('over-after');
+        this.classList.remove('over-before');
+    }
+}
+
+function handleDragEnter(e) {
+
+}
+
+function handleDragLeave(e) {
+    this.classList.remove('dragElem');
+    this.classList.remove('over-before');
+    this.classList.remove('over-after');
+}
+
+function handleDrop(e) {
+    e.stopPropagation();
+    if (dragSrcEl != this) {
+        this.parentNode.removeChild(dragSrcEl);
+
+        if (this.classList.contains('over-before')) {
+            this.parentNode.insertBefore(dragSrcEl, this);
+            addDnDHandlers(this.previousElementSibling);
+        }
+        else if (this.classList.contains('over-after')) {
+            this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
+            addDnDHandlers(this.nextElementSibling);
+        }
+    } else {
+        console.log("THISSSS", this);
+        this.classList.remove('over');
+    }
+    dragSrcEl.classList.remove('dragElem');
+    this.classList.remove('over');
+    this.classList.remove('over-before');
+    this.classList.remove('over-after');
+}
+
+function handleDragEnd(e) {
+    this.classList.remove('over-before');
+    this.classList.remove('over-after');
+}
+
+function addDnDHandlers(elem) {
+    elem.addEventListener('dragstart', handleDragStart, false);
+    elem.addEventListener('dragenter', handleDragEnter, false)
+    elem.addEventListener('dragover', handleDragOver, false);
+    elem.addEventListener('dragleave', handleDragLeave, false);
+    elem.addEventListener('drop', handleDrop, false);
+    elem.addEventListener('dragend', handleDragEnd, false);
+}
+
+cols.forEach(col => { addDnDHandlers(col); });
 

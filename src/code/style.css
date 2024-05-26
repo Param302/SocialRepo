@@ -184,7 +184,6 @@ p {
     height: 100%;
 }
 
-
 /* ============== Info Panel ============== */
 
 #info {
@@ -520,4 +519,23 @@ table td {
 #save-btn:active {
     transform: scale(0.9);
     transition-duration: 100ms;
+}
+
+
+.column.dragElem {
+    opacity: 0.4;
+}
+.column.over {
+    border-top: 2px solid blue;
+}
+
+.column.over-before {
+    border-top: 2px solid red;
+}
+.column.over-after {
+    border-bottom: 2px solid green;
+}
+
+.column.drag-enter {
+    border: 2px dashed #000;
 }
