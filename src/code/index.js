@@ -62,7 +62,7 @@ function getSocialLinks() {
         .then(jsonData => {
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
-                createSocialLinks(key, jsonData[key]);
+                createSocialLink(key, jsonData[key]);
             });
             return socialLinks;
         })
@@ -89,7 +89,7 @@ function createImage(key) {
 }
 
 const socialLinksContainer = document.getElementById("socialLinks");
-function createSocialLinks(key, value) {
+function createSocialLink(key, value) {
     const li = document.createElement("li");
     const img = createImage(key);
     img.onload = () => {
