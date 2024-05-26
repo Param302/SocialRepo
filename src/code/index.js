@@ -413,6 +413,7 @@ function addLinkBox() {
         }
     });
 
+    addDnDHandlers(linkBox);
     validateAllInputs();
 };
 
@@ -434,7 +435,6 @@ function removeIfEmpty(input) {
 
 
 // ============== Drag & Drop ==============
-// ! Not working on new elements
 var cols = document.querySelectorAll('#links-container .column');
 var dragSrcEl = null;
 
