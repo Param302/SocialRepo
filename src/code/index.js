@@ -47,17 +47,6 @@ showBtn.addEventListener("click", () => {
     }
 });
 
-const previewBtns = document.querySelectorAll(".preview")
-
-previewBtns.forEach((button) => {
-    const inputElement = button.parentNode.querySelector("input");
-    inputElement.addEventListener("input", function() {
-        console.log("Input changed!");
-        previewLink(button);
-    });
-});
-
-
 // ============== Utility Functions ==============
 
 function getSocialLinks() {
@@ -310,6 +299,9 @@ function validateAllInputs() {
         input.addEventListener("input", () => {
             input.focus(); // Set focus on the input field
             validateInput(input);
+            const button = input.parentNode.querySelector("button");
+            console.log("Input changed!");
+            previewLink(button);
             removeIfEmpty(input);
             console.log("Changed", input.placeholder);
         });
