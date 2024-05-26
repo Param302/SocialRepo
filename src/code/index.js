@@ -47,6 +47,17 @@ showBtn.addEventListener("click", () => {
     }
 });
 
+const previewBtns = document.querySelectorAll(".preview")
+
+previewBtns.forEach((button) => {
+    const inputElement = button.parentNode.querySelector("input");
+    inputElement.addEventListener("input", function() {
+        console.log("Input changed!");
+        previewLink(button);
+    });
+});
+
+
 // ============== Utility Functions ==============
 
 function getSocialLinks() {
@@ -121,7 +132,66 @@ function previewLink(button, value) {
     // });
 
     // Rest of the code...
+    let matchingKey;
+    const matchingLink = Object.entries(socialLinks).find(([key, value]) => {
+        const url = new URL(value.replace("<username>", ""));
+        const domain = url.hostname;
+        const domainKeyWords = domain.substring(0, domain.lastIndexOf(".")); 
+        // ^ Get domain key words by removing the domain extension
+       
+            // filter the socialLinks values whose domains have the same keywords:
+            const filterDuplicateLinks = Object.entries(socialLinks).filter(([k, v]) => {
+                const filterUrl = new URL(v.replace("<username>", ""));
+                const filterDomain = filterUrl.hostname;
+                const duplicateKeyWords = filterDomain.substring(0, filterDomain.lastIndexOf("."));
+                return duplicateKeyWords.startsWith(domainKeyWords);
+            });
+            let isMatch;
+            
+            // filterDuplicateLinks must match the full domain name before retreiving key
+            // Key is retrieved once full domain name is entered to avoid conflicts with
+            // "https://dev.to" and "https://devpost.com", "https://devfolio.co" for example
+            if (filterDuplicateLinks.length > 1) { 
+            isMatch = inputValue === (url.protocol + "//" + domain);
+            } else {
+                // Other links only must start with the domain keywords before retreiving key
+                isMatch = inputValue.startsWith(url.protocol + "//" + domainKeyWords);
+            }
+            if (isMatch) { 
+                matchingKey = key;
+            }
+            return isMatch;
+    });
+        
+    if(matchingLink) {
+        console.log("Key found!:", matchingKey);
+        setIcon(matchingKey, parentElement);
+        button.disabled = false;
+    } else {
+        console.log("No key found!");
+        setIcon(matchingKey, parentElement);
+        button.disabled = true;
+    }
 }
+
+function setIcon(key, parentElement) {
+    const iconElement = parentElement.querySelector('.icon');
+    const logoPath = `../assets/logos/${key}.png`;
+    // png file must have the same name as the key.
+    const defaultLogoPath = '../assets/logos/default.png';
+
+    fetch(logoPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Logo not found:`);
+            }
+            iconElement.src = logoPath;
+        })
+        .catch(() => {
+            iconElement.src = defaultLogoPath;
+        });
+}
+
 
 // ============== Random Placeholder Generation ==============
 const placeholderTexts = [
