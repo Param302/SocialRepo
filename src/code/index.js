@@ -7,7 +7,6 @@ const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
 // ============== Header ==============
-
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -48,7 +47,6 @@ showBtn.addEventListener("click", () => {
 });
 
 // ============== Utility Functions ==============
-
 function getSocialLinks() {
     const socialLinks = {};
     fetch("../social-links.json")
@@ -74,11 +72,18 @@ function getSocialLinks() {
 
 const socialLinks = getSocialLinks();
 
-
 // ============== Home ==============
 function showCopyMessage(key) {
     console.log(`Copied ${key} to clipboard!`);
-};
+    const copyConfirmation = document.getElementById('copyConfirmation');
+    const copyText = copyConfirmation.querySelector('.copy-text');
+    copyText.textContent = `✅  ${key} profile copied.`;
+    copyConfirmation.style.display = 'flex';
+
+    setTimeout(() => {
+        copyConfirmation.style.display = 'none';
+    }, 3000);
+}
 
 function createImage(key) {
     const img = document.createElement("img");
@@ -106,20 +111,13 @@ function createSocialLinks(key, value) {
     socialLinksContainer.appendChild(li);
 }
 
-
 // ============== Edit ==============
-//! Refactor the code
 function previewLink(button, value) {
     const parentElement = button.parentNode;
     const inputElement = parentElement.querySelector("input");
     const inputValue = inputElement.value;
     console.log("Placeholder value:", inputElement.placeholder);
     console.log("Input value:", inputValue);
-
-    // button.addEventListener("click", () => {
-    //     window.open(inputValue, "_blank");
-    // });
-
     // Rest of the code...
 }
 
@@ -162,7 +160,6 @@ function getRandomPlaceholderText(placeholderTexts) {
     return placeholderTexts[randomIndex];
 }
 
-
 // ============== Search ==============
 const searchInput = document.querySelector('.search-input');
 const linksContainer = document.getElementById('links-container');
@@ -170,21 +167,16 @@ const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
 
 function searchLinks() {
     const searchText = searchInput.value.toLowerCase();
-
     console.log('searchLinks function called');
     console.log('Search text:', searchText);
-
     // Clear the links container
     linksContainer.innerHTML = '';
-
     // Filter and append the appropriate link boxes
     originalLinkBoxes.forEach(linkBox => {
         const linkText = linkBox.querySelector('input').value.toLowerCase();
         const iconAlt = linkBox.querySelector('.icon').alt.toLowerCase();
-
         console.log('Link text:', linkText);
         console.log('Icon alt:', iconAlt);
-
         if (searchText === '' || linkText.includes(searchText) || iconAlt.includes(searchText)) {
             console.log('Appending link box to container');
             // Append a cloned link box to avoid removing it from the original array
@@ -198,59 +190,59 @@ function searchLinks() {
 searchInput.addEventListener('input', searchLinks);
 console.log('Event listener attached to search input');
 
-
 // ============== Link Validation ==============
 function updateLinkPreview(input) {
     const button = input.parentNode.querySelector("button");
     const value = input.value;
     button.disabled = false;
     button.dataset.inputValue = value;
-
     // Add the event listener only once
     if (!button.dataset.listenerAdded) {
-        button.addEventListener("click", openLink);
-        button.dataset.listenerAdded = true;  // Mark the listener as added
-    }
-
-    function openLink() {
-        // Use the latest input value stored in the data attribute
-        const value = button.dataset.inputValue;
-        window.open(value, "_blank");
-    }
-};
-
-function validateInput(input) {
-    const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
-    const mailtoPattern = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const isUrl = urlPattern.test(input.value);
-    const isMailto = mailtoPattern.test(input.value);
-    const previewButton = input.parentNode.querySelector("button");
-    if (isUrl || isMailto) {
-        input.style.borderBottomColor = "green";
-        updateLinkPreview(input);
-    } else {
-        input.style.borderBottomColor = "red";
-        previewButton.disabled = true;
+        button.addEventListener("click", openLinkInNewTab);
+        button.dataset.listenerAdded = "true";
     }
 }
 
+function openLinkInNewTab() {
+    const inputValue = this.dataset.inputValue;
+    if (isValidUrl(inputValue)) {
+        window.open(inputValue, "_blank");
+    } else {
+        alert("Invalid URL. Please enter a valid URL.");
+    }
+}
+
+function isValidUrl(url) {
+    const pattern = new RegExp(
+        "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+        "i"
+    ); // fragment locator
+    return !!pattern.test(url);
+}
+
+// ============== Additional Code ==============
+// Validate all input fields and set focus handlers
 function validateAllInputs() {
     document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
         input.addEventListener("input", () => {
             input.focus(); // Set focus on the input field
-            validateInput(input);
+            updateLinkPreview(input); // Update the link preview with the new input
             removeIfEmpty(input);
             console.log("Changed", input.placeholder);
         });
     });
 }
 
-// ============== Focus Handlers  ==============
+// Focus handlers
 function checkFocusOut(event, linkBox) {
     let otherLinkBox = event.relatedTarget;
-    switch (otherLinkBox) {
-        case null:
+    switch (true) {
+        case otherLinkBox === null:
             otherLinkBox = "";
             break;
         case otherLinkBox.classList.contains("link-box"):
@@ -276,11 +268,11 @@ function checkFocusOut(event, linkBox) {
         default:
             otherLinkBox = "";
             break;
-    };
+    }
     return otherLinkBox.id !== linkBox.id;
-};
+}
 
-// ============== Add Link Box  ==============
+// Add new link box
 const addLinkBtn = document.querySelector(".add-link-btn");
 let idx = 0;
 function addLinkBox() {
@@ -301,27 +293,27 @@ function addLinkBox() {
     const linkDiv = document.createElement('div');
     linkDiv.classList.add('link');
     linkDiv.tabIndex = 2;
-    
+
     const iconImg = document.createElement('img');
     iconImg.src = '../assets/logos/default.png';
     iconImg.alt = 'linkedin';
     iconImg.classList.add('icon');
     iconImg.tabIndex = 3;
     linkDiv.appendChild(iconImg);
-    
+
     const inputField = document.createElement('input');
     inputField.type = 'text';
     inputField.placeholder = randomPlaceholder;
     inputField.classList.add('input');
     inputField.tabIndex = 4;
     linkDiv.appendChild(inputField);
-    
+
     const previewBtn = document.createElement('button');
     previewBtn.classList.add('preview');
     previewBtn.disabled = true;
     previewBtn.tabIndex = 5;
     linkDiv.appendChild(previewBtn);
-    
+
     const shareImg = document.createElement('img');
     shareImg.src = '../assets/logos/share.png';
     shareImg.alt = 'preview link';
@@ -330,7 +322,7 @@ function addLinkBox() {
 
     previewBtn.appendChild(shareImg);
     childBoxFormat.appendChild(linkDiv);
-    parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);  
+    parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);
     idx += 1;
 
     const linkBox = inputField.parentNode.parentNode;
@@ -340,7 +332,7 @@ function addLinkBox() {
     });
     linkBox.addEventListener('focusout', () => {
         linkDiv.style.backgroundColor = "#d0beff";
-    })
+    });
 
     inputField.focus();
     inputField.addEventListener('focusout', (event) => {
@@ -351,13 +343,13 @@ function addLinkBox() {
     });
 
     validateAllInputs();
-};
+}
 
 addLinkBtn.addEventListener('click', () => {
     addLinkBox();
 });
 
-// ============== Link Box Validation ==============
+// Remove empty link boxes
 function removeIfEmpty(input) {
     const linkBox = input.parentNode.parentNode;
     const linkContainer = document.getElementById("links-container");
@@ -365,7 +357,10 @@ function removeIfEmpty(input) {
         try {
             linkBox.remove();
         } catch (error) {
+            console.error("Error removing empty link box:", error);
         }
     }
 }
 
+// Initial call to validate inputs
+validateAllInputs();

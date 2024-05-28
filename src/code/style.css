@@ -521,3 +521,25 @@ table td {
     transform: scale(0.9);
     transition-duration: 100ms;
 }
+
+/* Styles for the copy confirmation popup */
+.copy-confirmation {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.copy-confirmation .checkmark {
+    font-size: 1.2rem;
+}
