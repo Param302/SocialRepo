@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=M+PLUS+1+Code:wght@100..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
     margin: 0;
@@ -184,6 +184,7 @@ p {
     height: 100%;
 }
 
+
 /* ============== Info Panel ============== */
 
 #info {
@@ -241,8 +242,7 @@ h3 {
 #commands .cmd {
     background-color: #c5aff3;
     color: var(--primary-color);
-    font-family: "Fira Code", monospace;
-    letter-spacing: 1px;
+    font-family: "Fira code", monospace;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 1px 10px;
@@ -478,7 +478,7 @@ table td {
     border: none;
     outline: none;
     color: var(--primary-color);
-    font-family: "M PLUS 1 Code", monospace;
+    font-family: "Fira Code", monospace;
     font-weight: 500;
     border-bottom: 2px solid transparent;
     caret-color: var(--primary-color);
@@ -496,27 +496,6 @@ table td {
     color: var(--text-color-2);
 }
 
-/* ====== Drag & Drop ====== */
-
-.column.dragElem {
-    opacity: 0.1;
-}
-.column.over {
-    border-top: 2px solid orange;
-}
-
-.column.over-before {
-    padding-top: 50px;
-}
-.column.over-after {
-    padding-bottom: 50px;
-}
-
-.column.drag-enter {
-    border: 2px dashed #000;
-}
-
-/* ====== Save Button ====== */
 #save-btn-area {
     position: absolute;
     bottom: 0;
@@ -541,4 +520,26 @@ table td {
 #save-btn:active {
     transform: scale(0.9);
     transition-duration: 100ms;
+}
+
+/* Styles for the copy confirmation popup */
+.copy-confirmation {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.copy-confirmation .checkmark {
+    font-size: 1.2rem;
 }

@@ -1,4 +1,3 @@
-'use strict';
 console.log("Social Repo opened!");
 
 const infoBtn = document.getElementById("info-btn");
@@ -8,7 +7,6 @@ const info = document.getElementById("info");
 const edit = document.getElementById("edit");
 
 // ============== Header ==============
-
 infoBtn.addEventListener("click", () => {
     console.log("Info button clicked!");
     if (info.classList.contains("hidden")) {
@@ -49,7 +47,6 @@ showBtn.addEventListener("click", () => {
 });
 
 // ============== Utility Functions ==============
-
 function getSocialLinks() {
     const socialLinks = {};
     fetch("../social-links.json")
@@ -62,7 +59,7 @@ function getSocialLinks() {
         .then(jsonData => {
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
-                createSocialLink(key, jsonData[key]);
+                createSocialLinks(key, jsonData[key]);
             });
             return socialLinks;
         })
@@ -71,14 +68,22 @@ function getSocialLinks() {
             return {};
         });
     return socialLinks;
-};
-const socialLinks = getSocialLinks();
+}
 
+const socialLinks = getSocialLinks();
 
 // ============== Home ==============
 function showCopyMessage(key) {
     console.log(`Copied ${key} to clipboard!`);
-};
+    const copyConfirmation = document.getElementById('copyConfirmation');
+    const copyText = copyConfirmation.querySelector('.copy-text');
+    copyText.textContent = `✅${key} profile copied.`;
+    copyConfirmation.style.display = 'flex';
+
+    setTimeout(() => {
+        copyConfirmation.style.display = 'none';
+    }, 3000);
+}
 
 function createImage(key) {
     const img = document.createElement("img");
@@ -89,7 +94,7 @@ function createImage(key) {
 }
 
 const socialLinksContainer = document.getElementById("socialLinks");
-function createSocialLink(key, value) {
+function createSocialLinks(key, value) {
     const li = document.createElement("li");
     const img = createImage(key);
     img.onload = () => {
@@ -104,6 +109,16 @@ function createSocialLink(key, value) {
         li.remove();
     };
     socialLinksContainer.appendChild(li);
+}
+
+// ============== Edit ==============
+function previewLink(button, value) {
+    const parentElement = button.parentNode;
+    const inputElement = parentElement.querySelector("input");
+    const inputValue = inputElement.value;
+    console.log("Placeholder value:", inputElement.placeholder);
+    console.log("Input value:", inputValue);
+    // Rest of the code...
 }
 
 // ============== Random Placeholder Generation ==============
@@ -145,7 +160,6 @@ function getRandomPlaceholderText(placeholderTexts) {
     return placeholderTexts[randomIndex];
 }
 
-
 // ============== Search ==============
 const searchInput = document.querySelector('.search-input');
 const linksContainer = document.getElementById('links-container');
@@ -153,21 +167,16 @@ const originalLinkBoxes = Array.from(document.querySelectorAll('.link-box'));
 
 function searchLinks() {
     const searchText = searchInput.value.toLowerCase();
-
     console.log('searchLinks function called');
     console.log('Search text:', searchText);
-
     // Clear the links container
     linksContainer.innerHTML = '';
-
     // Filter and append the appropriate link boxes
     originalLinkBoxes.forEach(linkBox => {
         const linkText = linkBox.querySelector('input').value.toLowerCase();
         const iconAlt = linkBox.querySelector('.icon').alt.toLowerCase();
-
         console.log('Link text:', linkText);
         console.log('Icon alt:', iconAlt);
-
         if (searchText === '' || linkText.includes(searchText) || iconAlt.includes(searchText)) {
             console.log('Appending link box to container');
             // Append a cloned link box to avoid removing it from the original array
@@ -181,145 +190,59 @@ function searchLinks() {
 searchInput.addEventListener('input', searchLinks);
 console.log('Event listener attached to search input');
 
-
 // ============== Link Validation ==============
 function updateLinkPreview(input) {
     const button = input.parentNode.querySelector("button");
     const value = input.value;
     button.disabled = false;
     button.dataset.inputValue = value;
-
     // Add the event listener only once
     if (!button.dataset.listenerAdded) {
-        button.addEventListener("click", openLink);
-        button.dataset.listenerAdded = true;  // Mark the listener as added
+        button.addEventListener("click", openLinkInNewTab);
+        button.dataset.listenerAdded = "true";
     }
-
-    function openLink() {
-        // Use the latest input value stored in the data attribute
-        const value = button.dataset.inputValue;
-        window.open(value, "_blank");
-    }
-};
-
-function isValidURL(url) {
-    const urlPattern = /^(http:\/\/|https:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=]+$/;
-    const mailtoPattern = /^(mailto:)?[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const isUrl = urlPattern.test(url);
-    const isMailto = mailtoPattern.test(url);
-
-    return isUrl || isMailto;
 }
 
-function validateInput(input) {
-    const previewButton = input.parentNode.querySelector("button");
-    if (isValidURL(input.value)) {
-        input.style.borderBottomColor = "green";
-        updateLinkPreview(input);
+function openLinkInNewTab() {
+    const inputValue = this.dataset.inputValue;
+    if (isValidUrl(inputValue)) {
+        window.open(inputValue, "_blank");
     } else {
-        input.style.borderBottomColor = "red";
-        previewButton.disabled = true;
+        alert("Invalid URL. Please enter a valid URL.");
     }
 }
 
-function removeIfEmpty(input) {
-    const linkBox = input.parentNode.parentNode;
-    const linkContainer = document.getElementById("links-container");
-    if (input.value === "" && linkContainer.contains(linkBox) && document.getElementById(linkBox.id) !== null) {
-        try {
-            linkBox.remove();
-        } catch (error) {
-        }
-    }
+function isValidUrl(url) {
+    const pattern = new RegExp(
+        "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+        "i"
+    ); // fragment locator
+    return !!pattern.test(url);
 }
 
-function getSocialName(url) {
-    for (const key in socialLinks) {
-        const value = socialLinks[key].replace("<username>", "");
-        const valueUrl = new URL(value)
-        const host = valueUrl.hostname.replace("www.", "");
-        if (url.includes(host)) {
-            return { key, value };
-        }
-    }
-    return null;
-}
-
-function setIcon(key, parentElement) {
-    const iconElement = parentElement.querySelector('.icon');
-    const logoPath = `../assets/logos/${key}.png`;
-    // png file must have the same name as the key.
-    const defaultLogoPath = '../assets/logos/default.png';
-
-    fetch(logoPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Logo not found:`);
-            }
-            iconElement.src = logoPath;
-        })
-        .catch(() => {
-            iconElement.src = defaultLogoPath;
-        });
-}
-
-function UpdateLinkBox(button) {
-    const parentElement = button.parentNode;
-    const inputElement = parentElement.querySelector("input");
-    const inputValue = inputElement.value;
-    console.log("Placeholder value:", inputElement.placeholder);
-    console.log("Input value:", inputValue);
-
-    /*
-    Fixes:
-    - check if the input value is MAIL
-    - If not MAIL
-    - remove username from the input value
-    - validate complete profile URL using value of destructured object
-    */
-
-    console.log(getSocialName(inputValue));
-    if (isValidURL(inputValue)) {
-        console.log("Valid URL!");
-        const socialName = getSocialName(inputValue);
-        if (!socialName) {
-            button.disabled = true;
-            setIcon(null, parentElement);
-            return;
-        }
-        const { key, value } = socialName;
-        console.log("Key found!:", key);
-        setIcon(key, parentElement);
-        button.disabled = false;
-        //! It should done when the link is completed
-        inputElement.style.borderBottomColor = "transparent";
-
-    } else {
-        console.log("No key found!");
-        setIcon(null, parentElement);
-        button.disabled = true;
-    };
-}
-
-function updateAllLinkBox() {
+// ============== Additional Code ==============
+// Validate all input fields and set focus handlers
+function validateAllInputs() {
     document.querySelectorAll("#edit #links-container input[type='text']").forEach(input => {
         input.addEventListener("input", () => {
-            validateInput(input);
-            const button = input.parentNode.querySelector("button");
-            console.log("Input changed!");
-            UpdateLinkBox(button);
+            input.focus(); // Set focus on the input field
+            updateLinkPreview(input); // Update the link preview with the new input
             removeIfEmpty(input);
             console.log("Changed", input.placeholder);
         });
     });
 }
 
-// ============== Focus Handlers  ==============
+// Focus handlers
 function checkFocusOut(event, linkBox) {
     let otherLinkBox = event.relatedTarget;
-    switch (otherLinkBox) {
-        case null:
+    switch (true) {
+        case otherLinkBox === null:
             otherLinkBox = "";
             break;
         case otherLinkBox.classList.contains("link-box"):
@@ -345,11 +268,11 @@ function checkFocusOut(event, linkBox) {
         default:
             otherLinkBox = "";
             break;
-    };
+    }
     return otherLinkBox.id !== linkBox.id;
-};
+}
 
-// ============== Add Link Box  ==============
+// Add new link box
 const addLinkBtn = document.querySelector(".add-link-btn");
 let idx = 0;
 function addLinkBox() {
@@ -357,8 +280,7 @@ function addLinkBox() {
     let randomPlaceholder = getRandomPlaceholderText(placeholderTexts);
 
     const childBoxFormat = document.createElement('li');
-    childBoxFormat.classList.add('link-box', 'column');
-    childBoxFormat.setAttribute("draggable", true);
+    childBoxFormat.classList.add('link-box');
     childBoxFormat.id = `link-box-${idx}`;
 
     const draggerImg = document.createElement('img');
@@ -371,27 +293,27 @@ function addLinkBox() {
     const linkDiv = document.createElement('div');
     linkDiv.classList.add('link');
     linkDiv.tabIndex = 2;
-    
+
     const iconImg = document.createElement('img');
     iconImg.src = '../assets/logos/default.png';
     iconImg.alt = 'linkedin';
     iconImg.classList.add('icon');
     iconImg.tabIndex = 3;
     linkDiv.appendChild(iconImg);
-    
+
     const inputField = document.createElement('input');
     inputField.type = 'text';
     inputField.placeholder = randomPlaceholder;
     inputField.classList.add('input');
     inputField.tabIndex = 4;
     linkDiv.appendChild(inputField);
-    
+
     const previewBtn = document.createElement('button');
     previewBtn.classList.add('preview');
     previewBtn.disabled = true;
     previewBtn.tabIndex = 5;
     linkDiv.appendChild(previewBtn);
-    
+
     const shareImg = document.createElement('img');
     shareImg.src = '../assets/logos/share.png';
     shareImg.alt = 'preview link';
@@ -400,7 +322,7 @@ function addLinkBox() {
 
     previewBtn.appendChild(shareImg);
     childBoxFormat.appendChild(linkDiv);
-    parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);  
+    parentLinkBox.insertBefore(childBoxFormat, parentLinkBox.firstChild);
     idx += 1;
 
     const linkBox = inputField.parentNode.parentNode;
@@ -410,7 +332,7 @@ function addLinkBox() {
     });
     linkBox.addEventListener('focusout', () => {
         linkDiv.style.backgroundColor = "#d0beff";
-    })
+    });
 
     inputField.focus();
     inputField.addEventListener('focusout', (event) => {
@@ -420,88 +342,25 @@ function addLinkBox() {
         }
     });
 
-    addDnDHandlers(linkBox);
-    updateAllLinkBox();
-};
+    validateAllInputs();
+}
 
 addLinkBtn.addEventListener('click', () => {
     addLinkBox();
 });
 
-// ============== Drag & Drop ==============
-var dragSrcEl = null;
-
-function handleDragStart(e) {
-    dragSrcEl = this;
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.outerHTML);
-    this.classList.add('dragElem');
-}
-function handleDragOver(e) {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    var top = this.getBoundingClientRect().top;
-    var bottom = this.getBoundingClientRect().bottom;
-    if (e.clientY < (top + bottom) / 2) {
-        this.classList.add('over-before');
-        this.classList.remove('over-after');
-    }
-    else {
-        this.classList.add('over-after');
-        this.classList.remove('over-before');
-    }
-}
-
-function handleDragEnter(e) {
-
-}
-
-function handleDragLeave(e) {
-    this.classList.remove('dragElem');
-    this.classList.remove('over-before');
-    this.classList.remove('over-after');
-}
-
-function handleDrop(e) {
-    e.stopPropagation();
-    if (dragSrcEl != this) {
-        this.parentNode.removeChild(dragSrcEl);
-
-        if (this.classList.contains('over-before')) {
-            this.parentNode.insertBefore(dragSrcEl, this);
-            addDnDHandlers(this.previousElementSibling);
+// Remove empty link boxes
+function removeIfEmpty(input) {
+    const linkBox = input.parentNode.parentNode;
+    const linkContainer = document.getElementById("links-container");
+    if (input.value === "" && linkContainer.contains(linkBox) && document.getElementById(linkBox.id) !== null) {
+        try {
+            linkBox.remove();
+        } catch (error) {
+            console.error("Error removing empty link box:", error);
         }
-        else if (this.classList.contains('over-after')) {
-            this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
-            addDnDHandlers(this.nextElementSibling);
-        }
-    } else {
-        console.log("THISSSS", this);
-        this.classList.remove('over');
     }
-    dragSrcEl.classList.remove('dragElem');
-    this.classList.remove('over');
-    this.classList.remove('over-before');
-    this.classList.remove('over-after');
 }
 
-function handleDragEnd(e) {
-    this.classList.remove('over-before');
-    this.classList.remove('over-after');
-}
-
-function addDnDHandlers(elem) {
-    elem.addEventListener('dragstart', handleDragStart, false);
-    elem.addEventListener('dragenter', handleDragEnter, false)
-    elem.addEventListener('dragover', handleDragOver, false);
-    elem.addEventListener('dragleave', handleDragLeave, false);
-    elem.addEventListener('drop', handleDrop, false);
-    elem.addEventListener('dragend', handleDragEnd, false);
-}
-
-
-// ============== Saving Links  ==============
-const saveBtn = document.getElementById("save-btn");
-saveBtn.addEventListener("click", () => {
-    const links = Array.from(document.querySelectorAll(".link-box input"));
-});
+// Initial call to validate inputs
+validateAllInputs();
