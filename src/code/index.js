@@ -77,9 +77,10 @@ const socialLinks = getSocialLinks();
 
 // ============== Home ==============
 function showCopyMessage(key) {
+    console.log(`Copied ${key} to clipboard!`);
     const copyConfirmation = document.getElementById('copyConfirmation');
     const copyText = copyConfirmation.querySelector('.copy-text');
-    copyText.textContent = `✅ ${key} profile copied.`;
+    copyText.textContent = `✅${key} profile copied.`;
     copyConfirmation.style.display = 'flex';
 
     setTimeout(() => {
