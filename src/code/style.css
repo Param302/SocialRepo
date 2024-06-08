@@ -336,7 +336,7 @@ table td {
   gap: 1rem;
 }
 
-.search-input {
+.input-field {
   flex: 1;
   padding: 8px 12px;
   border: none;
@@ -351,12 +351,13 @@ table td {
 }
 
 /* Focus, hover, and active effects for search bar */
-.search-input:hover,
-.search-input:focus {
+.input-field:hover,
+.input-field:focus {
   background-color: var(--text-color);
 }
 
-.add-link-btn {
+.add-link-btn,
+.add-url-btn {
   width: 25px;
   height: 25px;
   background-color: transparent;
@@ -366,13 +367,31 @@ table td {
   border-radius: 5px;
 }
 
-.add-link-btn:hover {
+.add-link-btn:hover,
+.add-url-btn:hover {
   background-image: url("../assets/logos/plus-hover.png");
 }
 
-.add-link-btn:active {
+.add-link-btn:active,
+.add-url-btn:active {
   background-image: url("../assets/logos/plus-hover.png");
   transform: scale(0.7);
+}
+
+.add-url-btn,
+.add-url-btn:hover,
+.add-url-btn:active {
+  background-image: url(../assets/logos/default.png);
+  filter: invert(100%) sepia(76%) saturate(66%) hue-rotate(171deg)
+    brightness(112%) contrast(87%);
+
+  /* Other Options
+
+  background-color: var(--accent-color);
+  filter: invert(71%) sepia(65%) saturate(3485%) hue-rotate(213deg) brightness(101%) contrast(101%);
+
+  To get the exact filter values - https://codepen.io/sosuke/pen/Pjoqqp
+  */
 }
 
 #links-container {
@@ -538,6 +557,60 @@ table td {
 }
 
 #save-btn:active {
+  transform: scale(0.9);
+  transition-duration: 100ms;
+}
+
+#externalUrlPopup {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-color);
+  height: auto;
+  width: fit-content;
+  padding: 0.8rem;
+}
+
+#externalUrlPopup > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#closePopupButton {
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  background-size: cover;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  rotate: calc(45deg);
+  background-image: url("../assets/logos/plus.png");
+}
+
+#closePopupButton:hover,
+#closePopupButton:active {
+  background-image: url("../assets/logos/plus-hover.png");
+}
+
+.btn-save {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background-color: var(--secondary-color);
+  color: var(--text-color-2);
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-save:active {
   transform: scale(0.9);
   transition-duration: 100ms;
 }

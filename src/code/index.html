@@ -129,9 +129,14 @@
       </section>
       <section id="edit" class="hidden">
         <div class="search-container">
+          <button
+            class="add-url-btn"
+            id="openPopupButton"
+            title="Remote URL"
+          ></button>
           <input
             type="text"
-            class="search-input"
+            class="search-input input-field"
             placeholder="Search Your Socials"
           />
           <button class="add-link-btn"></button>
@@ -139,6 +144,18 @@
         <ul id="links-container"></ul>
         <div id="save-btn-area">
           <button id="save-btn">Save</button>
+        </div>
+      </section>
+      <section id="externalUrlPopup">
+        <button id="closePopupButton"></button>
+        <div>
+          <input
+            type="url"
+            class="input-field"
+            id="remoteUrl"
+            placeholder="Enter Remote URL"
+          />
+          <button id="saveURL" class="btn-save">Save</button>
         </div>
       </section>
     </main>

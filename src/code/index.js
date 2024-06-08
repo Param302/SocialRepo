@@ -50,9 +50,10 @@ showBtn.addEventListener("click", () => {
 
 // ============== Utility Functions ==============
 
-function getSocialLinks() {
+// Fetch the usernames from a github repo
+function getSocialLinks(url) {
   const socialLinks = {};
-  fetch("../social-links.json")
+  fetch(url)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to fetch social links");
@@ -74,7 +75,25 @@ function getSocialLinks() {
     });
   return socialLinks;
 }
-const socialLinks = getSocialLinks();
+const socialLinks = "";
+// Check if there is any locally saved data
+chrome.storage.local.get(null, function (result) {
+  if (chrome.runtime.lastError) {
+    console.error(
+      "Error retrieving locally saved data:",
+      chrome.runtime.lastError
+    );
+    return;
+  }
+
+  if (Object.keys(result).length === 0) {
+    console.log("No locally saved data found");
+    socialLinks = getSocialLinks("../social-links.json");
+  } else {
+    console.log("Locally saved data found:", result);
+    socialLinks = getSocialLinks(result.remoteURL);
+  }
+});
 
 // ============== Home ==============
 function showCopyMessage(key) {
@@ -89,7 +108,7 @@ function createImage(key) {
   return img;
 }
 
-function fetchusername(valueUrl) {
+function fetchUsername(valueUrl) {
   const splitLink = valueUrl.split("/");
   const username = splitLink[splitLink.length - 1];
   return username;
@@ -99,7 +118,7 @@ const socialLinksContainer = document.getElementById("socialLinks");
 function createSocialLink(key, value) {
   const li = document.createElement("li");
   const img = createImage(key);
-  img.title = fetchusername(value) || key;
+  img.title = fetchUsername(value) || key;
   img.onload = () => {
     li.appendChild(img);
     li.addEventListener("click", () => {
@@ -514,4 +533,41 @@ function addDnDHandlers(elem) {
 const saveBtn = document.getElementById("save-btn");
 saveBtn.addEventListener("click", () => {
   const links = Array.from(document.querySelectorAll(".link-box input"));
+});
+
+// ============== Add External URL for Usernames  ==============
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get references to the button elements
+  const openPopupButton = document.getElementById("openPopupButton");
+  const closePopupButton = document.getElementById("closePopupButton");
+  const saveURL = document.getElementById("saveURL");
+  const popup = document.getElementById("externalUrlPopup");
+  const remoteUrl = document.getElementById("remoteUrl");
+
+  // Add event listener to the open button
+  openPopupButton.addEventListener("click", function () {
+    popup.style.display = "block";
+    console.log("Popup Open");
+  });
+
+  // Add event listener to the close button
+  closePopupButton.addEventListener("click", function () {
+    popup.style.display = "none";
+    console.log("Popup Close");
+  });
+
+  // Save URL to local storage so it fetches the username links from the remote repo
+  saveURL.addEventListener("click", function () {
+    // Data to be saved
+    var dataToSave = {
+      remoteURL: remoteUrl.value,
+    };
+
+    // Save data to local storage
+    chrome.storage.local.set(dataToSave, function () {
+      console.log("URL saved to local storage");
+      popup.style.display = "none";
+    });
+  });
 });
