@@ -1,26 +1,22 @@
 {
-    "manifest_version": 3,
-    "name": "SocialRepo",
-    "version": "0.1",
-    "description": "Your Social Handles Repository.",
-    "permissions": ["activeTab"],
-    "action": {
-        "default_popup": "./code/index.html",
-        "default_icon": "./assets/logos/logo.png"
-    },
-    "icons": {
-        "16": "./assets/logos/logo.png",
-        "48": "./assets/logos/logo.png",
-        "128": "./assets/logos/logo.png"
-    },
-    "web_accessible_resources": [
-        {
-            "resources": [
-                "./code/index.html",
-                "./code/style.css",
-                "./code/index.js"
-            ],
-            "matches": ["<all_urls>"]
-        }
-    ]
+  "manifest_version": 3,
+  "name": "SocialRepo",
+  "version": "0.1",
+  "description": "Your Social Handles Repository.",
+  "permissions": ["activeTab", "storage"],
+  "action": {
+    "default_popup": "./code/index.html",
+    "default_icon": "./assets/logos/logo.png"
+  },
+  "icons": {
+    "16": "./assets/logos/logo.png",
+    "48": "./assets/logos/logo.png",
+    "128": "./assets/logos/logo.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["./code/index.html", "./code/style.css", "./code/index.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
