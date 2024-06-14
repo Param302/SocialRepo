@@ -93,9 +93,11 @@ function createImage(key) {
 const socialLinksContainer = document.getElementById("socialLinks");
 function createSocialLink(key, value) {
     const li = document.createElement("li");
+    //^ New div which will contain the name of app (displayed on hover)
     const div = document.createElement("div")
     const img = createImage(key);
     div.classList.add('hover-div')
+    //^ making the string short if it overflows (based upon its length)
     if (key.length>8){
         div.textContent = `${key.substr(0,8)+"..."}`
     }else{
