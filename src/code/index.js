@@ -60,10 +60,12 @@ function getSocialLinks() {
             return response.json();
         })
         .then(jsonData => {
+            console.log(jsonData)
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
                 createSocialLink(key, jsonData[key]);
             });
+            console.log(socialLinks)
             return socialLinks;
         })
         .catch(error => {
@@ -91,8 +93,26 @@ function createImage(key) {
 const socialLinksContainer = document.getElementById("socialLinks");
 function createSocialLink(key, value) {
     const li = document.createElement("li");
+    //^ New div which will contain the name of app (displayed on hover)
+    const div = document.createElement("div")
     const img = createImage(key);
+    div.classList.add('hover-div')
+    //^ making the string short if it overflows (based upon its length)
+    if (key.length>8){
+        div.textContent = `${key.substr(0,8)+"..."}`
+    }else{
+        div.textContent = key
+    }
+    li.addEventListener("mouseenter",()=>{
+        img.style.display = 'none'
+        div.style.display = 'flex'
+    })
+    li.addEventListener('mouseleave',()=>{
+        img.style.display = 'block'
+        div.style.display = 'none'
+    })
     img.onload = () => {
+        li.appendChild(div)
         li.appendChild(img);
         li.addEventListener("click", () => {
             navigator.clipboard.writeText(value); // Copy the value to clipboard
