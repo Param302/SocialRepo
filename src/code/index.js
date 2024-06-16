@@ -62,7 +62,7 @@ function getSocialLinks() {
         .then(jsonData => {
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
-                createSocialLink(key, jsonData[key]);
+                createSocialLink(key);
             });
             return socialLinks;
         })
@@ -89,13 +89,13 @@ function createImage(key) {
 }
 
 const socialLinksContainer = document.getElementById("socialLinks");
-function createSocialLink(key, value) {
+function createSocialLink(key) {
     const li = document.createElement("li");
     const img = createImage(key);
     img.onload = () => {
         li.appendChild(img);
         li.addEventListener("click", () => {
-            navigator.clipboard.writeText(value); // Copy the value to clipboard
+            navigator.clipboard.writeText(socialLinks[key]); // Copy the value to clipboard
             showCopyMessage(key);
         });
         socialLinksContainer.appendChild(li);
@@ -505,3 +505,39 @@ const saveBtn = document.getElementById("save-btn");
 saveBtn.addEventListener("click", () => {
     const links = Array.from(document.querySelectorAll(".link-box input"));
 });
+
+
+
+function addLinkBoxOnSave() {
+  const linkInputBox = document.querySelectorAll(".link-box input");
+  if (linkInputBox) {
+    linkInputBox.forEach((linkInput) => {
+      let inputURL = linkInput.value;
+      if (isValidURL(inputURL)) {
+        //if the link box already exists in home then update the existing one, else create a new box
+        const res = getSocialName(inputURL);
+        const key = res.key;
+        const value = inputURL;
+        let linkExists = false;
+        const homeSocials = document.querySelectorAll(".social-logo");
+        homeSocials.forEach((social) => {
+          if (key == social.alt) {
+            socialLinks[key] = value;
+            console.log(socialLinks);
+            linkExists = true;
+            return;
+          }
+        });
+        //else create a link box on home page
+        if (!linkExists) {
+          socialLinks[key] = value;
+          createSocialLink(key);
+        }
+        //if not a valid URL
+      } else {
+        console.log("invalid URL");
+      }
+    });
+  }
+}
+saveBtn.addEventListener("click", addLinkBoxOnSave);
