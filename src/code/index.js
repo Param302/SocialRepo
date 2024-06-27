@@ -78,6 +78,15 @@ const socialLinks = getSocialLinks();
 // ============== Home ==============
 function showCopyMessage(key) {
     console.log(`Copied ${key} to clipboard!`);
+    const copyConfirm = document.getElementById('copyConfirm');
+const copyText = copyConfirm.querySelector('.copy-text');
+copyText.textContent = `✅${key} profile copied.`;
+copyConfirm.style.display = 'flex';
+
+setTimeout(() => {
+    copyConfirm.style.display = 'none';
+}, 3000);
+
 };
 
 function createImage(key) {
