@@ -62,7 +62,7 @@ function getSocialLinks() {
         .then(jsonData => {
             Object.keys(jsonData).slice(1).forEach(key => {
                 socialLinks[key] = jsonData[key];
-                createSocialLink(key, jsonData[key]);
+                createSocialLink(key);
             });
             return socialLinks;
         })
@@ -78,6 +78,15 @@ const socialLinks = getSocialLinks();
 // ============== Home ==============
 function showCopyMessage(key) {
     console.log(`Copied ${key} to clipboard!`);
+    const copyConfirm = document.getElementById('copyConfirm');
+const copyText = copyConfirm.querySelector('.copy-text');
+copyText.textContent = `✅${key} profile copied.`;
+copyConfirm.style.display = 'flex';
+
+setTimeout(() => {
+    copyConfirm.style.display = 'none';
+}, 3000);
+
 };
 
 function createImage(key) {
@@ -89,13 +98,31 @@ function createImage(key) {
 }
 
 const socialLinksContainer = document.getElementById("socialLinks");
-function createSocialLink(key, value) {
+function createSocialLink(key) {
     const li = document.createElement("li");
+    // Here this will be a div which will come over the top of the icon and it will show the name of the app 
+    const div = document.createElement("div")
     const img = createImage(key);
+    div.classList.add('div-hover-effect')
+    //^ making the string short if it overflows (based upon its length)
+    if (key.length>8){
+        div.textContent = `${key.substr(0,8)+"..."}`
+    }else{
+        div.textContent = key
+    }
+    li.addEventListener("mouseenter",()=>{
+        img.style.display = 'none'
+        div.style.display = 'flex'
+    })
+    li.addEventListener('mouseleave',()=>{
+        img.style.display = 'block'
+        div.style.display = 'none'
+    })
     img.onload = () => {
+        li.appendChild(div)
         li.appendChild(img);
         li.addEventListener("click", () => {
-            navigator.clipboard.writeText(value); // Copy the value to clipboard
+            navigator.clipboard.writeText(socialLinks[key]); // Copy the value to clipboard
             showCopyMessage(key);
         });
         socialLinksContainer.appendChild(li);
@@ -505,3 +532,37 @@ const saveBtn = document.getElementById("save-btn");
 saveBtn.addEventListener("click", () => {
     const links = Array.from(document.querySelectorAll(".link-box input"));
 });
+
+function addLinkBoxOnSave() {
+    const linkInputBox = document.querySelectorAll(".link-box input");
+    if (linkInputBox) {
+      linkInputBox.forEach((linkInput) => {
+        let inputURL = linkInput.value;
+        if (isValidURL(inputURL)) {
+          //if the link box already exists in home then update the existing one, else create a new box
+          const res = getSocialName(inputURL);
+          const key = res.key;
+          const value = inputURL;
+          let linkExists = false;
+          const homeSocials = document.querySelectorAll(".social-logo");
+          homeSocials.forEach((social) => {
+            if (key == social.alt) {
+              socialLinks[key] = value;
+              console.log(socialLinks);
+              linkExists = true;
+              return;
+            }
+          });
+          //else create a link box on home page
+          if (!linkExists) {
+            socialLinks[key] = value;
+            createSocialLink(key);
+          }
+          //if not a valid URL
+        } else {
+          console.log("invalid URL");
+        }
+      });
+    }
+  }
+  saveBtn.addEventListener("click", addLinkBoxOnSave);
