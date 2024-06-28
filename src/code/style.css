@@ -6,21 +6,21 @@
     box-sizing: border-box;
     /* font-family: "Source Sans 3", sans-serif; */
     font-family: "Raleway", sans-serif;
-    transition: all 300ms ease;
+    transition: all 350ms ease;
     list-style-type: none;
 }
 
 :root {
-    --primary-color: #7029ff;
-    --secondary-color: #b58fff;
-    --accent-color: #d0beff;
-    --text-color: #eeeeee;
+    --primary-color: #a47df2;
+    --secondary-color: #c3b0e8;
+    --accent-color: #ab98d8;
+    --text-color: #faf1f1;
     --text-color-2: #242327;
 }
 
 body {
-    width: 500px;
-    height: 450px;
+    width: 600px;
+    height: 650px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     scroll-behavior: smooth;
@@ -77,8 +77,8 @@ nav li button {
 }
 
 nav li button:active {
-    transform: scale(0.9);
-    transition-duration: 100ms;
+    transform: scale(0.7);
+    transition-duration: 120ms;
 }
 
 #info-btn {
@@ -185,6 +185,22 @@ p {
 }
 
 /* ============== Info Panel ============== */
+
+.div-hover-effect{
+    /* position: absolute;
+    top: 105%; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    background-color: transparent;
+    overflow: hidden;
+}
 
 #info {
     padding: 1rem 2rem;
@@ -312,7 +328,7 @@ table td {
 
 #images {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.7rem;
 }
 
 #images img {
@@ -345,7 +361,7 @@ table td {
     font-size: 0.9rem;
     outline: none;
     border: none;
-    background-color: var(--accent-color);
+    background-color: white;
     color: var(--primary-color);
     font-weight: 600;
     text-align: center;

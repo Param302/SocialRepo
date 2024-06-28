@@ -87,16 +87,6 @@ function showCopyMessage(key) {
         copyConfirm.style.display = 'none';
     }, 3000);
 };
-
-function createImage(key) {
-    const img = document.createElement("img");
-    img.classList.add("social-logo");
-    img.alt = key;
-    img.src = `../assets/logos/${key}.png`;
-    return img;
-}
-
-const socialLinksContainer = document.getElementById("socialLinks");
 function createSocialLink(key, value) {
     const li = document.createElement("li");
     // Here this will be a div which will come over the top of the icon and it will show the name of the app 
@@ -130,6 +120,17 @@ function createSocialLink(key, value) {
     };
     socialLinksContainer.appendChild(li);
 }
+
+function createImage(key) {
+    const img = document.createElement("img");
+    img.classList.add("social-logo");
+    img.alt = key;
+    img.src = `../assets/logos/${key}.png`;
+    return img;
+}
+
+const socialLinksContainer = document.getElementById("socialLinks");
+
 
 // ============== Random Placeholder Generation ==============
 const placeholderTexts = [
