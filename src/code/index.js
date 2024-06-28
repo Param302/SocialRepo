@@ -78,6 +78,14 @@ const socialLinks = getSocialLinks();
 // ============== Home ==============
 function showCopyMessage(key) {
     console.log(`Copied ${key} to clipboard!`);
+    const copyConfirm = document.getElementById('copyConfirm');
+    const copyText = copyConfirm.querySelector('.copy-text');
+    copyText.textContent = `✅${key} profile copied.`;
+    copyConfirm.style.display = 'flex';
+
+    setTimeout(() => {
+        copyConfirm.style.display = 'none';
+    }, 3000);
 };
 
 function createImage(key) {
@@ -91,7 +99,24 @@ function createImage(key) {
 const socialLinksContainer = document.getElementById("socialLinks");
 function createSocialLink(key, value) {
     const li = document.createElement("li");
+    // Here this will be a div which will come over the top of the icon and it will show the name of the app 
+    const div = document.createElement("div")
     const img = createImage(key);
+    div.classList.add('div-hover-effect')
+    //^ making the string short if it overflows (based upon its length)
+    if (key.length>8){
+        div.textContent = `${key.substr(0,8)+"..."}`
+    }else{
+        div.textContent = key
+    }
+    li.addEventListener("mouseenter",()=>{
+        img.style.display = 'none'
+        div.style.display = 'flex'
+    })
+    li.addEventListener('mouseleave',()=>{
+        img.style.display = 'block'
+        div.style.display = 'none'
+    })
     img.onload = () => {
         li.appendChild(img);
         li.addEventListener("click", () => {
