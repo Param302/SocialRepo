@@ -108,6 +108,7 @@ function createSocialLink(key, value) {
         div.style.display = 'none'
     })
     img.onload = () => {
+        li.appendChild(div)
         li.appendChild(img);
         li.addEventListener("click", () => {
             navigator.clipboard.writeText(value); // Copy the value to clipboard
